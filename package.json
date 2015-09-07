@@ -11,18 +11,16 @@
   "bin": {
     "carbon": "./src/cli.js"
   },
-  "devDependencies": {
-    "gulp": "~3.9.0",
-    "gulp-util": "~3.0.6",
-    "babelify": "~6.3.0",
-    "watchify": "~3.4.0",
-    "browserify": "~11.0.1",
-    "vinyl-source-stream": "~1.1.0"
-  },
   "dependencies": {
+    "babelify": "~6.3.0",
+    "browserify": "~11.0.1",
     "commander": "~2.8.1",
     "fs": "0.0.2",
+    "gulp": "~3.9.0",
+    "gulp-util": "~3.0.6",
     "mkdirp": "~0.5.1",
-    "promptly": "~0.2.1"
+    "promptly": "~0.2.1",
+    "vinyl-source-stream": "~1.1.0",
+    "watchify": "~3.4.0"
   }
 }

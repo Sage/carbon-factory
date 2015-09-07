@@ -4,11 +4,12 @@ Tools to help create user interfaces with [Carbon](https://github.com/sage/carbo
 
 ## Installation
 
-* Install [Node.js](https://nodejs.org/).
-* Install Carbon Factory globally
+Follow the instructions in the wiki for [First Time System Setup](https://github.com/Sage/carbon-factory/wiki/First-Time-System-Setup).
+
+To install Carbon Factory to your project's devDependencies:
 
 ```bash
-npm install sage/carbon-factory -g
+npm install --save-dev sage/carbon-factory
 ```
 
 ## Command Line Interface
@@ -64,8 +65,8 @@ var Factory = require('carbon-factory');
 
 var opts = {
   src: './src/main.js', // the entry point for your application
-  dest: './public/javascripts', // the destination directory
-  output: 'application.js' // the file to output to 
+  dest: './tmp', // the destination directory
+  file: 'ui.js' // the file to output to 
 };
 
 // Tasks are available on the `Factory.gulp` object
