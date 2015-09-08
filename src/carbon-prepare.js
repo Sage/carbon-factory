@@ -6,7 +6,6 @@ var program = require('commander');
 var CreatePackage = require('./prep-tasks/create-package');
 var CreateGulpfile = require('./prep-tasks/create-gulpfile');
 var CreateAppStructure = require('./prep-tasks/create-app-structure');
-var CreateMain = require('./prep-tasks/create-main');
 var InstallNodeModules = require('./prep-tasks/install-node-modules');
 
 program.parse(process.argv);
@@ -29,7 +28,6 @@ promptly.confirm(confirmMessage, function (err, value) {
     CreateAppStructure(name);
     CreatePackage(name);
     CreateGulpfile(name);
-    CreateMain(name);
     InstallNodeModules(name);
   }
 });
