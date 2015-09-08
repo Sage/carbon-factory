@@ -18,8 +18,7 @@ Carbon Factory provides a CLI to generate files.
 
 ### Prepare Project
 
-* Create a directory for your UI.
-* From your UI directory, run the `prepare` command with the name of your project.
+* To create a project run the `prepare` command with the name of your project.
 
 ```bash
 carbon prepare myapp
