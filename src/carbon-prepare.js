@@ -28,8 +28,8 @@ promptly.confirm(confirmMessage, function (err, value) {
   if (value) {
     CreateAppStructure(name);
     CreatePackage(name);
-    CreateGulpfile();
-    CreateMain();
-    InstallNodeModules();
+    CreateGulpfile(name);
+    CreateMain(name);
+    InstallNodeModules(name);
   }
 });

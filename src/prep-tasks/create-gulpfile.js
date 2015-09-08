@@ -1,12 +1,12 @@
 var fs = require('fs');
 
-var CreateGulpfile = function() {
+var CreateGulpfile = function(name) {
   fs.readFile(__dirname + '/tpl/gulpfile.js', 'utf8', function (err, data) {
     if (err) {
       return console.log(err);
     }
 
-    fs.writeFile('.' + name + '/gulpfile.js', data, 'utf8', function (err) {
+    fs.writeFile('./' + name + '/gulpfile.js', data, 'utf8', function (err) {
       if (err) return console.log(err);
       console.log('Created Gulp file...');
     });
