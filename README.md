@@ -20,7 +20,7 @@ carbon prepare myapp
 
 ### Create a Component
 
-* From your UI directory, run the `component` command with the name of your component.
+* From your project directory, run the `component` command with the name of your component.
 
 ```bash
 carbon component textbox
@@ -30,7 +30,7 @@ carbon component textbox
 
 Carbon Factory provides [Gulp](http://gulpjs.com/) tasks to help compile assets for your application. If you set up your project using the `prepare` command, you should already have a `gulpfile.js` using the appropriate Gulp tasks.
 
-To run Gulp, run it from your UI directory:
+To run Gulp, run it from your project directory:
 
 ```bash
 gulp
