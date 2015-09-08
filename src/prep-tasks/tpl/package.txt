@@ -13,6 +13,7 @@
     "carbon-boilerplate": "git+ssh://git@github.com:sage/carbon-boilerplate"
   },
   "devDependencies": {
-    "carbon-factory": "git+ssh://git@github.com:sage/carbon-factory"
+    "carbon-factory": "git+ssh://git@github.com:sage/carbon-factory",
+    "gulp": "^3.9.0"
   }
 }
