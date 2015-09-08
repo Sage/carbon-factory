@@ -16,10 +16,10 @@ npm install --save-dev sage/carbon-factory
 
 Carbon Factory provides a CLI to generate files.
 
-### Prepare Application
+### Prepare Project
 
-* Create a directory for your UI in the root of your application.
-* From your UI directory, run the `prepare` command with the name of your application.
+* Create a directory for your UI.
+* From your UI directory, run the `prepare` command with the name of your project.
 
 ```bash
 carbon prepare myapp
@@ -35,7 +35,7 @@ carbon component textbox
 
 ## Gulp
 
-Carbon Factory provides [Gulp](http://gulpjs.com/) tasks to help compile assets for your application. If you set up your application using the `prepare` command, you should already have a `gulpfile.js` using the appropriate Gulp tasks.
+Carbon Factory provides [Gulp](http://gulpjs.com/) tasks to help compile assets for your application. If you set up your project using the `prepare` command, you should already have a `gulpfile.js` using the appropriate Gulp tasks.
 
 To run Gulp, run it from your UI directory:
 
