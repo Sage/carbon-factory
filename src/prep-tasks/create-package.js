@@ -8,7 +8,7 @@ var CreatePackage = function(name) {
 
     var result = data.replace(/APPNAME/g, name);
 
-    fs.writeFile('./package.json', result, 'utf8', function (err) {
+    fs.writeFile('.' + name + '/package.json', result, 'utf8', function (err) {
       if (err) return console.log(err);
       console.log('Created Node package...');
     });

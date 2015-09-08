@@ -6,7 +6,7 @@ var CreateMain = function(name) {
       return console.log(err);
     }
 
-    fs.writeFile('./src/main.js', data, 'utf8', function (err) {
+    fs.writeFile('.' + name + '/src/main.js', data, 'utf8', function (err) {
       if (err) return console.log(err);
       console.log('Created main JS file...');
     });

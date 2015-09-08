@@ -4,7 +4,9 @@ var InstallNodeModules = function(name) {
   setTimeout(function() {
     console.log('Installing Node modules...');
 
-    child_process.exec('npm install', function(error, stdout, stderr){
+    child_process.exec('npm install', {
+      cwd: './' + name
+    }, function(error, stdout, stderr){
       if (stderr !== null) {
         console.log('' + stderr);
       }

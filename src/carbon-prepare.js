@@ -26,9 +26,9 @@ promptly.confirm(confirmMessage, function (err, value) {
   }
 
   if (value) {
+    CreateAppStructure(name);
     CreatePackage(name);
     CreateGulpfile();
-    CreateAppStructure();
     CreateMain();
     InstallNodeModules();
   }
