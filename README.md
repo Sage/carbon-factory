@@ -6,12 +6,6 @@ Tools to help create user interfaces with [Carbon](https://github.com/sage/carbo
 
 Follow the instructions in the wiki for [First Time System Setup](https://github.com/Sage/carbon-factory/wiki/First-Time-System-Setup).
 
-To install Carbon Factory to your project's devDependencies:
-
-```bash
-npm install --save-dev sage/carbon-factory
-```
-
 ## Command Line Interface
 
 Carbon Factory provides a CLI to generate files.
