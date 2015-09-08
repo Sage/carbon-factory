@@ -18,7 +18,7 @@ if (!name) {
   process.exit(1);
 }
 
-var confirmMessage = 'This will override any existing files that may be in this directory. Do you want to continue?';
+var confirmMessage = 'This will prepare your project at \'' + process.cwd() + '/' + name + '\'. Do you want to continue?';
 
 promptly.confirm(confirmMessage, function (err, value) {
   if (!value) {
