@@ -1,6 +1,6 @@
 var React = require('react');
 
-var TMPNAME = React.createClass({
+var MODULENAME = React.createClass({
   render: function () {
     return (
       <div className="ui-CLASSNAME">
@@ -9,4 +9,4 @@ var TMPNAME = React.createClass({
   }
 });
 
-module.exports = TMPNAME;
+module.exports = MODULENAME;
