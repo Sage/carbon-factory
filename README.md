@@ -30,11 +30,17 @@ carbon component textbox
 
 Carbon Factory provides [Gulp](http://gulpjs.com/) tasks to help compile assets for your application. If you set up your project using the `prepare` command, you should already have a `gulpfile.js` using the appropriate Gulp tasks.
 
-To run Gulp, run it from your project directory:
+To run Gulp, run it from your project directory (this will do an initial build of your assets, and continue watching for any changes):
 
 ```bash
 gulp
 ```
+
+## See if it works
+
+With gulp compiling your assets, you should be able to run a simple web server from your project (`python -m SimpleHTTPServer`) and navigate to [http://localhost:8000/](http://localhost:8000/) in your browser. You can add additional routes to your project in `/src/main.js` using any new components you build.
+
+## Further Configuration
 
 The following shows how you can use the Gulp tasks provided with Carbon Factory:
 
