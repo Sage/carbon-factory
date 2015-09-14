@@ -47,5 +47,19 @@ promptly.confirm('This will create a component at \'' + process.cwd() + '/src/co
         if (err) return console.log(err);
       });
     });
+
+    // create spec file
+    fs.readFile(__dirname + '/prep-tasks/tpl/component.spec.js', 'utf8', function (err, data) {
+      if (err) {
+        return console.log(err);
+      }
+
+      var result = data
+          .replace(/MODULENAME/g, moduleName);
+
+      fs.writeFile('./spec/components/' + moduleName + '.spec.js', result, 'utf8', function (err) {
+        if (err) return console.log(err);
+      });
+    });
   }
 });
