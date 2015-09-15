@@ -24,7 +24,7 @@ module.exports = function(config) {
       dir: process.cwd() + '/coverage',
       reporters: [
         { type : 'text-summary' },
-        { type : 'lcov' }
+        { type : 'html' }
       ],
       check: {
         global: {
