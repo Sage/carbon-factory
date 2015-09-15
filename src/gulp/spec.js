@@ -8,7 +8,8 @@ module.exports = function(opts) {
   var opts = opts || {};
   var path = opts.path || '/src/**/*.js';
   var specs = opts.specs || '/spec/**/*.js';
-  var preprocessors = opts.preprocessors || [ 'babel', 'coverage', 'browserify' ];
+  var preProcessors = opts.preProcessors || [ 'babel', 'coverage', 'browserify' ];
+  var specpreProcessors = opts.specpreProcessors || [ 'babel', 'browserify' ];
   var configFile = opts.configFile || __dirname + '/../spec-helper/karma.conf.js';
 
   // internal opts
@@ -16,8 +17,8 @@ module.exports = function(opts) {
   var specSrc = process.cwd() + specs;
 
   var pp = {};
-  pp[src] = preprocessors;
-  pp[specSrc] = preprocessors;
+  pp[src] = preProcessors;
+  pp[specSrc] = specpreProcessors;
 
   var browsers = ['PhantomJS'];
 
