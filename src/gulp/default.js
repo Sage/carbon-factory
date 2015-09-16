@@ -15,7 +15,9 @@ module.exports = function (opts) {
   // setup watchify and browserify (transform through babel.js)
   var bundler = watchify(browserify({
     entries: [src],
-    transform: [babel]
+    transform: [babel.configure({
+      optional: ["es7.classProperties"]
+    })]
   }));
 
   // the main build task
