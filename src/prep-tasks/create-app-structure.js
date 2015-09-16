@@ -12,6 +12,16 @@ var CreateAppStructure = function(name) {
     else console.log('Created components directory...')
   });
 
+  mkdirp('./' + name + '/src/actions', function (err) {
+    if (err) console.error(err)
+    else console.log('Created actions directory...')
+  });
+
+  mkdirp('./' + name + '/src/stores', function (err) {
+    if (err) console.error(err)
+    else console.log('Created stores directory...')
+  });
+
   mkdirp('./' + name + '/src/views', function (err) {
     if (err) console.error(err)
     else console.log('Created views directory...')
@@ -20,6 +30,16 @@ var CreateAppStructure = function(name) {
   mkdirp('./' + name + '/spec/components', function (err) {
     if (err) console.error(err)
     else console.log('Created components spec directory...')
+  });
+
+  mkdirp('./' + name + '/spec/actions', function (err) {
+    if (err) console.error(err)
+    else console.log('Created actions spec directory...')
+  });
+
+  mkdirp('./' + name + '/spec/stores', function (err) {
+    if (err) console.error(err)
+    else console.log('Created stores spec directory...')
   });
 
   mkdirp('./' + name + '/spec/views', function (err) {
