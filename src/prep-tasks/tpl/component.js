@@ -1,12 +1,19 @@
-var React = require('react');
+import React from 'react';
 
-var MODULENAME = React.createClass({
-  render: function () {
+class MODULENAME extends React.Component {
+
+  /**
+   * Renders the component.
+   *
+   * @method render
+   */
+  render = () => {
     return (
       <div className="ui-CLASSNAME">
       </div>
     );
   }
-});
 
-module.exports = MODULENAME;
+};
+
+export default MODULENAME;

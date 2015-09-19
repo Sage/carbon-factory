@@ -1,10 +1,11 @@
-var React = require('react');
-var Router = require('react-router');
-var Route = Router.Route;
-var Boilerplate = require('carbon-boilerplate');
+import React from 'react';
+import Router from 'react-router';
+import Boilerplate from 'carbon-boilerplate';
 
-var Components = require('./components');
-var Views = require('./views');
+var Route = Router.Route;
+
+import Components from './components';
+import Views from './views';
 
 var routes = (
   <Route path="/" handler={Boilerplate.App}>

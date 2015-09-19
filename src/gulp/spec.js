@@ -2,12 +2,13 @@ var S = require('string');
 var argv = require('yargs').argv;
 var Server = require('karma').Server;
 var istanbul = require('browserify-istanbul');
+var babelify = require('babelify');
 
 module.exports = function(opts) {
   // users defined opts
   var opts = opts || {};
-  var path = opts.path || '/src/**/*.js';
-  var specs = opts.specs || '/spec/**/*.js';
+  var path = opts.path || '/src/***/**/*.js';
+  var specs = opts.specs || '/src/***/**/__spec__.js';
   var preProcessors = opts.preProcessors || [ 'babel', 'coverage', 'browserify' ];
   var specpreProcessors = opts.specpreProcessors || [ 'babel', 'browserify' ];
   var configFile = opts.configFile || __dirname + '/../spec-helper/karma.conf.js';
@@ -36,9 +37,12 @@ module.exports = function(opts) {
     var browserifyOpts = {
       debug: true,
       transform: [
-        'babelify',
+        babelify.configure({
+          optional: ["es7.classProperties"],
+          auxiliaryCommentBefore: "istanbul ignore next"
+        }),
         istanbul({
-          ignore: ['**/node_modules/**', '**/spec/**']
+          ignore: ['**/node_modules/**', '**/__spec__.js']
         })
       ]
     };
@@ -52,9 +56,12 @@ module.exports = function(opts) {
       var browserifyOpts = {
         debug: true,
         transform: [
-          'babelify',
+          babelify.configure({
+            optional: ["es7.classProperties"],
+            auxiliaryCommentBefore: "istanbul ignore next"
+          }),
           istanbul({
-            ignore: ['**/node_modules/**', '**/spec/**']
+            ignore: ['**/node_modules/**', '**/__spec__.js']
           })
         ]
       };
@@ -64,7 +71,10 @@ module.exports = function(opts) {
       var browserifyOpts = {
         debug: true,
         transform: [
-          'babelify'
+          babelify.configure({
+            optional: ["es7.classProperties"],
+            auxiliaryCommentBefore: "istanbul ignore next"
+          })
         ]
       };
     }

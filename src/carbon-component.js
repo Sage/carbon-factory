@@ -4,6 +4,7 @@ var program = require('commander');
 var fs = require('fs');
 var promptly = require('promptly');
 var S = require('string');
+var mkdirp = require('mkdirp');
 
 program.parse(process.argv);
 
@@ -17,7 +18,7 @@ if (!name) {
 var moduleName = S(name).capitalize().camelize().s;
 var className = S(name).dasherize().s;
 
-promptly.confirm('This will create a component at \'' + process.cwd() + '/src/components/' + moduleName + '.js\'. Do you want to continue?', function (err, value) {
+promptly.confirm('This will create a component at \'' + process.cwd() + '/src/components/' + moduleName + '/\'. Do you want to continue?', function (err, value) {
   if (!value) {
     process.exit(1);
   } else {
@@ -33,6 +34,11 @@ promptly.confirm('This will create a component at \'' + process.cwd() + '/src/co
       });
     });
 
+    // create directory
+    mkdirp('./src/components/' + moduleName, function (err) {
+      if (err) console.error(err);
+    });
+
     // create file
     fs.readFile(__dirname + '/prep-tasks/tpl/component.js', 'utf8', function (err, data) {
       if (err) {
@@ -43,7 +49,7 @@ promptly.confirm('This will create a component at \'' + process.cwd() + '/src/co
           .replace(/MODULENAME/g, moduleName)
           .replace(/CLASSNAME/g, className);
 
-      fs.writeFile('./src/components/' + moduleName + '.js', result, 'utf8', function (err) {
+      fs.writeFile('./src/components/' + moduleName + '/index.js', result, 'utf8', function (err) {
         if (err) return console.log(err);
       });
     });
@@ -57,7 +63,7 @@ promptly.confirm('This will create a component at \'' + process.cwd() + '/src/co
       var result = data
           .replace(/MODULENAME/g, moduleName);
 
-      fs.writeFile('./spec/components/' + moduleName + '.spec.js', result, 'utf8', function (err) {
+      fs.writeFile('./src/components/' + moduleName + '/__spec__.js', result, 'utf8', function (err) {
         if (err) return console.log(err);
       });
     });

@@ -19,6 +19,14 @@ module.exports = function(config) {
     ],
 
 
+    babelPreprocessor: {
+      options: {
+        optional: ['es7.classProperties'],
+        auxiliaryCommentBefore: "istanbul ignore next"
+      }
+    },
+
+
     // config for coverage reporter
     coverageReporter: {
       dir: process.cwd() + '/coverage',
@@ -35,6 +43,7 @@ module.exports = function(config) {
         }
       }
     },
+
 
     // web server port
     port: 9876,

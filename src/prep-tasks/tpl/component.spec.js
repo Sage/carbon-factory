@@ -1,9 +1,9 @@
-describe('MODULENAME', function() {
-  var Foo = require('./../../src/components').MODULENAME;
-  var React = require('react');
-  var TestUtils = require('react/lib/ReactTestUtils');
+import React from 'react';
+import TestUtils from 'react/lib/ReactTestUtils';
+import MODULENAME from './index';
 
-  it('sample', function() {
+describe('MODULENAME', () => {
+  it('failing test demo', () => {
     expect(1).toEqual(2);
   });
 });

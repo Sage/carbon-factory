@@ -27,26 +27,6 @@ var CreateAppStructure = function(name) {
     else console.log('Created views directory...')
   });
 
-  mkdirp('./' + name + '/spec/components', function (err) {
-    if (err) console.error(err)
-    else console.log('Created components spec directory...')
-  });
-
-  mkdirp('./' + name + '/spec/actions', function (err) {
-    if (err) console.error(err)
-    else console.log('Created actions spec directory...')
-  });
-
-  mkdirp('./' + name + '/spec/stores', function (err) {
-    if (err) console.error(err)
-    else console.log('Created stores spec directory...')
-  });
-
-  mkdirp('./' + name + '/spec/views', function (err) {
-    if (err) console.error(err)
-    else console.log('Created views spec directory...')
-  });
-
   function writeFiles() {
     // main.js
     fs.readFile(__dirname + '/tpl/main.js', 'utf8', function (err, data) {
