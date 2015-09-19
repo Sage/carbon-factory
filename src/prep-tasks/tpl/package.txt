@@ -10,6 +10,7 @@
   "dependencies": {
     "react": "^0.13.3",
     "react-router": "^0.13.3",
+    "carbon": "git+ssh://git@github.com:sage/carbon",
     "carbon-boilerplate": "git+ssh://git@github.com:sage/carbon-boilerplate"
   },
   "devDependencies": {
