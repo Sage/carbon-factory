@@ -82,7 +82,7 @@ class SalesInvoices extends View {
       <Textbox name="last_name" />
     ];
 
-    // concatentate the fields array with the fields from the handler:
+    // concatenate the fields array with the fields from the handler:
     tableFields = tableFields.concat(Handlers.SalesInvoices.additionalFields);
 
     return (
@@ -137,7 +137,7 @@ import React from 'react';
 import Textbox from 'carbon/Textbox';
 
 class SalesInvoiceHandler extends Base {
-  Fields = [
+  additionalFields = [
     <Textbox name="description" />
   ]
 };
