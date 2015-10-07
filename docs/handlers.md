@@ -17,7 +17,7 @@ This will create extension points for Sales Invoices. If you explore the `/src/c
 * `index.js` - This file defines the class for your extension point. This class does nothing except extend from your base class, the point being that developers can override this file to supply their own logic.
 * `base.js` - This files defines the basis of your extension point, including methods or parameters that can be customised.
 
-### How to the Extension Point in your Application
+### How to use the Extension Point in your Application
 
 Now you have an extension point, you need to use it in your application. Choose the view in which you want to surface some customisability, - in this example we will use `src/views/sales_invoices/new.js`, and we will allow the ability for developers to supply additional fields to a Table Fields for Many component.
 
