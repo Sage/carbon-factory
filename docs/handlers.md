@@ -40,7 +40,7 @@ class SalesInvoices extends View {
     ];
 
     return (
-      <div className="ui-journals">
+      <div className="ui-sales-invoices">
         <TableFieldsForMany fields={ tableFields } />
       </div>
     );
@@ -86,7 +86,7 @@ class SalesInvoices extends View {
     tableFields = tableFields.concat(Handlers.SalesInvoices.additionalFields);
 
     return (
-      <div className="ui-journals">
+      <div className="ui-sales-invoices">
         <TableFieldsForMany fields={ tableFields } />
       </div>
     );
