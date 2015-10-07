@@ -23,7 +23,7 @@ Now you have an extension point, you need to use it in your application. Choose 
 
 Currently the sales invoices view looks like this:
 
-```
+```js
 // /src/views/sales-invoices/new.js
 
 import React from 'react';
@@ -53,7 +53,7 @@ export default SalesInvoices;
 
 In our sales invoices extension point we should define a parameter to additional fields for the Table Fields for Many, this will just be an empty array by default:
 
-```
+```js
 // /src/carbon-handlers/sales-invoices/base.js
 
 class Base {
@@ -65,7 +65,7 @@ export default Base;
 
 Now lets update the view to use this extension point to add additional fields if they are defined.
 
-```
+```js
 // /src/views/sales-invoices/new.js
 
 import React from 'react';
@@ -129,7 +129,7 @@ carbon handler sales_invoices # TODO: need to create this command.
 
 This will create files to use the extension points for Sales Invoices. Lets modify the `additionalFields` parameter to add the additional fields required for the UKI:
 
-```
+```js
 // /src/sales_invoices/index.js
 
 import Base from 'base-handler/sales_invoices/base'; // imports the base class so we can extend from it and update only the parameters we want
