@@ -1,11 +1,13 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var babel = require('babelify');
+var aliasify = require('aliasify');
 var watchify = require('watchify');
 var parcelify = require('parcelify');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var sassCssStream = require('sass-css-stream');
+var argv = require('yargs').argv;
 
 module.exports = function (opts) {
   // setup defaults for opts
@@ -14,7 +16,8 @@ module.exports = function (opts) {
       jsDest =  opts.jsDest || './',
       jsFile =  opts.jsFile || 'ui.js',
       cssDest = opts.cssDest || './',
-      cssFile = opts.cssFile || 'app.css';
+      cssFile = opts.cssFile || 'app.css',
+      country = argv.country;
 
   function handleError(err) {
     console.error(err.toString());
@@ -30,11 +33,26 @@ module.exports = function (opts) {
   });
 
   /**
+   * Alias options (to include country specific JS).
+   */
+  var aliasTransform = null;
+
+  if (country) {
+    aliasTransform = aliasify.configure({
+      aliases: {
+        "base-handler": "./src/carbon-handler",
+        "carbon-handler": "carbon-handler-" + country
+      }
+    });
+  }
+
+  /**
    * Browserify options (for CommonJS).
    */
   var browserified = browserify({
     entries: [src],
-    transform: [babelTransform]
+    transform: [babelTransform, aliasTransform],
+    paths: ['./node_modules', './src']
   });
 
   /**
