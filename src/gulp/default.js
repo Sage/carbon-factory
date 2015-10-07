@@ -17,7 +17,7 @@ module.exports = function (opts) {
       jsFile =  opts.jsFile || 'ui.js',
       cssDest = opts.cssDest || './',
       cssFile = opts.cssFile || 'app.css',
-      country = argv.country;
+      handler = argv.handler;
 
   function handleError(err) {
     console.error(err.toString());
@@ -33,15 +33,15 @@ module.exports = function (opts) {
   });
 
   /**
-   * Alias options (to include country specific JS).
+   * Alias options (to include handler specific JS).
    */
   var aliasTransform = null;
 
-  if (country) {
+  if (handler) {
     aliasTransform = aliasify.configure({
       aliases: {
         "base-handler": "./src/carbon-handler",
-        "carbon-handler": "carbon-handler-" + country
+        "carbon-handler": "carbon-handler-" + handler
       }
     });
   }
