@@ -68,10 +68,10 @@ module.exports = function (opts) {
       // need an wrapper function to pass options to the stream transformer
       function sassTransformer( file ) {
         // array of include paths allows for overriding entire files
-        return sassCssStream( file, { includePaths: [process.cwd() + "/src/carbon_custom", process.cwd() + "/src/components"] } );
+        return sassCssStream( file, { includePaths: [process.cwd() + "/src/carbon-config", process.cwd() + "/node_modules/carbon/src/config", process.cwd() + "/node_modules"] } );
       }
     ],
-    appTransformDirs: ['./']
+    appTransformDirs: ['./node_modules/carbon', './']
   }).on('done', function() {
     // when parcelify is ready
     console.log('built css...');
