@@ -7,10 +7,9 @@ class MODULENAME extends React.Component {
    *
    * @method render
    */
-  render = () => {
+  render() {
     return (
-      <div className="ui-CLASSNAME">
-      </div>
+      <div></div>
     );
   }
 

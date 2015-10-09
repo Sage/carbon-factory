@@ -5,67 +5,43 @@ var fs = require('fs');
 var promptly = require('promptly');
 var S = require('string');
 var mkdirp = require('mkdirp');
+var createDirectory = require('./utils/createDirectory');
+var clone = require('./utils/clone');
 
+// parses any arguments passed to the command
 program.parse(process.argv);
-
 var name = program.args[0];
 
 if (!name) {
+  // a name is required for the command
   console.error('Please provide a name for your component.');
   process.exit(1);
 }
 
 var moduleName = S(name).capitalize().camelize().s;
-var className = S(name).dasherize().s;
+var fileName = S(name).dasherize().s;
 
-promptly.confirm('This will create a component at \'' + process.cwd() + '/src/components/' + moduleName + '/\'. Do you want to continue?', function (err, value) {
+// ensure this will create the module at the correct location before continuing
+var confirmMessage = 'This will create a component at \'' + process.cwd() + '/src/components/' + fileName + '/\'. Do you want to continue?';
+
+promptly.confirm(confirmMessage, function (err, value) {
   if (!value) {
     process.exit(1);
   } else {
-    console.log('Creating component...');
-
-    // add to index.js
-    fs.readFile('./src/components/index.js', 'utf8', function (err, data) {
-      var result = data
-          .replace(/};/g, "  " + moduleName + ": require('./" + moduleName + "'),\n};");
-
-      fs.writeFile('./src/components/index.js', result, 'utf8', function (err) {
-        if (err) return console.log(err);
-      });
-    });
+    var transform = function(data) {
+      return data.replace(/MODULENAME/g, moduleName);
+    };
 
     // create directory
-    mkdirp('./src/components/' + moduleName, function (err) {
-      if (err) console.error(err);
-    });
+    createDirectory('', 'src/components/' + fileName);
 
-    // create file
-    fs.readFile(__dirname + '/prep-tasks/tpl/component.js', 'utf8', function (err, data) {
-      if (err) {
-        return console.log(err);
-      }
+    function writeFiles() {
+      clone('', '/../tpl/component.js', 'src/components/' + fileName + '/index.js', transform);
+      clone('', '/../tpl/component.spec.js', 'src/components/' + fileName + '/__spec__.js', transform);
+    };
 
-      var result = data
-          .replace(/MODULENAME/g, moduleName)
-          .replace(/CLASSNAME/g, className);
-
-      fs.writeFile('./src/components/' + moduleName + '/index.js', result, 'utf8', function (err) {
-        if (err) return console.log(err);
-      });
-    });
-
-    // create spec file
-    fs.readFile(__dirname + '/prep-tasks/tpl/component.spec.js', 'utf8', function (err, data) {
-      if (err) {
-        return console.log(err);
-      }
-
-      var result = data
-          .replace(/MODULENAME/g, moduleName);
-
-      fs.writeFile('./src/components/' + moduleName + '/__spec__.js', result, 'utf8', function (err) {
-        if (err) return console.log(err);
-      });
-    });
+    // wait 200ms to ensure the directories have finished being built
+    // (could use promise instead?)
+    setTimeout(writeFiles, 200);
   }
 });
