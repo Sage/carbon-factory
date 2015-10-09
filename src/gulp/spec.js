@@ -36,6 +36,7 @@ module.exports = function(opts) {
     var reporters = ['progress', 'coverage'];
     var browserifyOpts = {
       debug: true,
+      paths: [process.cwd() + '/src'],
       transform: [
         babelify.configure({
           optional: ["es7.classProperties"],
@@ -55,6 +56,7 @@ module.exports = function(opts) {
       var reporters = ['progress', 'coverage'];
       var browserifyOpts = {
         debug: true,
+        paths: [process.cwd() + '/src'],
         transform: [
           babelify.configure({
             optional: ["es7.classProperties"],
@@ -70,6 +72,7 @@ module.exports = function(opts) {
       var reporters = ['progress'];
       var browserifyOpts = {
         debug: true,
+        paths: [process.cwd() + '/src'],
         transform: [
           babelify.configure({
             optional: ["es7.classProperties"],
