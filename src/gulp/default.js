@@ -52,44 +52,42 @@ module.exports = function (opts) {
   var browserified = browserify({
     entries: [src],
     transform: [babelTransform, aliasTransform],
-    paths: ['./node_modules', './src']
+    paths: ['./node_modules', './src', './node_modules/carbon/lib']
   });
 
   /**
    * Parcelify options (for Sass/CSS).
    */
-  var parcelified = parcelify(browserified, {
-    watch: true,
-    bundles: {
-      style: cssDest + '/' + cssFile
-    },
-    // if passing options is not necessary this transform should be defined in the package.json like so `"transforms": ["sass-css-stream"]`
-    appTransforms : [
-      // need an wrapper function to pass options to the stream transformer
-      function sassTransformer( file ) {
-        // array of include paths allows for overriding entire files
-        return sassCssStream( file, {
-          includePaths: [
-            process.cwd() + "/src/carbon-sass-config", // check for overrides in local carbon-config directory
-            process.cwd() + "/node_modules/carbon/src/sass-config", // check for original config files
-            process.cwd() + "/node_modules" // generic namespace for any other lookups
-          ]
-        });
-      }
-    ],
-    appTransformDirs: ['./node_modules/carbon', './']
-  }).on('done', function() {
-    // when parcelify is ready
-    console.log('built css...');
-  }).on('error', function(err) {
-    // handle error
-    handleError.call(this, err);
-  }).on('bundleWritten', function() {
-    // write the file
-    return gulp.src(cssFile)
-      .on('error', handleError)
-      .pipe(gulp.dest(cssDest));
-  });
+  // var parcelified = parcelify(browserified, {
+  //   watch: true,
+  //   bundles: {
+  //     style: cssDest + '/' + cssFile
+  //   },
+  //   // if passing options is not necessary this transform should be defined in the package.json like so `"transforms": ["sass-css-stream"]`
+  //   appTransforms : [
+  //     // need an wrapper function to pass options to the stream transformer
+  //     function sassTransformer( file ) {
+  //       // array of include paths allows for overriding entire files
+  //       return sassCssStream( file, {
+  //         includePaths: [
+  //           process.cwd() + "/node_modules" // generic namespace for any other lookups
+  //         ]
+  //       });
+  //     }
+  //   ],
+  //   appTransformDirs: ['./node_modules/carbon', './']
+  // }).on('done', function() {
+  //   // when parcelify is ready
+  //   console.log('built css...');
+  // }).on('error', function(err) {
+  //   // handle error
+  //   handleError.call(this, err);
+  // }).on('bundleWritten', function() {
+  //   // write the file
+  //   return gulp.src(cssFile)
+  //     .on('error', handleError)
+  //     .pipe(gulp.dest(cssDest));
+  // });
 
   /**
    * The pack we are going to watch and build
