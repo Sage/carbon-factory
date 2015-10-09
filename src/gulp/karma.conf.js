@@ -1,7 +1,5 @@
 // Karma configuration
 
-var istanbul = require('browserify-istanbul');
-
 module.exports = function(config) {
   config.set({
 

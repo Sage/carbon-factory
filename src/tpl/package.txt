@@ -8,6 +8,7 @@
   "author": "",
   "license": "",
   "dependencies": {
+    "babel-plugin-flow-comments": "^1.0.9",
     "carbon": "git+ssh://git@github.com:sage/carbon",
     "flux": "^2.1.1",
     "i18n-js": "http://github.com/fnando/i18n-js/archive/v3.0.0.rc8.tar.gz",

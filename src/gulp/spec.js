@@ -66,7 +66,7 @@ export default function(opts) {
   // which preprocessors the spec files should run through
   var specpreProcessors = opts.specpreProcessors || [ 'babel', 'browserify' ];
   // where to find the karma config file
-  var configFile = opts.configFile || __dirname + '/../spec-helper/karma.conf.js';
+  var configFile = opts.configFile || __dirname + '/karma.conf.js';
 
   // where the gulp task was ran from
   var originPath = process.cwd();
