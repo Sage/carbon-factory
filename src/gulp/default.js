@@ -68,7 +68,13 @@ module.exports = function (opts) {
       // need an wrapper function to pass options to the stream transformer
       function sassTransformer( file ) {
         // array of include paths allows for overriding entire files
-        return sassCssStream( file, { includePaths: [process.cwd() + "/src/carbon-config", process.cwd() + "/node_modules/carbon/src/config", process.cwd() + "/node_modules"] } );
+        return sassCssStream( file, {
+          includePaths: [
+            process.cwd() + "/src/carbon-sass-config", // check for overrides in local carbon-config directory
+            process.cwd() + "/node_modules/carbon/src/sass-config", // check for original config files
+            process.cwd() + "/node_modules" // generic namespace for any other lookups
+          ]
+        });
       }
     ],
     appTransformDirs: ['./node_modules/carbon', './']
