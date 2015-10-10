@@ -85,12 +85,12 @@ The following shows how you can use the Gulp tasks provided with Carbon Factory:
 ```js
 // gulpfile.js
 
-var gulp = require('gulp');
-var Factory = require('carbon-factory');
+import gulp from 'gulp';
+import BuildTask from 'carbon-factory/lib/gulp/build';
+import SpecTask from 'carbon-factory/lib/gulp/spec';
 
-// Tasks are available on the `Factory.gulp` object
-gulp.task('default', Factory.gulp.default());
-gulp.task('test', Factory.gulp.spec());
+gulp.task('default', BuildTask());
+gulp.task('test', SpecTask());
 ```
 
 You can also pass options to each task:
@@ -98,8 +98,8 @@ You can also pass options to each task:
 ```js
 // gulpfile.js
 
-var gulp = require('gulp');
-var Factory = require('carbon-factory');
+import gulp from 'gulp';
+import BuildTask from 'carbon-factory/lib/gulp/build';
 
 var opts = {
   src: './src/main.js', // the entry point for your application
@@ -108,5 +108,5 @@ var opts = {
 };
 
 // Tasks are available on the `Factory.gulp` object
-gulp.task('default', Factory.gulp.default(opts));
+gulp.task('default', BuildTask(opts));
 ```
