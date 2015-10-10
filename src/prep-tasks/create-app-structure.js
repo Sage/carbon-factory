@@ -15,7 +15,7 @@ var CreateAppStructure = function(name) {
 
     // clone required files for application
     cloneFile(name, '/../tpl/main.js', '/src/main.js');
-    cloneFile(name, '/../tpl/index.html', '/src/index.html');
+    cloneFile(name, '/../tpl/index.html', '/index.html');
     cloneFile(name, '/../tpl/package.txt', '/package.json', transform);
     cloneFile(name, '/../tpl/gulpfile.js', '/gulpfile.js');
   };
