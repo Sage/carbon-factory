@@ -36,6 +36,8 @@ import babel from 'babelify';
 import aliasify from 'aliasify';
 import watchify from 'watchify';
 import browserify from 'browserify';
+import parcelify from 'parcelify';
+import sassCssStream from 'sass-css-stream';
 import source from 'vinyl-source-stream';
 import yargs from 'yargs';
 
@@ -48,7 +50,16 @@ export default function (opts) {
       // the destination directory for the generated code
       jsDest = opts.jsDest || './',
       // the destination file for the generated code
-      jsFile = opts.jsFile || 'ui.js';
+      jsFile = opts.jsFile || 'ui.js',
+      cssDest = opts.cssDest || './',
+      cssFile = opts.cssFile || 'ui.css';
+
+  // handles any errors and exits the task
+  function handleError(err) {
+    console.error(err.toString());
+    process.stdout.write('\x07');
+    this.emit('end');
+  }
 
   // a handler argument if supplied one when running the task
   var handler = argv.handler;
@@ -89,6 +100,45 @@ export default function (opts) {
     transform: [ babelTransform, aliasTransform ],
     // lookup paths when importing modules
     paths: [ './node_modules', './src', './node_modules/carbon/lib' ]
+  });
+
+
+  /**
+   * Parcelify options (for Sass/CSS).
+   */
+  var parcelified = parcelify(browserified, {
+    // watch scss files to update on any changes
+    watch: true,
+    // where to bundle the output
+    bundles: {
+      style: cssDest + '/' + cssFile
+    },
+    appTransforms : [
+      // sass transformer
+      function sassTransformer( file ) {
+        // array of include paths allows for overriding entire files
+        return sassCssStream( file, {
+          includePaths: [
+            process.cwd() + "/src/style-config", // check for overrides in local style-config directory
+            process.cwd() + "/node_modules/carbon/lib/style-config", // check for original config files
+            process.cwd() + "/node_modules" // generic namespace for any other lookups
+          ]
+        });
+      }
+    ],
+    // where to apply transforms
+    appTransformDirs: ['./node_modules/carbon', './']
+  }).on('done', function() {
+    // when parcelify is ready
+    console.log('built css...');
+  }).on('error', function(err) {
+    // handle error
+    handleError.call(this, err);
+  }).on('bundleWritten', function() {
+    // write the file
+    return gulp.src(cssFile)
+      .on('error', handleError)
+      .pipe(gulp.dest(cssDest));
   });
 
   /**

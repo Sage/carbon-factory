@@ -13,7 +13,6 @@
     "flux": "^2.1.1",
     "i18n-js": "http://github.com/fnando/i18n-js/archive/v3.0.0.rc8.tar.gz",
     "immutable": "^3.7.5",
-    "radium": "^0.14.1",
     "react": "^0.13.3",
     "react-router": "^0.13.3"
   },
