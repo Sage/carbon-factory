@@ -1,11 +1,11 @@
 class CarbonRuby
-  def self.present(schema)
+  def self.present(klass, schema)
     attributes = {}
 
     schema.each do |key, data|
 
       if (data.kind_of?(Array))
-        resource = self.try(key)
+        resource = klass.try(key)
         attributes[key] = {}
 
         if resource.kind_of?(Array)
@@ -34,7 +34,7 @@ class CarbonRuby
           end
         end
       else
-        attributes[key] = self.try(data) 
+        attributes[key] = klass.try(data) 
       end
     end
 
