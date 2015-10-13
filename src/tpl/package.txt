@@ -11,10 +11,12 @@
     "babel-plugin-flow-comments": "^1.0.9",
     "carbon": "git+ssh://git@github.com:sage/carbon",
     "flux": "^2.1.1",
+    "history": "^1.12.5",
     "i18n-js": "http://github.com/fnando/i18n-js/archive/v3.0.0.rc8.tar.gz",
     "immutable": "^3.7.5",
-    "react": "^0.13.3",
-    "react-router": "^0.13.3"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.0-rc3"
   },
   "devDependencies": {
     "carbon-factory": "git+ssh://git@github.com:sage/carbon-factory",
