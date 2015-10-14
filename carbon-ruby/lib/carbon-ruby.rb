@@ -49,8 +49,9 @@ class CarbonRuby
   # if the resource is a collection of items
   def self.iterate_through_collection(resource, schema, json)
     resource.each do |item|
-      json[item.id] = {}
-      iterate_through_schema(schema, item, json[item.id])
+      id = item.id || Random.rand(100000)
+      json[id] = {}
+      iterate_through_schema(schema, item, json[id])
     end
   end
 
