@@ -51,8 +51,12 @@ export default function (opts) {
       jsDest = opts.jsDest || './',
       // the destination file for the generated code
       jsFile = opts.jsFile || 'ui.js',
+      // the destination for the css file
       cssDest = opts.cssDest || './',
-      cssFile = opts.cssFile || 'ui.css';
+      // the filename to write the css to
+      cssFile = opts.cssFile || 'ui.css',
+      // a standalone param to expose components globally
+      standalone = opts.standalone || null;
 
   // handles any errors and exits the task
   function handleError(err) {
@@ -93,15 +97,20 @@ export default function (opts) {
   /**
    * Browserify options (for CommonJS).
    */
-  var browserified = browserify({
+  var browserifyOpts = {
     // the entry points for the application
     entries: [ src ],
     // which transforms to apply to the code
     transform: [ babelTransform, aliasTransform ],
     // lookup paths when importing modules
     paths: [ './node_modules', './src', './node_modules/carbon/lib' ]
-  });
+  };
 
+  if (standalone) {
+    browserifyOpts.standalone = standalone;
+  }
+
+  var browserified = browserify(browserifyOpts);
 
   /**
    * Parcelify options (for Sass/CSS).
