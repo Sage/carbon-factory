@@ -12,7 +12,7 @@
  *
  *    var opts = {
  *      src: "./src/main.js",
- *      jsDest: "./app",
+ *      jsDest: "./assets/javascripts",
  *      jsFile: "app.js"
  *    }
  *
@@ -48,11 +48,11 @@ export default function (opts) {
       // the entrypoint for the JavaScript application
       src = opts.src || './src/main.js',
       // the destination directory for the generated code
-      jsDest = opts.jsDest || './',
+      jsDest = opts.jsDest || './assets/javascripts',
       // the destination file for the generated code
       jsFile = opts.jsFile || 'ui.js',
       // the destination for the css file
-      cssDest = opts.cssDest || './',
+      cssDest = opts.cssDest || './assets/stylesheets',
       // the filename to write the css to
       cssFile = opts.cssFile || 'ui.css',
       // the destination for any fonts
