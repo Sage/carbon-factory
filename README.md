@@ -128,7 +128,7 @@ var expose = {
   React: require('react'),
   ReactDOM: require('react-dom'),
   Textbox: require('carbon/lib/components/textbox'),
-  Decimal: require('carbon/lib/components/decimal')
+  Date: require('carbon/lib/components/date')
 }
 
 export default expose;
@@ -153,3 +153,15 @@ gulp.task('default', BuildTask(opts));
 ```
 
 Once you have updated your Gulp task, when you run `gulp` it will compile your assets. You can then access the components you exposed using the `Carbon` namespace.
+
+The following is an example of how to use the standalone package to render a component on the page:
+
+```js
+Carbon.ReactDOM.render(
+  Carbon.React.createElement(Carbon.Date, {
+    name: 'foo',
+    defaultValue: '2015-12-01'
+  }),
+  document.getElementById('app')
+);
+```
