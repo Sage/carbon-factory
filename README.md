@@ -113,7 +113,7 @@ gulp.task('default', BuildTask(opts));
 
 ## Standalone Packages (globally available components)
 
-The default configuration is for the application to compile in a modular format - CommonJS.This is a format used by Node.js, and we compile our code for the browser using Browserify. This is great for compiling encapsulated modules, but there may be cases where you want to use Carbon components globally. For example you may want to access them in the web console like this:
+The default configuration is for the application to compile in a modular format - CommonJS. This is a format used by Node.js, and we compile our code for the browser using Browserify. This is great for compiling encapsulated modules, but there may be cases where you want to use Carbon components globally. For example you may want to access them in the web console like this:
 
 ```
 Carbon.Textbox
@@ -152,4 +152,4 @@ var opts = {
 gulp.task('default', BuildTask(opts));
 ```
 
-Was you have updated your Gulp task, when you run `gulp` it will compile your asset. You can then access the components you exposed using the `Carbon` namespace.
+Once you have updated your Gulp task, when you run `gulp` it will compile your assets. You can then access the components you exposed using the `Carbon` namespace.
