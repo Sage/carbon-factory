@@ -55,6 +55,8 @@ export default function (opts) {
       cssDest = opts.cssDest || './',
       // the filename to write the css to
       cssFile = opts.cssFile || 'ui.css',
+      // the destination for any fonts
+      fontDest = opts.fontDest || './assets/fonts',
       // a standalone param to expose components globally
       standalone = opts.standalone || null;
 
@@ -120,7 +122,8 @@ export default function (opts) {
     watch: true,
     // where to bundle the output
     bundles: {
-      style: cssDest + '/' + cssFile
+      style: cssDest + '/' + cssFile,
+      fonts: null
     },
     appTransforms : [
       // sass transformer
@@ -143,8 +146,16 @@ export default function (opts) {
   }).on('error', function(err) {
     // handle error
     handleError.call(this, err);
-  }).on('bundleWritten', function() {
-    // write the file
+  }).on('bundleWritten', function(path, name, parcel) {
+    // copy the fonts to the correct directory
+    var fonts = [];
+    parcel.parcelAssetsByType.fonts.forEach((font) => {
+      fonts.push(font.srcPath);
+    });
+    gulp.src(fonts)
+      .pipe(gulp.dest(fontDest));
+
+    // write the css file
     return gulp.src(cssFile)
       .on('error', handleError)
       .pipe(gulp.dest(cssDest));
