@@ -103,8 +103,10 @@ import BuildTask from 'carbon-factory/lib/gulp/build';
 
 var opts = {
   src: './src/main.js', // the entry point for your application
-  dest: './tmp', // the destination directory
-  file: 'ui.js' // the file to output to 
+  jsDest: './tmp', // the destination directory
+  jsFile: 'ui.js', // the file to output to 
+  cssDest: './tmp', // the destination directory
+  cssFile: 'ui.css' // the file to output to 
 };
 
 // Tasks are available on the `Factory.gulp` object
