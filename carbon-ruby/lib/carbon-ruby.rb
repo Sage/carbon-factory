@@ -11,7 +11,7 @@ class CarbonRuby
 
   def self.iterate_through_schema(current_schema, object, json)
     current_schema.each do |key, child_schema|
-      # if the key is a definition for a collection of items:
+      # if the key is a definition for a nested object:
       if is_a_nested_object?(key)
         iterate_through_nested_objects(key, object, json)
         next
@@ -37,15 +37,16 @@ class CarbonRuby
     end
   end
 
-  # if the current schema defines a collection of items
+  # if the current schema defines nested items
   def self.iterate_through_nested_objects(current_schema, resource, json)
     current_schema.each do |key, child_schema|
       data = call_action(resource, key)
-      json[key] = {}
 
       if (is_a_collection?(data))
+        json[key] = []
         iterate_through_collection(data, child_schema, json[key])
       else # is a single object
+        json[key] = {}
         iterate_through_schema(child_schema, data, json[key])
       end
     end
@@ -53,10 +54,9 @@ class CarbonRuby
 
   # if the resource is a collection of items
   def self.iterate_through_collection(resource, schema, json)
-    resource.each do |item|
-      id = item.id || Random.rand(100000)
-      json[id] = {}
-      iterate_through_schema(schema, item, json[id])
+    resource.each_with_index do |item, index|
+      json[index] = {}
+      iterate_through_schema(schema, item, json[index])
     end
   end
 
