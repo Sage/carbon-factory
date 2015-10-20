@@ -105,7 +105,7 @@ export default function (opts) {
     // which transforms to apply to the code
     transform: [ babelTransform, aliasTransform ],
     // lookup paths when importing modules
-    paths: [ './node_modules', './src', './node_modules/carbon/lib' ]
+    paths: [ './src' ]
   };
 
   if (standalone) {
