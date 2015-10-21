@@ -40,6 +40,7 @@ import parcelify from 'parcelify';
 import sassCssStream from 'sass-css-stream';
 import source from 'vinyl-source-stream';
 import yargs from 'yargs';
+import mkdirp from 'mkdirp';
 
 var argv = yargs.argv;
 
@@ -114,6 +115,15 @@ export default function (opts) {
 
   var browserified = browserify(browserifyOpts);
 
+
+  // create dirs for assets
+  mkdirp(fontDest, function (err) {
+    if (err) console.error(err);
+  });
+  mkdirp(cssDest, function (err) {
+    if (err) console.error(err);
+  });
+
   /**
    * Parcelify options (for Sass/CSS).
    */
@@ -142,7 +152,7 @@ export default function (opts) {
     appTransformDirs: ['./node_modules/carbon', './']
   }).on('done', function() {
     // when parcelify is ready
-    console.log('built css...');
+    console.log('assets are compiled!');
   }).on('error', function(err) {
     // handle error
     handleError.call(this, err);

@@ -7,6 +7,7 @@ var program = require('commander');
 
 program
   .version('0.0.0')
-  .command('prepare [name]', 'Builds the basic structure for a Carbon based UI.')
+  .command('app [name]', 'Builds the basic structure for a Carbon based application.')
+  .command('standalone [name]', 'Builds the basic structure for standalone Carbon assets.')
   .command('component [name]', 'Builds a React component.')
   .parse(process.argv);

@@ -12,10 +12,10 @@ Carbon Factory provides a CLI to generate files.
 
 ### Prepare Project
 
-* To create a project run the `prepare` command with the name of your project.
+* To create a project run the `app` command with the name of your project.
 
 ```bash
-carbon prepare myapp
+carbon app myapp
 ```
 
 ### Create a Component
@@ -28,7 +28,7 @@ carbon component textbox
 
 ## Gulp
 
-Carbon Factory provides [Gulp](http://gulpjs.com/) tasks to help compile assets for your application. If you set up your project using the `prepare` command, you should already have a `gulpfile.js` using the appropriate Gulp tasks.
+Carbon Factory provides [Gulp](http://gulpjs.com/) tasks to help compile assets for your application. If you set up your project using the `app` command, you should already have a `gulpfile.js` using the appropriate Gulp tasks.
 
 To run Gulp, run it from your project directory (this will do an initial build of your assets, and continue watching for any changes):
 
@@ -121,7 +121,17 @@ The default configuration is for the application to compile in a modular format 
 Carbon.Textbox
 ```
 
-To create a 'standalone' package, you need to do two things. First of all create an entrypoint which will define which components you want to expose to the browser:
+### Using the Carbon CLI
+
+If you have installed the carbon factory CLI you can run a command to setup a standalone project for you:
+
+```
+carbon standalone myapp
+```
+
+### Setting this up manually
+
+To manually create a 'standalone' package, you need to do two things. First of all create an entrypoint which will define which components you want to expose to the browser:
 
 ```js
 // entry.js
@@ -140,11 +150,11 @@ This file requires all of the modules you want, and makes them available on a Ja
 
 The second step is to modify the Gulp build task to compile a standalone package:
 
-```
+```js
 // gulpfile.js
 
-import gulp from 'gulp';
-import BuildTask from 'carbon-factory/lib/gulp/build';
+var gulp = require('gulp');
+var BuildTask = require('carbon-factory/lib/gulp/build');
 
 var opts = {
   src: './entry.js', // point the src to your entry file
