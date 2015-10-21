@@ -4,9 +4,6 @@ var cloneFile = require('./../utils/clone');
 var CreateAppStructure = function(name) {
   // create the required directories
   createDirectory(name, '/src/components');
-  createDirectory(name, '/src/actions');
-  createDirectory(name, '/src/stores');
-  createDirectory(name, '/src/views');
 
   function writeFiles() {
     var transform = function(data) {
@@ -14,10 +11,10 @@ var CreateAppStructure = function(name) {
     };
 
     // clone required files for application
-    cloneFile(name, '/../tpl/main.js', '/src/main.js');
+    cloneFile(name, '/../tpl/main-standalone.js', '/src/main.js');
     cloneFile(name, '/../tpl/index.html', '/index.html');
     cloneFile(name, '/../tpl/package.txt', '/package.json', transform);
-    cloneFile(name, '/../tpl/gulpfile.js', '/gulpfile.js');
+    cloneFile(name, '/../tpl/gulpfile-standalone.js', '/gulpfile.js');
     cloneFile(name, '/../tpl/gitignore.txt', '/.gitignore');
   };
 
