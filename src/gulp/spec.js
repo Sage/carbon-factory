@@ -57,8 +57,8 @@ var Server = karma.Server;
 
 export default function(opts) {
   var opts = opts || {};
-  // the js files to test
-  var path = opts.path || '/src/***/**/*.js';
+  // the js files to test (everything except __spec__ files)
+  var path = opts.path || '/src/***/**/!(__spec__).js';
   // the specs
   var specs = opts.specs || '/src/***/**/__spec__.js';
   // which preprocessors the js files should run through
@@ -79,7 +79,7 @@ export default function(opts) {
   // default configuration for the spec build
   var config = {
     // all the files that should be included
-    files: [ src, specSrc ],
+    files: [ src, { pattern: specSrc, watched: false, included: true, served: true } ],
     // the karma config file
     configFile: configFile,
     // the preprocessors to run the files through
@@ -94,6 +94,8 @@ export default function(opts) {
       // configure any transforms for browserify
       transform: [
         babelify.configure({
+          // only babelify files in the src directory
+          only: /src/,
           // compile experimental es7 class properties
           optional: [ "es7.classProperties" ],
           // ignore code in the coverage that babelify generates
