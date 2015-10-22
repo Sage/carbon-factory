@@ -115,10 +115,16 @@ gulp.task('default', BuildTask(opts));
 
 ## Standalone Packages (globally available components)
 
-The default configuration is for the application to compile in a modular format - CommonJS. This is a format used by Node.js, and we compile our code for the browser using Browserify. This is great for compiling encapsulated modules, but there may be cases where you want to use Carbon components globally. For example you may want to access them in the web console like this:
+The default configuration is for the application to compile in a modular format - CommonJS. This is a format used by Node.js, and we compile our code for the browser using Browserify. This is great for compiling encapsulated modules, but there may be cases where you want to use Carbon components globally. For example you may want to access them in in JavaScript like this:
 
-```
-Carbon.Textbox
+```js
+Carbon.ReactDOM.render(
+  Carbon.React.createElement(Carbon.Date, {
+    name: 'foo',
+    defaultValue: '2015-12-01'
+  }),
+  document.getElementById('app')
+);
 ```
 
 ### Using the Carbon CLI
@@ -165,15 +171,3 @@ gulp.task('default', BuildTask(opts));
 ```
 
 Once you have updated your Gulp task, when you run `gulp` it will compile your assets. You can then access the components you exposed using the `Carbon` namespace.
-
-The following is an example of how to use the standalone package to render a component on the page:
-
-```js
-Carbon.ReactDOM.render(
-  Carbon.React.createElement(Carbon.Date, {
-    name: 'foo',
-    defaultValue: '2015-12-01'
-  }),
-  document.getElementById('app')
-);
-```
