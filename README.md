@@ -115,7 +115,7 @@ gulp.task('default', BuildTask(opts));
 
 ## Standalone Packages (globally available components)
 
-The default configuration is for the application to compile in a modular format - CommonJS. This is a format used by Node.js, and we compile our code for the browser using Browserify. This is great for compiling encapsulated modules, but there may be cases where you want to use Carbon components globally. For example you may want to access them in in JavaScript like this:
+The default configuration is for the application to compile in a modular format - CommonJS. This is a format used by Node.js, and we compile our code for the browser using Browserify. This is great for compiling encapsulated modules, but there may be cases where you want to use Carbon components globally. For example you may want to access them in JavaScript like this:
 
 ```js
 Carbon.ReactDOM.render(
