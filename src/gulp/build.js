@@ -64,34 +64,34 @@ export default function (opts) {
 
   // handles any errors and exits the task
   function handleError(err) {
-    //placeholder for toast notification message
+    // placeholder for toast notification message
     var notifierMessage = '';
     var message = err.message;
 
     // if location in file available
     if (err.loc) {
-      var position = "\nLine: "  + err.loc.line
-                      + "\nColumn: " + err.loc.column;
+      var position = "\nLine: "   + err.loc.line
+                   + "\nColumn: " + err.loc.column;
       notifierMessage += position;
       message += position;
     }
 
     // if code context available
     if (err.codeFrame) {
-      message  += "\n" + err.codeFrame;
+      message += "\n" + err.codeFrame;
     }
 
     // additional toast notification variables
     var title = 'Error: '
 
     // format file path
-    if(err.filename) {
+    if (err.filename) {
       var file = err.filename.split('/');
-      title+= file[file.length-1];
+      title += file[file.length-1];
     }
 
     // output error messages in toast and in console
-    notifier.notify({title: title, message: notifierMessage });
+    notifier.notify({ title: title, message: notifierMessage } );
     gutil.log(gutil.colors.red(err.name), message);
 
     // exit task
