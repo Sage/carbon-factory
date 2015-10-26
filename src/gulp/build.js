@@ -64,31 +64,28 @@ export default function (opts) {
 
   // handles any errors and exits the task
   function handleError(err) {
-    console.error(err.toString());
+    var message = 'ERROR: ' + err.message;
+    message += "\nLine: "   + err.loc.line
+            +  "\nColumn: " + err.loc.column
+            +  "\n"         + err.codeFrame;
+
+    console.error(message);
+
+    //Notifier variables
+    var title = 'Error: ';
+     if(err.description) {
+      title += err.description;
+     } else if (err.message) {
+      title += err.message;
+     }
+
+    var notifierMessage = '\nOn Line: ' + err.loc.line + ' Column: ' + err.loc.column;
+
+    notifier.notify({title: title, message: notifierMessage });
+
     process.stdout.write('\x07');
     this.emit('end');
   }
-
-var notify = function(error) {
-  var message = 'In: ';
-  var title = 'Error: ';
-
-  if(error.description) {
-    title += error.description;
-  } else if (error.message) {
-    title += error.message;
-  }
-
-  if(error.filename) {
-    var file = error.filename.split('/');
-    message += file[file.length-1];
-  }
-  if(error.lineNumber) {
-    message += '\nOn Line: ' + error.lineNumber;
-  }
-  notifier.notify({title: title, message: message});
-};
-
 
   // a handler argument if supplied one when running the task
   var handler = argv.handler;
@@ -205,8 +202,7 @@ var notify = function(error) {
     if (f) gutil.log('Recompiling ' + f);
     return bundler
       .bundle()
-      .on('error', notify)
-      .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+      .on('error', handleError)
       .pipe(source(jsFile))
       .pipe(gulp.dest(jsDest));
   };
