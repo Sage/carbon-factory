@@ -41,6 +41,7 @@ import sassCssStream from 'sass-css-stream';
 import source from 'vinyl-source-stream';
 import yargs from 'yargs';
 import mkdirp from 'mkdirp';
+import notifier from 'node-notifier';
 
 var argv = yargs.argv;
 
@@ -67,6 +68,27 @@ export default function (opts) {
     process.stdout.write('\x07');
     this.emit('end');
   }
+
+var notify = function(error) {
+  var message = 'In: ';
+  var title = 'Error: ';
+
+  if(error.description) {
+    title += error.description;
+  } else if (error.message) {
+    title += error.message;
+  }
+
+  if(error.filename) {
+    var file = error.filename.split('/');
+    message += file[file.length-1];
+  }
+  if(error.lineNumber) {
+    message += '\nOn Line: ' + error.lineNumber;
+  }
+  notifier.notify({title: title, message: message});
+};
+
 
   // a handler argument if supplied one when running the task
   var handler = argv.handler;
@@ -183,6 +205,7 @@ export default function (opts) {
     if (f) gutil.log('Recompiling ' + f);
     return bundler
       .bundle()
+      .on('error', notify)
       .on('error', gutil.log.bind(gutil, 'Browserify Error'))
       .pipe(source(jsFile))
       .pipe(gulp.dest(jsDest));
