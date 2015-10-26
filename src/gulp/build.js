@@ -30,18 +30,18 @@
  * This will include a module named `carbon-handler-uki` in the build process.
  */
 
+import aliasify from 'aliasify';
+import babel from 'babelify';
+import browserify from 'browserify';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
-import babel from 'babelify';
-import aliasify from 'aliasify';
-import watchify from 'watchify';
-import browserify from 'browserify';
+import mkdirp from 'mkdirp';
+import notifier from 'node-notifier';
 import parcelify from 'parcelify';
 import sassCssStream from 'sass-css-stream';
 import source from 'vinyl-source-stream';
+import watchify from 'watchify';
 import yargs from 'yargs';
-import mkdirp from 'mkdirp';
-import notifier from 'node-notifier';
 
 var argv = yargs.argv;
 
@@ -64,33 +64,37 @@ export default function (opts) {
 
   // handles any errors and exits the task
   function handleError(err) {
-    var message = err.name + ": ";
+    //placeholder for toast notification message
     var notifierMessage = '';
+    var message = err.message;
 
-    message += err.message;
-
+    // if location in file available
     if (err.loc) {
-      notifierMessage += "\nLine: "  + err.loc.line
-                      + "\nColumn: " + err.loc.column
+      var position = "\nLine: "  + err.loc.line
+                      + "\nColumn: " + err.loc.column;
+      notifierMessage += position;
+      message += position;
     }
 
+    // if code context available
     if (err.codeFrame) {
       message  += "\n" + err.codeFrame;
     }
 
-    //Notifier variables
-    var title = 'Error: ';
-    if (err.description) {
-      title += err.description;
-    }
-    if (err.message) {
-      title += err.message;
+    // additional toast notification variables
+    var title = 'Error: '
+
+    // format file path
+    if(err.filename) {
+      var file = err.filename.split('/');
+      title+= file[file.length-1];
     }
 
-    console.error(message);
+    // output error messages in toast and in console
     notifier.notify({title: title, message: notifierMessage });
+    gutil.log(gutil.colors.red(err.name), message);
 
-    process.stdout.write('\x07');
+    // exit task
     this.emit('end');
   }
 
@@ -194,8 +198,8 @@ export default function (opts) {
 
     // write the css file
     return gulp.src(cssFile)
+      .on('error', () => gutil.log("*** Error writing the CSS File ***"))
       .on('error', handleError)
-      .on('error', () => gutil.log("*** Error writing the Css File ***"))
       .pipe(gulp.dest(cssDest));
   });
 
@@ -211,7 +215,7 @@ export default function (opts) {
     if (f) gutil.log('Recompiling ' + f);
     return bundler
       .bundle()
-      .on('error', () => gutil.log("*** Browserify Error ***") )
+      .on('error', () => gutil.log("*** Browserify Error ***"))
       .on('error', handleError)
       .pipe(source(jsFile))
       .pipe(gulp.dest(jsDest));
