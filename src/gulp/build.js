@@ -64,23 +64,30 @@ export default function (opts) {
 
   // handles any errors and exits the task
   function handleError(err) {
-    var message = 'ERROR: ' + err.message;
-    message += "\nLine: "   + err.loc.line
-            +  "\nColumn: " + err.loc.column
-            +  "\n"         + err.codeFrame;
+    var message = err.name + ": ";
+    var notifierMessage = '';
 
-    console.error(message);
+    message += err.message;
+
+    if (err.loc) {
+      notifierMessage += "\nLine: "  + err.loc.line
+                      + "\nColumn: " + err.loc.column
+    }
+
+    if (err.codeFrame) {
+      message  += "\n" + err.codeFrame;
+    }
 
     //Notifier variables
     var title = 'Error: ';
-     if(err.description) {
+    if (err.description) {
       title += err.description;
-     } else if (err.message) {
+    }
+    if (err.message) {
       title += err.message;
-     }
+    }
 
-    var notifierMessage = '\nOn Line: ' + err.loc.line + ' Column: ' + err.loc.column;
-
+    console.error(message);
     notifier.notify({title: title, message: notifierMessage });
 
     process.stdout.write('\x07');
@@ -174,6 +181,7 @@ export default function (opts) {
     console.log('assets are compiled!');
   }).on('error', function(err) {
     // handle error
+    gutil.log("*** CSS Error ***");
     handleError.call(this, err);
   }).on('bundleWritten', function(path, name, parcel) {
     // copy the fonts to the correct directory
@@ -187,6 +195,7 @@ export default function (opts) {
     // write the css file
     return gulp.src(cssFile)
       .on('error', handleError)
+      .on('error', () => gutil.log("*** Error writing the Css File ***"))
       .pipe(gulp.dest(cssDest));
   });
 
@@ -202,6 +211,7 @@ export default function (opts) {
     if (f) gutil.log('Recompiling ' + f);
     return bundler
       .bundle()
+      .on('error', () => gutil.log("*** Browserify Error ***") )
       .on('error', handleError)
       .pipe(source(jsFile))
       .pipe(gulp.dest(jsDest));
