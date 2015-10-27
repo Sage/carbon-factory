@@ -40,6 +40,18 @@ gulp
 
 With gulp compiling your assets, you should be able to run a simple web server from your project (`python -m SimpleHTTPServer`) and navigate to [http://localhost:8000/](http://localhost:8000/) in your browser. You can add additional routes to your project in `/src/main.js` using any new components you build.
 
+## Alternate Server
+
+If you find SimpleHTTPServer slow then you can install the following:
+
+`npm install http-server -g`
+
+and run in the target directory like this:
+
+`http-server -p 8000`
+
+[more info on Stack Overflow](http://stackoverflow.com/questions/12905426/what-is-a-faster-alternative-to-pythons-simplehttpserver)
+
 ## Running Tests
 
 In development, you can run tests by using Gulp.
