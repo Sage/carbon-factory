@@ -4,7 +4,7 @@ Tools to help create user interfaces with [Carbon](https://github.com/sage/carbo
 
 ## Installation
 
-Follow the instructions in the wiki for [First Time System Setup](https://github.com/Sage/carbon-factory/wiki/First-Time-System-Setup).
+Follow the instructions in the wiki for [First Time System Setup](https://github.com/Sage/carbon-factory/wiki/First-Time-System-Setup). For newcomers to working with Node, we also have an [introduction guide](https://github.com/Sage/carbon-factory/wiki/An-Introduction-to-Node-and-npm).
 
 ## Command Line Interface
 
