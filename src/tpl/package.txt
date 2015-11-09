@@ -9,7 +9,7 @@
   "license": "",
   "dependencies": {
     "babel-plugin-flow-comments": "^1.0.9",
-    "carbon": "git+ssh://git@github.com:sage/carbon",
+    "carbon": "sage/carbon#v0.0.1",
     "flux": "^2.1.1",
     "history": "^1.12.5",
     "i18n-js": "http://github.com/fnando/i18n-js/archive/v3.0.0.rc8.tar.gz",
@@ -19,7 +19,7 @@
     "react-router": "^1.0.0-rc3"
   },
   "devDependencies": {
-    "carbon-factory": "git+ssh://git@github.com:sage/carbon-factory",
+    "carbon-factory": "sage/carbon-factory#v0.0.1",
     "gulp": "^3.9.0"
   }
 }
