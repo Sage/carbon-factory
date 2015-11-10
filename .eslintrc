@@ -1,0 +1,43 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    // this stops errors when React is imported but does not appear to be used because of JSX compilation
+    "react/jsx-uses-react": 1,
+    // this is from the babel-eslint setup https://github.com/babel/babel-eslint#setup
+    "strict": 0,
+    "no-trailing-spaces": [2],
+    // indentation of 2 spaces, and specific indentation for stacked variable declarations and switch/case statements
+    "indent": [
+      2,
+      2,
+      {
+        "VariableDeclarator": 2,
+        "SwitchCase": 1
+      }
+    ],
+    // line breaks for unix based systems
+    "linebreak-style": [
+      2,
+    "unix"
+    ],
+    // enable semi-colons
+    "semi": [
+      2,
+    "always"
+    ]
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": "eslint:recommended",
+  "ecmaFeatures": {
+    "jsx": true,
+    "experimentalObjectRestSpread": true,
+    "modules": true,
+    "arrowFunctions": true
+  },
+  "plugins": [
+    "react"
+  ]
+}
