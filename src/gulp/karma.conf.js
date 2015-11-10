@@ -17,6 +17,7 @@ module.exports = function(config) {
     ],
 
 
+    // config for babel
     babelPreprocessor: {
       options: {
         optional: ['es7.classProperties'],

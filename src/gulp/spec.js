@@ -51,6 +51,7 @@ import yargs from 'yargs';
 import karma from 'karma';
 import istanbul from 'browserify-istanbul';
 import babelify from 'babelify';
+import fs from 'fs';
 
 var argv = yargs.argv;
 var Server = karma.Server;
@@ -62,7 +63,7 @@ export default function(opts) {
   // the specs
   var specs = opts.specs || '/src/***/**/__spec__.js';
   // which preprocessors the js files should run through
-  var preProcessors = opts.preProcessors || [ 'babel', 'coverage', 'browserify' ];
+  var preProcessors = opts.preProcessors || [ 'eslint', 'babel', 'coverage', 'browserify' ];
   // which preprocessors the spec files should run through
   var specpreProcessors = opts.specpreProcessors || [ 'babel', 'browserify' ];
   // where to find the karma config file
@@ -70,6 +71,16 @@ export default function(opts) {
 
   // where the gulp task was ran from
   var originPath = process.cwd();
+
+  // check if eslintrc file exists, if not then prompt dev to create one
+  fs.stat(originPath + '/.eslintrc', function(err, stat) {
+    if (err == null) { return }
+    if (err.code == 'ENOENT') {
+      gutil.log(gutil.colors.red("Cannot find '.eslintrc' file"));
+      gutil.log(gutil.colors.white("Create an '.eslintrc' file in the root of your project and add the following code:\n{\n  \"extends\": \"./node_modules/carbon-factory/.eslintrc\"\n}"));
+      process.exit();
+    }
+  });
 
   // prefix the paths with where the gulp task was ran from so the files can
   // be found from the correct location
@@ -112,7 +123,12 @@ export default function(opts) {
     // auto watch for any changes to rerun specs
     autoWatch: true,
     // only run the specs once
-    singleRun: true
+    singleRun: true,
+    // config for eslint
+    eslint: {
+      stopOnError: false,
+      stopOnWarning: false
+    }
   }
 
   // tie the preprocessors to the relevant sources
@@ -130,6 +146,8 @@ export default function(opts) {
   if (argv.build) {
     // if `gulp --build` then use single run mode
     config.autoWatch = false;
+    // stop on lint failures in build mode
+    config.eslint.stopOnError = true;
   } else {
     // default to watch mode
     config.singleRun = false;
