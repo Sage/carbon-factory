@@ -6,7 +6,7 @@ var program = require('commander');
 // corresponding file named with the command name prefixed with carbon.
 
 program
-  .version('0.0.2.beta')
+  .version('0.0.2')
   .command('app [name]', 'Builds the basic structure for a Carbon based application.')
   .command('standalone [name]', 'Builds the basic structure for standalone Carbon assets.')
   .command('component [name]', 'Builds a React component.')
