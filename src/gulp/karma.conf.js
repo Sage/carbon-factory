@@ -20,7 +20,7 @@ module.exports = function(config) {
     // config for babel
     babelPreprocessor: {
       options: {
-        optional: ['es7.classProperties'],
+        optional: ['es7.classProperties', 'es7.decorators'],
         auxiliaryCommentBefore: "istanbul ignore next"
       }
     },

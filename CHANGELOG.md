@@ -10,6 +10,10 @@
 
 You also need a `.eslintrc` file in the root of your project. When running the spec task for the first time you will get a message with how to set this up.
 
+## Misc
+
+* Added `es7.decorators` to the gulp tasks.
+
 # 0.0.1
 
 Initial prototype release.

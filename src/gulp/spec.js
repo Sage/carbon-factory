@@ -108,7 +108,7 @@ export default function(opts) {
           // only babelify files in the src directory
           only: /src/,
           // compile experimental es7 class properties
-          optional: [ "es7.classProperties" ],
+          optional: [ "es7.classProperties", "es7.decorators" ],
           // ignore code in the coverage that babelify generates
           auxiliaryCommentBefore: "istanbul ignore next"
         }),
