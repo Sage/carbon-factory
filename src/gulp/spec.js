@@ -168,9 +168,7 @@ export default function(opts) {
 
       done();
 
-      // apparently this is not recommended but I'm not sure what else to do
-      // https://github.com/karma-runner/karma/issues/1035
-      process.exit();
+      process.exit(status);
     });
 
     server.start();
