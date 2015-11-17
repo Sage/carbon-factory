@@ -26,24 +26,6 @@ module.exports = function(config) {
     },
 
 
-    // config for coverage reporter
-    coverageReporter: {
-      dir: process.cwd() + '/coverage',
-      reporters: [
-        { type : 'text-summary' },
-        { type : 'html' }
-      ],
-      check: {
-        global: {
-          statements: 100,
-          branches: 100,
-          functions: 100,
-          lines: 100
-        }
-      }
-    },
-
-
     // web server port
     port: 9876,
 

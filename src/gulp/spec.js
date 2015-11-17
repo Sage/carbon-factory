@@ -15,6 +15,12 @@
  *      specs: "/src/*.spec.js",
  *      preProcessors: [ 'babel', 'coverage', 'browserify' ],
  *      specPreProcessors: [ 'babel', 'browserify' ],
+ *      coverage: {
+ *        statements: 100,
+ *        branches: 100,
+ *        functions: 100,
+ *        lines: 100
+ *      },
  *      configFile: 'karma.conf.js'
  *    }
  *
@@ -68,6 +74,13 @@ export default function(opts) {
   var specpreProcessors = opts.specpreProcessors || [ 'babel', 'browserify' ];
   // where to find the karma config file
   var configFile = opts.configFile || __dirname + '/karma.conf.js';
+  // defaults the coverage thresholds
+  var coverageThreshold = opts.coverage || {
+    statements: 100,
+    branches: 100,
+    functions: 100,
+    lines: 100
+  };
 
   // where the gulp task was ran from
   var originPath = process.cwd();
@@ -124,6 +137,17 @@ export default function(opts) {
     autoWatch: true,
     // only run the specs once
     singleRun: true,
+    // setup config for coverage
+    coverageReporter: {
+      dir: originPath + '/coverage',
+      reporters: [
+        { type : 'text-summary' },
+        { type : 'html' }
+      ],
+      check: {
+        global: coverageThreshold
+      }
+    },
     // config for eslint
     eslint: {
       stopOnError: false,
