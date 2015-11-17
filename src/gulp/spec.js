@@ -75,12 +75,12 @@ export default function(opts) {
   // where to find the karma config file
   var configFile = opts.configFile || __dirname + '/karma.conf.js';
   // defaults the coverage thresholds
-  var coverageThreshold = opts.coverage || {
+  var coverageThreshold = Object.assign({}, {
     statements: 100,
     branches: 100,
     functions: 100,
     lines: 100
-  };
+  }, opts.coverage);
 
   // where the gulp task was ran from
   var originPath = process.cwd();
