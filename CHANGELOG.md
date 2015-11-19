@@ -1,5 +1,9 @@
 # 0.0.2-beta
 
+## Updated CLI
+
+The command line interface generation tools have been updated to better reflect the updates to Carbon. The `app` and `standalone` tasks also no longer run `npm install` automatically for you.
+
 ## ESLint
 
 [ESLint](http://eslint.org/) has been added to the `gulp test` task. This introduces 3 new dependencies:

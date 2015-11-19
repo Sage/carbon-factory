@@ -5,8 +5,6 @@ var program = require('commander');
 
 // script to build the app structure
 var CreateStandaloneStructure = require('./prep-tasks/create-standalone-structure');
-// script to install the node modules
-var InstallNodeModules = require('./prep-tasks/install-node-modules');
 
 // parses any arguments passed to the command
 program.parse(process.argv);
@@ -29,6 +27,5 @@ promptly.confirm(confirmMessage, function (err, value) {
   if (value) {
     // if confirmed, build the module step by step
     CreateStandaloneStructure(name);
-    InstallNodeModules(name);
   }
 });

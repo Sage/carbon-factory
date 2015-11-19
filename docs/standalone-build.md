@@ -20,6 +20,8 @@ If you have installed the carbon factory CLI you can run a command to setup a st
 carbon standalone myapp
 ```
 
+After setting up your project, make sure you install its dependencies by running `npm install` from inside the projects route directory.
+
 ## Compiling Your Build
 
 Carbon Factory provides [Gulp](http://gulpjs.com/) tasks to help compile assets for your application. If you set up your project using the `standalone` command, you should already have a `gulpfile.js` using the appropriate Gulp tasks.
