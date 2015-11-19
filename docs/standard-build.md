@@ -2,7 +2,7 @@
 
 ## Creating a Standard Build
 
-If you have installed the carbon factory CLI you can run a command to setup a standard project for you:
+If you have installed the carbon factory CLI you can run a command to setup a standard project:
 
 ```
 carbon app myapp
