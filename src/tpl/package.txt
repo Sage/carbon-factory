@@ -8,18 +8,18 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "babel-plugin-flow-comments": "^1.0.9",
-    "carbon": "sage/carbon#v0.0.1",
+    "carbon": "git+ssh://git@github.com/Sage/carbon.git",
     "flux": "^2.1.1",
     "history": "^1.12.5",
     "i18n-js": "http://github.com/fnando/i18n-js/archive/v3.0.0.rc8.tar.gz",
     "immutable": "^3.7.5",
     "react": "^0.14.0",
+    "react-addons-css-transition-group": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-router": "^1.0.0-rc3"
+    "react-router": "^1.0.0"
   },
   "devDependencies": {
-    "carbon-factory": "sage/carbon-factory#v0.0.1",
+    "carbon-factory": "git+ssh://git@github.com/Sage/carbon-factory.git",
     "gulp": "^3.9.0"
   }
 }
