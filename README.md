@@ -4,7 +4,7 @@ Tools to help create user interfaces with [Carbon](https://github.com/sage/carbo
 
 ## Setup
 
-First of all ensure you have gone through the [first time installation guide](docs/first-time-installation), which will guide you through preparing your development environment.
+First of all ensure you have gone through the [first time installation guide](docs/first-time-installation.md), which will guide you through preparing your development environment.
 
 ## Guides
 
