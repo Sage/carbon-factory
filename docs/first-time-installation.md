@@ -80,7 +80,33 @@ gulp
 cd ~/development/sampleapp
 ```
 
-* Start a web server:
+* Create a new component:
+
+```
+carbon component foobar
+```
+
+* Edit the `src/components/foobar/index.js` file for your new component to add some content to the `render` function:
+
+```
+render() {
+  return (
+    <div>Foobar!</div>
+  );
+}
+```
+
+* Edit the `src/main.js` file in your project to import your new component and attach it to your route:
+
+```
+import Foobar from 'components/foobar';
+
+var routes = (
+  <Route path="/" component={ Foobar } />
+);
+```
+
+* In the console, start a web server from the root of your project:
 
 ```
 python -m SimpleHTTPServer
@@ -88,4 +114,4 @@ python -m SimpleHTTPServer
 
 * Open http://localhost:8000 in your web browser to view your application.
 
-* Your application is now setup and waiting for you to define some views and components, why not try setting up an application using our [basic example](https://github.com/Sage/carbon/blob/master/docs/guides/a-basic-example.md)?
+* Your application is now setup, why not try setting up an application using Flux following our [basic example](https://github.com/Sage/carbon/blob/master/docs/guides/a-basic-example.md)?
