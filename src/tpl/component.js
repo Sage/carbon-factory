@@ -13,6 +13,6 @@ class MODULENAME extends React.Component {
     );
   }
 
-};
+}
 
 export default MODULENAME;

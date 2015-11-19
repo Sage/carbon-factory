@@ -16,6 +16,7 @@ var CreateAppStructure = function(name) {
     cloneFile(name, '/../tpl/package.txt', '/package.json', transform);
     cloneFile(name, '/../tpl/gulpfile-standalone.js', '/gulpfile.js');
     cloneFile(name, '/../tpl/gitignore.txt', '/.gitignore');
+    cloneFile(name, '/../tpl/eslintrc.txt', '/.eslintrc');
   };
 
   // wait 200ms to ensure the directories have finished being built

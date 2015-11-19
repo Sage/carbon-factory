@@ -46,182 +46,186 @@ import yargs from 'yargs';
 var argv = yargs.argv;
 
 export default function (opts) {
-  var opts = opts || {},
-      // the entrypoint for the JavaScript application
-      src = opts.src || './src/main.js',
-      // the destination directory for the generated code
-      jsDest = opts.jsDest || './assets/javascripts',
-      // the destination file for the generated code
-      jsFile = opts.jsFile || 'ui.js',
-      // the destination for the css file
-      cssDest = opts.cssDest || './assets/stylesheets',
-      // the filename to write the css to
-      cssFile = opts.cssFile || 'ui.css',
-      // the destination for any fonts
-      fontDest = opts.fontDest || './assets/fonts',
-      // a standalone param to expose components globally
-      standalone = opts.standalone || null;
+  var options = opts;
 
-  // handles any errors and exits the task
-  function handleError(err) {
-    // placeholder for toast notification message
-    var notifierMessage = '';
-    var message = err.message;
+  return function() {
+    var opts = options || {},
+        // the entrypoint for the JavaScript application
+        src = opts.src || './src/main.js',
+        // the destination directory for the generated code
+        jsDest = opts.jsDest || './assets/javascripts',
+        // the destination file for the generated code
+        jsFile = opts.jsFile || 'ui.js',
+        // the destination for the css file
+        cssDest = opts.cssDest || './assets/stylesheets',
+        // the filename to write the css to
+        cssFile = opts.cssFile || 'ui.css',
+        // the destination for any fonts
+        fontDest = opts.fontDest || './assets/fonts',
+        // a standalone param to expose components globally
+        standalone = opts.standalone || null;
 
-    // if location in file available
-    if (err.loc) {
-      var position = "\nLine: "   + err.loc.line
-                   + "\nColumn: " + err.loc.column;
-      notifierMessage += position;
-      message += position;
-    }
+    // handles any errors and exits the task
+    function handleError(err) {
+      // placeholder for toast notification message
+      var notifierMessage = '';
+      var message = err.message;
 
-    // if code context available
-    if (err.codeFrame) {
-      message += "\n" + err.codeFrame;
-    }
-
-    // additional toast notification variables
-    var title = 'Error: '
-
-    // format file path
-    if (err.filename) {
-      var file = err.filename.split('/');
-      title += file[file.length-1];
-    }
-
-    // output error messages in toast and in console
-    notifier.notify({ title: title, message: notifierMessage } );
-    gutil.log(gutil.colors.red(err.name), message);
-
-    // exit task
-    this.emit('end');
-  }
-
-  // a handler argument if supplied one when running the task
-  var handler = argv.handler;
-
-  /**
-   * Babel options (for JS/JSX).
-   */
-  var babelTransform = babel.configure({
-    // use experimental es7 class properties
-    optional: [ "es7.classProperties", "es7.decorators" ]
-  });
-
-  /**
-   * Alias options (to include handler specific JS).
-   */
-  var aliasTransform = null;
-
-  if (handler) {
-    aliasTransform = aliasify.configure({
-      aliases: {
-        // make it possible to import the original handler if `carbon-handler`
-        // is aliased to get something else
-        "base-handler": "./src/carbon-handler",
-        // if using a handler, alias any imports of `carbon-handler` to use
-        // the handler instead
-        "carbon-handler": "carbon-handler-" + handler
+      // if location in file available
+      if (err.loc) {
+        var position = "\nLine: "   + err.loc.line
+                     + "\nColumn: " + err.loc.column;
+        notifierMessage += position;
+        message += position;
       }
-    });
-  }
 
-  /**
-   * Browserify options (for CommonJS).
-   */
-  var browserifyOpts = {
-    // the entry points for the application
-    entries: [ src ],
-    // which transforms to apply to the code
-    transform: [ babelTransform, aliasTransform ],
-    // lookup paths when importing modules
-    paths: [ './src' ]
-  };
-
-  if (standalone) {
-    browserifyOpts.standalone = standalone;
-  }
-
-  var browserified = browserify(browserifyOpts);
-
-
-  // create dirs for assets
-  mkdirp(fontDest, function (err) {
-    if (err) console.error(err);
-  });
-  mkdirp(cssDest, function (err) {
-    if (err) console.error(err);
-  });
-
-  /**
-   * Parcelify options (for Sass/CSS).
-   */
-  var parcelified = parcelify(browserified, {
-    // watch scss files to update on any changes
-    watch: true,
-    // where to bundle the output
-    bundles: {
-      style: cssDest + '/' + cssFile,
-      fonts: null
-    },
-    appTransforms : [
-      // sass transformer
-      function sassTransformer( file ) {
-        // array of include paths allows for overriding entire files
-        return sassCssStream( file, {
-          includePaths: [
-            process.cwd() + "/src/style-config", // check for overrides in local style-config directory
-            process.cwd() + "/node_modules/carbon/lib/style-config", // check for original config files
-            process.cwd() + "/node_modules" // generic namespace for any other lookups
-          ]
-        });
+      // if code context available
+      if (err.codeFrame) {
+        message += "\n" + err.codeFrame;
       }
-    ],
-    // where to apply transforms
-    appTransformDirs: ['./node_modules/carbon', './']
-  }).on('done', function() {
-    // when parcelify is ready
-    console.log('assets are compiled!');
-  }).on('error', function(err) {
-    // handle error
-    gutil.log("*** CSS Error ***");
-    handleError.call(this, err);
-  }).on('bundleWritten', function(path, name, parcel) {
-    // copy the fonts to the correct directory
-    var fonts = [];
-    parcel.parcelAssetsByType.fonts.forEach((font) => {
-      fonts.push(font.srcPath);
+
+      // additional toast notification variables
+      var title = 'Error: '
+
+      // format file path
+      if (err.filename) {
+        var file = err.filename.split('/');
+        title += file[file.length-1];
+      }
+
+      // output error messages in toast and in console
+      notifier.notify({ title: title, message: notifierMessage } );
+      gutil.log(gutil.colors.red(err.name), message);
+
+      // exit task
+      this.emit('end');
+    }
+
+    // a handler argument if supplied one when running the task
+    var handler = argv.handler;
+
+    /**
+     * Babel options (for JS/JSX).
+     */
+    var babelTransform = babel.configure({
+      // use experimental es7 class properties
+      optional: [ "es7.classProperties", "es7.decorators" ]
     });
-    gulp.src(fonts)
-      .pipe(gulp.dest(fontDest));
 
-    // write the css file
-    return gulp.src(cssFile)
-      .on('error', () => gutil.log("*** Error writing the CSS File ***"))
-      .on('error', handleError)
-      .pipe(gulp.dest(cssDest));
-  });
+    /**
+     * Alias options (to include handler specific JS).
+     */
+    var aliasTransform = null;
 
-  /**
-   * The pack we are going to watch and build
-   */
-  var bundler = watchify(browserified);
+    if (handler) {
+      aliasTransform = aliasify.configure({
+        aliases: {
+          // make it possible to import the original handler if `carbon-handler`
+          // is aliased to get something else
+          "base-handler": "./src/carbon-handler",
+          // if using a handler, alias any imports of `carbon-handler` to use
+          // the handler instead
+          "carbon-handler": "carbon-handler-" + handler
+        }
+      });
+    }
 
-  /**
-   * The main build task.
-   */
-  function build(f) {
-    if (f) gutil.log('Recompiling ' + f);
-    return bundler
-      .bundle()
-      .on('error', () => gutil.log("*** Browserify Error ***"))
-      .on('error', handleError)
-      .pipe(source(jsFile))
-      .pipe(gulp.dest(jsDest));
-  };
+    /**
+     * Browserify options (for CommonJS).
+     */
+    var browserifyOpts = {
+      // the entry points for the application
+      entries: [ src ],
+      // which transforms to apply to the code
+      transform: [ babelTransform, aliasTransform ],
+      // lookup paths when importing modules
+      paths: [ './src' ]
+    };
 
-  // run the build immediately and whenever the bundler updates
-  bundler.on('update', build);
-  build();
+    if (standalone) {
+      browserifyOpts.standalone = standalone;
+    }
+
+    var browserified = browserify(browserifyOpts);
+
+
+    // create dirs for assets
+    mkdirp(fontDest, function (err) {
+      if (err) console.error(err);
+    });
+    mkdirp(cssDest, function (err) {
+      if (err) console.error(err);
+    });
+
+    /**
+     * Parcelify options (for Sass/CSS).
+     */
+    var parcelified = parcelify(browserified, {
+      // watch scss files to update on any changes
+      watch: true,
+      // where to bundle the output
+      bundles: {
+        style: cssDest + '/' + cssFile,
+        fonts: null
+      },
+      appTransforms : [
+        // sass transformer
+        function sassTransformer( file ) {
+          // array of include paths allows for overriding entire files
+          return sassCssStream( file, {
+            includePaths: [
+              process.cwd() + "/src/style-config", // check for overrides in local style-config directory
+              process.cwd() + "/node_modules/carbon/lib/style-config", // check for original config files
+              process.cwd() + "/node_modules" // generic namespace for any other lookups
+            ]
+          });
+        }
+      ],
+      // where to apply transforms
+      appTransformDirs: ['./node_modules/carbon', './']
+    }).on('done', function() {
+      // when parcelify is ready
+      console.log('assets are compiled!');
+    }).on('error', function(err) {
+      // handle error
+      gutil.log("*** CSS Error ***");
+      handleError.call(this, err);
+    }).on('bundleWritten', function(path, name, parcel) {
+      // copy the fonts to the correct directory
+      var fonts = [];
+      parcel.parcelAssetsByType.fonts.forEach((font) => {
+        fonts.push(font.srcPath);
+      });
+      gulp.src(fonts)
+        .pipe(gulp.dest(fontDest));
+
+      // write the css file
+      return gulp.src(cssFile)
+        .on('error', () => gutil.log("*** Error writing the CSS File ***"))
+        .on('error', handleError)
+        .pipe(gulp.dest(cssDest));
+    });
+
+    /**
+     * The pack we are going to watch and build
+     */
+    var bundler = watchify(browserified);
+
+    /**
+     * The main build task.
+     */
+    function build(f) {
+      if (f) gutil.log('Recompiling ' + f);
+      return bundler
+        .bundle()
+        .on('error', () => gutil.log("*** Browserify Error ***"))
+        .on('error', handleError)
+        .pipe(source(jsFile))
+        .pipe(gulp.dest(jsDest));
+    };
+
+    // run the build immediately and whenever the bundler updates
+    bundler.on('update', build);
+    build();
+  }
 };
