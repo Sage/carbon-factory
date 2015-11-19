@@ -31,7 +31,7 @@ NOTE: Carbon Factory supplies two kinds of projects out of the box:
 * [Standard Build](standard-build.md) - for Flux based applications.
 * [Standalone Build](standalone-build.md) - for generating components available in the global namespace of the DOM.
 
-After setting up your project, make sure you install its dependencies by running `npm install` from inside the projects route directory.
+After setting up your project, make sure you install its dependencies by running `npm install` from inside the projects root directory.
 
 ### Create a Component
 

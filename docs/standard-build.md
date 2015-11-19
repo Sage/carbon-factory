@@ -8,7 +8,7 @@ If you have installed the carbon factory CLI you can run a command to setup a st
 carbon app myapp
 ```
 
-After setting up your project, make sure you install its dependencies by running `npm install` from inside the projects route directory.
+After setting up your project, make sure you install its dependencies by running `npm install` from inside the projects root directory.
 
 ## Compiling Your Build
 
