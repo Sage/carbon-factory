@@ -1,5 +1,15 @@
 # Standard Build
 
+## Creating a Standard Build
+
+If you have installed the carbon factory CLI you can run a command to setup a standard project for you:
+
+```
+carbon app myapp
+```
+
+## Compiling Your Build
+
 Carbon Factory provides [Gulp](http://gulpjs.com/) tasks to help compile assets for your application. If you set up your project using the `app` command, you should already have a `gulpfile.js` using the appropriate Gulp tasks.
 
 To run Gulp, run it from your project directory (this will do an initial build of your assets, and continue watching for any changes):
@@ -8,7 +18,7 @@ To run Gulp, run it from your project directory (this will do an initial build o
 gulp
 ```
 
-## Further Configuration
+### Further Configuration
 
 The following shows how you can modify the Gulp build task provided with Carbon Factory:
 

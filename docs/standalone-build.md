@@ -12,7 +12,7 @@ Carbon.ReactDOM.render(
 );
 ```
 
-## Using the Carbon CLI
+## Creating a Standalone Build
 
 If you have installed the carbon factory CLI you can run a command to setup a standalone project for you:
 
@@ -20,7 +20,17 @@ If you have installed the carbon factory CLI you can run a command to setup a st
 carbon standalone myapp
 ```
 
-## Setting this up manually
+## Compiling Your Build
+
+Carbon Factory provides [Gulp](http://gulpjs.com/) tasks to help compile assets for your application. If you set up your project using the `standalone` command, you should already have a `gulpfile.js` using the appropriate Gulp tasks.
+
+To run Gulp, run it from your project directory (this will do an initial build of your assets, and continue watching for any changes):
+
+```bash
+gulp
+```
+
+### Further Configuration
 
 To manually create a 'standalone' package, you need to do two things. First of all create an entrypoint which will define which components you want to expose to the browser:
 
