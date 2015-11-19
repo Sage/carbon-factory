@@ -68,6 +68,12 @@ carbon app sampleapp
 cd sampleapp
 ```
 
+* Install the project's modules:
+
+```
+npm install
+```
+
 * Run Gulp to recompile assets when file changes are made:
 
 ```
