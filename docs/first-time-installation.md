@@ -48,7 +48,7 @@ npm install -g sage/carbon-factory
 
 ## (optional) Step by Step Getting Started
 
-Now that your environment is setup, lets go step by step to getting a project running.
+Now that your environment is setup, let's go step by step to getting a project running.
 
 * Go to a directory where you keep your projects:
 
