@@ -32,10 +32,6 @@ gulp.task('test', SpecTask({
 }));
 ```
 
-## Misc
-
-* Added `es7.decorators` to the gulp tasks.
-
 # 0.0.1
 
 Initial prototype release.
