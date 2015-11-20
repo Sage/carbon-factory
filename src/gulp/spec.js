@@ -175,6 +175,8 @@ export default function(opts) {
       config.autoWatch = false;
       // stop on lint failures in build mode
       config.eslint.stopOnError = true;
+      // disable source maps in build mode
+      config.browserify.debug = false;
     } else {
       // default to watch mode
       config.singleRun = false;
