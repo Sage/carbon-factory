@@ -23,6 +23,7 @@
     "fs": "0.0.2",
     "gulp": "~3.9.0",
     "gulp-util": "~3.0.6",
+    "jasmine-ajax": "^3.2.0",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.9",
     "karma-babel-preprocessor": "^5.2.2",
