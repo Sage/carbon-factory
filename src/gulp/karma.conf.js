@@ -9,7 +9,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['browserify', 'jasmine', 'es5-shim'],
+    frameworks: ['browserify', 'jasmine-ajax', 'jasmine', 'es5-shim'],
 
 
     // list of files to exclude
@@ -20,7 +20,7 @@ module.exports = function(config) {
     // config for babel
     babelPreprocessor: {
       options: {
-        optional: ['es7.classProperties', 'es7.decorators'],
+        optional: ['es7.classProperties'],
         auxiliaryCommentBefore: "istanbul ignore next"
       }
     },

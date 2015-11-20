@@ -109,7 +109,7 @@ export default function (opts) {
      */
     var babelTransform = babel.configure({
       // use experimental es7 class properties
-      optional: [ "es7.classProperties", "es7.decorators" ]
+      optional: [ "es7.classProperties" ]
     });
 
     /**
