@@ -122,7 +122,7 @@ export default function(opts) {
         transform: [
           babelify.configure({
             // only babelify files in the src directory
-            only: /src/,
+            ignore: /node_modules/,
             // compile experimental es7 class properties
             optional: [ "es7.classProperties" ],
             // ignore code in the coverage that babelify generates
