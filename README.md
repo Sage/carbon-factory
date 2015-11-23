@@ -4,8 +4,14 @@ Tools to help create user interfaces with [Carbon](https://github.com/sage/carbo
 
 Carbon Factory has two main functions:
 
-* A command line interface to more easily scaffold new projects and components - ensure you have the latest version of the CLI by installing Carbon Factory globally `npm install sage/carbon-factory -g`.
-* Tasks for compiling your code and running tests in your project - to use these tasks you need to include Carbon Factory as a dev dependency in your project `npm install sage/carbon-factory --save-dev`.
+* A command line interface to more easily scaffold new projects and components - ensure you have the latest version of the CLI by installing Carbon Factory globally:
+```
+npm install sage/carbon-factory -g
+```
+* Tasks for compiling your code and running tests in your project - to use these tasks you need to include Carbon Factory as a dev dependency in your project:
+```
+npm install sage/carbon-factory --save-dev
+```
 
 ## Setup
 
