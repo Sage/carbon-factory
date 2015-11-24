@@ -122,7 +122,7 @@ export default function(opts) {
         transform: [
           babelify.configure({
             // only babelify files in the src directory
-            only: /src/,
+            ignore: /node_modules/,
             // compile experimental es7 class properties
             optional: [ "es7.classProperties" ],
             // ignore code in the coverage that babelify generates
@@ -175,6 +175,8 @@ export default function(opts) {
       config.autoWatch = false;
       // stop on lint failures in build mode
       config.eslint.stopOnError = true;
+      // disable source maps in build mode
+      config.browserify.debug = false;
     } else {
       // default to watch mode
       config.singleRun = false;
