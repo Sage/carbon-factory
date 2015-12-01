@@ -127,15 +127,11 @@ export default function(opts) {
             optional: [ "es7.classProperties" ],
             // ignore code in the coverage that babelify generates
             auxiliaryCommentBefore: "istanbul ignore next"
-          }),
-          istanbul({
-            // ignore these files from code coverage
-            ignore: [ '**/node_modules/**', '**/__spec__.js' ]
           })
         ]
       },
       // what kind of reporters should karma generate
-      reporters: ['progress', 'coverage'],
+      reporters: ['progress'],
       // auto watch for any changes to rerun specs
       autoWatch: true,
       // only run the specs once
@@ -155,6 +151,13 @@ export default function(opts) {
       eslint: {
         stopOnError: false,
         stopOnWarning: false
+      },
+      // adds additional opts for chrome browser - remembers prefs for console
+      customLaunchers: {
+        Chrome_dev: {
+          base: 'Chrome',
+          flags: ['--user-data-dir=./.browser-preferences']
+        }
       }
     }
 
@@ -164,10 +167,26 @@ export default function(opts) {
 
     if (argv.b == 'all') {
       // if `gulp -b all` then run through all browsers
-      config.browsers = [ 'PhantomJS', 'Chrome', 'Firefox', 'Safari' ];
+      config.browsers = [ 'PhantomJS', 'Chrome_dev', 'Firefox', 'Safari' ];
     } else if (argv.b) {
       // if `gulp -b [browser]` then use the browser supplied
       config.browsers = [ S(argv.b).capitalize().s ];
+
+      // use the custom chrome launcher
+      if (config.browsers[0] === 'Chrome') {
+        config.browsers = [ config.browsers[0] + '_dev' ];
+      }
+    }
+
+    // if coverage is enabled
+    if (argv.build || argv.coverage) {
+      config.reporters.push('coverage');
+      config.browserify.transform.push(
+        istanbul({
+          // ignore these files from code coverage
+          ignore: [ '**/node_modules/**', '**/__spec__.js' ]
+        })
+      );
     }
 
     if (argv.build) {
@@ -180,11 +199,6 @@ export default function(opts) {
     } else {
       // default to watch mode
       config.singleRun = false;
-
-      if (!argv.coverage) {
-        // if `--coverage` is not supplied then do not run coverage in watch mode
-        config.reporters = [ 'progress' ];
-      }
     }
 
     var server = new Server(config, function(status) {
