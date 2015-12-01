@@ -32,6 +32,11 @@ gulp.task('test', SpecTask({
 }));
 ```
 
+## Misc
+
+* No longer makes the code unreadable when running tests and debugging.
+* Remembers preferences for console when running tests in Chrome (you may need to add `browser-preferences/` to your `.gitignore` file.
+
 # 0.0.1
 
 Initial prototype release.
