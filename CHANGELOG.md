@@ -4,6 +4,8 @@
 
 The command line interface generation tools have been updated to better reflect the updates to Carbon. The `app` and `standalone` tasks also no longer run `npm install` automatically for you.
 
+The build task can now be ran as a single run, useful for performing single asset builds. Pass `--build` to your gulp build task.
+
 ## ESLint
 
 [ESLint](http://eslint.org/) has been added to the `gulp test` task. This introduces 3 new dependencies:

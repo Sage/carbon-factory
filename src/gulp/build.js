@@ -23,6 +23,10 @@
  *
  *    gulp
  *
+ * The process can also be ran without watch files for changes (useful for running single builds):
+ *
+ *    gulp --build
+ *
  * The process can also be ran with specific handlers:
  *
  *    gulp --handler uki
@@ -63,7 +67,9 @@ export default function (opts) {
         // the destination for any fonts
         fontDest = opts.fontDest || './assets/fonts',
         // a standalone param to expose components globally
-        standalone = opts.standalone || null;
+        standalone = opts.standalone || null,
+        // if single build, or run and watch
+        watch = (argv.build === undefined);
 
     // handles any errors and exits the task
     function handleError(err) {
@@ -162,7 +168,7 @@ export default function (opts) {
      */
     var parcelified = parcelify(browserified, {
       // watch scss files to update on any changes
-      watch: true,
+      watch: watch,
       // where to bundle the output
       bundles: {
         style: cssDest + '/' + cssFile,
@@ -209,7 +215,7 @@ export default function (opts) {
     /**
      * The pack we are going to watch and build
      */
-    var bundler = watchify(browserified);
+    var bundler = watch ? watchify(browserified) : browserified;
 
     /**
      * The main build task.
