@@ -22,9 +22,7 @@
     "semi": [2, "always"],
 
     // enable semi-colon spacing
-    "semi-spacing": [2, {"before": false, "after": true}],
-
-    "valid-jsdoc": [2]
+    "semi-spacing": [2, {"before": false, "after": true}]
   },
   "env": {
     "es6": true,
