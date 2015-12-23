@@ -1,5 +1,9 @@
 # 0.0.2-beta
 
+## Added spec_helper
+
+You can now add `src/__spec_helper/*.js` files to scaffold any global variables required for your tests.
+
 ## Updated CLI
 
 The command line interface generation tools have been updated to better reflect the updates to Carbon. The `app` and `standalone` tasks also no longer run `npm install` automatically for you.
