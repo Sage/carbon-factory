@@ -2,7 +2,7 @@
 
 ## Added spec_helper
 
-You can now add `src/__spec_helper/*.js` files to scaffold any global variables required for your tests.
+You can now add `src/__spec_helper__/*.js` files to scaffold any global variables required for your tests.
 
 ## Updated CLI
 
