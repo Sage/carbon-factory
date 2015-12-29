@@ -1,0 +1,4 @@
+{
+  "main": "./FILENAME",
+  "name": "MODULENAME"
+}

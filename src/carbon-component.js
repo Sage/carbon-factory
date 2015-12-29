@@ -42,6 +42,7 @@ promptly.confirm(confirmMessage, function (err, value) {
 
       clone('', '/../tpl/component.js', 'src/components/' + fullPath, transform);
       clone('', '/../tpl/component.spec.js', 'src/components/' + fileName + '/__spec__.js', transform);
+      clone('', '/../tpl/component-package.js', 'src/components/' + fileName '/package.json', transform);
     };
 
     // wait 200ms to ensure the directories have finished being built
