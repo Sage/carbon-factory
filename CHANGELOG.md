@@ -10,6 +10,28 @@ The command line interface generation tools have been updated to better reflect 
 
 The build task can now be ran as a single run, useful for performing single asset builds. Pass `--build` to your gulp build task.
 
+### Carbon Component
+
+The carbon component task now creates a named javascript file nested within the component directory. It also creates a base `package.json` file containing a relative path to the component file and the name of component.
+
+For example the command `carbon component foo` will create a folder with three files
+
+```
+components/foo/
+  __spec__.js
+  foo.js
+  package.json
+```
+
+The `package.json` file will contain the following
+
+```
+{
+  "main": "./foo.js",
+  "name": "foo"
+}
+```
+
 ## ESLint
 
 [ESLint](http://eslint.org/) has been added to the `gulp test` task. This introduces 3 new dependencies:
