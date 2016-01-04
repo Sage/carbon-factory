@@ -23,6 +23,10 @@
  *
  *    gulp
  *
+ * The process can also be ran without watch files for changes (useful for running single builds):
+ *
+ *    gulp --build
+ *
  * The process can also be ran with specific handlers:
  *
  *    gulp --handler uki
@@ -38,10 +42,14 @@ import gutil from 'gulp-util';
 import mkdirp from 'mkdirp';
 import notifier from 'node-notifier';
 import parcelify from 'parcelify';
+import envify from 'envify/custom';
 import sassCssStream from 'sass-css-stream';
 import source from 'vinyl-source-stream';
 import watchify from 'watchify';
 import yargs from 'yargs';
+import gulpif from 'gulp-if';
+import uglify from 'gulp-uglify';
+import streamify from 'gulp-streamify';
 
 var argv = yargs.argv;
 
@@ -63,7 +71,15 @@ export default function (opts) {
         // the destination for any fonts
         fontDest = opts.fontDest || './assets/fonts',
         // a standalone param to expose components globally
-        standalone = opts.standalone || null;
+        standalone = opts.standalone || null,
+        // if single build, or run and watch
+        watch = (argv.build === undefined),
+        // if in production mode
+        production = argv.production || false;
+
+    if (production) {
+      process.env.NODE_ENV = 'production';
+    }
 
     // handles any errors and exits the task
     function handleError(err) {
@@ -131,13 +147,22 @@ export default function (opts) {
     }
 
     /**
+     * Envify options (sets env options when compiling code).
+     */
+    var envifyTransform = envify({
+      global: true,
+      _: 'purge',
+      NODE_ENV: process.env.NODE_ENV
+    });
+
+    /**
      * Browserify options (for CommonJS).
      */
     var browserifyOpts = {
       // the entry points for the application
       entries: [ src ],
       // which transforms to apply to the code
-      transform: [ babelTransform, aliasTransform ],
+      transform: [ babelTransform, aliasTransform, envifyTransform ],
       // lookup paths when importing modules
       paths: [ './src' ]
     };
@@ -162,7 +187,7 @@ export default function (opts) {
      */
     var parcelified = parcelify(browserified, {
       // watch scss files to update on any changes
-      watch: true,
+      watch: watch,
       // where to bundle the output
       bundles: {
         style: cssDest + '/' + cssFile,
@@ -209,7 +234,7 @@ export default function (opts) {
     /**
      * The pack we are going to watch and build
      */
-    var bundler = watchify(browserified);
+    var bundler = watch ? watchify(browserified) : browserified;
 
     /**
      * The main build task.
@@ -221,6 +246,7 @@ export default function (opts) {
         .on('error', () => gutil.log("*** Browserify Error ***"))
         .on('error', handleError)
         .pipe(source(jsFile))
+        .pipe(gulpif(production, streamify(uglify())))
         .pipe(gulp.dest(jsDest));
     };
 

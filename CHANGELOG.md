@@ -1,8 +1,14 @@
 # 0.0.2-beta
 
+## Added spec_helper
+
+You can now add `src/__spec_helper__/*.js` files to scaffold any global variables required for your tests.
+
 ## Updated CLI
 
 The command line interface generation tools have been updated to better reflect the updates to Carbon. The `app` and `standalone` tasks also no longer run `npm install` automatically for you.
+
+The build task can now be ran as a single run, useful for performing single asset builds. Pass `--build` to your gulp build task.
 
 ## ESLint
 
@@ -31,6 +37,11 @@ gulp.task('test', SpecTask({
   }
 }));
 ```
+
+## Misc
+
+* No longer makes the code unreadable when running tests and debugging.
+* Remembers preferences for console when running tests in Chrome (you may need to add `browser-preferences/` to your `.gitignore` file.
 
 # 0.0.1
 
