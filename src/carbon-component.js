@@ -29,15 +29,20 @@ promptly.confirm(confirmMessage, function (err, value) {
     process.exit(1);
   } else {
     var transform = function(data) {
-      return data.replace(/MODULENAME/g, moduleName);
+      data = data.replace(/MODULENAME/g, moduleName);
+      data = data.replace(/FILENAME/g, fileName);
+      return data
     };
 
     // create directory
     createDirectory('', 'src/components/' + fileName);
 
     function writeFiles() {
-      clone('', '/../tpl/component.js', 'src/components/' + fileName + '/index.js', transform);
+      var fullPath = fileName + '/' + fileName + '.js';
+
+      clone('', '/../tpl/component.js', 'src/components/' + fullPath, transform);
       clone('', '/../tpl/component.spec.js', 'src/components/' + fileName + '/__spec__.js', transform);
+      clone('', '/../tpl/component-package.js', 'src/components/' + fileName + '/package.json', transform);
     };
 
     // wait 200ms to ensure the directories have finished being built
