@@ -1,4 +1,4 @@
 {
-  "main": "./FILENAME",
+  "main": "./FILENAME.js",
   "name": "MODULENAME"
 }
