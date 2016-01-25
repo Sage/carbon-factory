@@ -1,3 +1,9 @@
+# 0.0.4
+
+## Minor Changes
+
+* The build task now outputs a more descriptive message when gulp is ready.
+
 # 0.0.3
 
 ## Bug Fixes
