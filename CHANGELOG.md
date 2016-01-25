@@ -1,3 +1,9 @@
+# 0.0.3
+
+## Bug Fixes
+
+* Carbon Factory now compiles code to lib, allowing developers to no longer require installing babel on their computer.
+
 # 0.0.2
 
 ## Added spec_helper

@@ -1,11 +1,11 @@
 {
   "name": "carbon-factory",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "/lib",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "babel --stage 0 ./src/gulp --out-dir ./lib/gulp --quiet"
+    "release": "babel --stage 0 ./src/gulp --out-dir ./lib/gulp --quiet"
   },
   "author": "",
   "license": "BSD-2-Clause",
