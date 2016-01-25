@@ -63,7 +63,7 @@ cd sampleapp
 npm install
 ```
 
-* Run Gulp to recompile assets when file changes are made:
+* Run Gulp to recompile assets when file changes are made. When finished it will display a message of `assets are compiled!` - it will then continue to run and listen for any file changes, triggering a recompile when a file updates.
 
 ```
 gulp
