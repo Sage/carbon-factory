@@ -6,7 +6,6 @@ To use [React](http://facebook.github.io/react/) and [Carbon](https://github.com
 
 * [Node.js](https://nodejs.org/)
 * [Gulp.js](http://gulpjs.com/)
-* [Babel](https://babeljs.io/)
 * [Carbon CLI](https://github.com/sage/carbon-factory)
 
 ### Installing Node.js
@@ -24,16 +23,6 @@ You need to install Gulp globally.
 
 ```bash
 npm install -g gulp
-```
-
-### Installing Babel
-
-You need to install Babel globally.
-
-* You should be able to install [Babel](https://babeljs.io/) using npm. Note: we currently support Babel 5:
-
-```bash
-npm install -g babel@5.6.1
 ```
 
 ### Installing Carbon CLI
