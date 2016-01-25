@@ -210,7 +210,11 @@ export default function (opts) {
       appTransformDirs: ['./node_modules/carbon', './']
     }).on('done', function() {
       // when parcelify is ready
-      console.log('assets are compiled!');
+      gutil.log("Assets are compiled!");
+
+      if (watch) {
+        gutil.log("Gulp is now watching and will rebuild your code when it detects any file changes...");
+      }
     }).on('error', function(err) {
       // handle error
       gutil.log("*** CSS Error ***");
