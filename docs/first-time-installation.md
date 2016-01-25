@@ -81,7 +81,7 @@ cd ~/development/sampleapp
 carbon component foobar
 ```
 
-* Edit the `src/components/foobar/index.js` file for your new component to add some content to the `render` function:
+* Edit the `src/components/foobar/foobar.js` file for your new component to add some content to the `render` function:
 
 ```
 render() {
