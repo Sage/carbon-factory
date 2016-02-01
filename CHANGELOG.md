@@ -1,3 +1,13 @@
+# 0.0.5
+
+* Added new config param to build task - `additionalSassTransformDirs`. This allows developers to define additional directories in which Sass transforms should be applied, for example:
+
+```
+var opts = {
+  additionalSassTransformDirs: ['./node_modules/carbon-sageone']
+};
+```
+
 # 0.0.4
 
 ## Minor Changes
