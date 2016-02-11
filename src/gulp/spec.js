@@ -15,6 +15,7 @@
  *      specs: "/src/*.spec.js",
  *      preProcessors: [ 'babel', 'coverage', 'browserify' ],
  *      specPreProcessors: [ 'babel', 'browserify' ],
+ *      ignoreCoverage: [ '/path/to/ignore' ],
  *      coverage: {
  *        statements: 100,
  *        branches: 100,
@@ -71,6 +72,8 @@ export default function(opts) {
     var path = opts.path || '/src/***/**/!(__spec__).js';
     // the specs
     var specs = opts.specs || '/src/***/**/__spec__.js';
+    // an array of paths to ignore from coverage reports
+    var ignoreCoverage = opts.ignoreCoverage || [ '**/node_modules/**', '**/__spec__.js' ];
     // which preprocessors the js files should run through
     var preProcessors = opts.preProcessors || [ 'eslint', 'babel', 'coverage', 'browserify' ];
     // which preprocessors the spec files should run through
@@ -184,7 +187,7 @@ export default function(opts) {
       config.browserify.transform.push(
         istanbul({
           // ignore these files from code coverage
-          ignore: [ '**/node_modules/**', '**/__spec__.js' ]
+          ignore: opts.ignoreCoverage
         })
       );
     }

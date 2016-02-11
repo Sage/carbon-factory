@@ -1,3 +1,18 @@
+# 0.0.6
+
+* Added new config param to spec task - `ignoreCoverage`. This allows developers to choose which directories are ignored when coverage reports are generated.
+
+Example:
+
+```
+import gulp from 'gulp';
+import SpecTask from 'carbon-factory/lib/gulp/spec';
+
+gulp.task('test', SpecTask({
+  ignoreCoverage: [ '**/node_modules/**', '**/__spec__.js' ]
+}));
+```
+
 # 0.0.5
 
 * Added new config param to build task - `additionalSassTransformDirs`. This allows developers to define additional directories in which Sass transforms should be applied, for example:
