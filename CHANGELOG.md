@@ -1,3 +1,10 @@
+# 0.0.7
+
+* Fixes coverage bug introduced with `v0.0.6`.
+* Locks versions to try and mitigate incompatabilities with third party modules.
+* Locks eslint to `v1.10.x` to resolve faulty eslint errors.
+* Locks escope to `v3.3.0` to resolve faulty eslint errors.
+
 # 0.0.6
 
 * Added new config param to spec task - `ignoreCoverage`. This allows developers to choose which directories are ignored when coverage reports are generated.
