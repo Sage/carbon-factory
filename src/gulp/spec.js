@@ -187,7 +187,7 @@ export default function(opts) {
       config.browserify.transform.push(
         istanbul({
           // ignore these files from code coverage
-          ignore: opts.ignoreCoverage
+          ignore: ignoreCoverage
         })
       );
     }
