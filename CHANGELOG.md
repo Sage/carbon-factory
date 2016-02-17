@@ -1,3 +1,7 @@
+# 0.0.8
+
+* Added new config param to spec task - `reporters`. This allows developers to choose which reporters they want to use in the spec task.
+
 # 0.0.7
 
 * Fixes coverage bug introduced with `v0.0.6`.
