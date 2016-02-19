@@ -25,6 +25,16 @@ You need to install Gulp globally.
 npm install -g gulp
 ```
 
+### Installing Babel
+
+You need to install Babel globally.
+
+* You should be able to install [Babel](https://babeljs.io/) using npm. Note: we currently support Babel 5:
+
+```bash
+npm install -g babel@5.6.1
+```
+
 ### Installing Carbon CLI
 
 You need to install Carbon globally.
