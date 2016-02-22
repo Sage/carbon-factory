@@ -1,3 +1,7 @@
+# 0.0.9
+
+* Added new config param to spec task - `coverageEachFile`. This allows developers to define coverage thresholds file by file (with regex, exclude and override support).
+
 # 0.0.8
 
 * Added new config param to spec task - `reporters`. This allows developers to choose which reporters they want to use in the spec task.
