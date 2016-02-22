@@ -93,7 +93,8 @@ export default function(opts) {
       functions: 100,
       lines: 100
     }, opts.coverage);
-
+    // coverage thresholds for each file
+    var coverageThresholdEachFile = opts.coverageEachFile || {};
     // where the gulp task was ran from
     var originPath = process.cwd();
 
@@ -150,7 +151,8 @@ export default function(opts) {
         dir: originPath + '/coverage',
         reporters: reportersType,
         check: {
-          global: coverageThreshold
+          global: coverageThreshold,
+          each: coverageThresholdEachFile
         }
       },
       // config for eslint
