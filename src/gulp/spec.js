@@ -17,6 +17,7 @@
  *      specPreProcessors: [ 'babel', 'browserify' ],
  *      ignoreCoverage: [ '/path/to/ignore' ],
  *      reporters: ['progress'],
+ *      reportersType: [{ type: 'text-summary' }, { type: 'html' }],
  *      coverage: {
  *        statements: 100,
  *        branches: 100,
@@ -77,6 +78,8 @@ export default function(opts) {
     var ignoreCoverage = opts.ignoreCoverage || [ '**/node_modules/**', '**/__spec__.js' ];
     // an array to specify what kind of reporters should karma generate
     var reporters = opts.reporters || ['progress'];
+    // an array to specify what kind of reporters type should karma generate
+    var reportersType = opts.reportersType || [{ type: 'text-summary' }, { type: 'html' }];
     // which preprocessors the js files should run through
     var preProcessors = opts.preProcessors || [ 'eslint', 'babel', 'coverage', 'browserify' ];
     // which preprocessors the spec files should run through
@@ -146,10 +149,7 @@ export default function(opts) {
       // setup config for coverage
       coverageReporter: {
         dir: originPath + '/coverage',
-        reporters: [
-          { type : 'text-summary' },
-          { type : 'html' }
-        ],
+        reporters: reportersType,
         check: {
           global: coverageThreshold,
           each: coverageThresholdEachFile
