@@ -1,6 +1,7 @@
 # 0.0.9
 
 * Added new config param to spec task - `coverageEachFile`. This allows developers to define coverage thresholds file by file (with regex, exclude and override support).
+* Added new config param to spec task - `coverageReporters`. An array to specify what kind of reporters type should karma generate.
 
 # 0.0.8
 
