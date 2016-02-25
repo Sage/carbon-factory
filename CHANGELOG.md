@@ -1,3 +1,7 @@
+# 0.0.11
+
+* Improve error handling.  Fast fail when running gulp --build.
+
 # 0.0.10
 
 * Locked `es5-shim` to version `4.5.4`.
