@@ -122,7 +122,11 @@ export default function (opts) {
       gutil.log(gutil.colors.red(err.name), message);
 
       // exit task
-      this.emit('end');
+      if (watch) {
+        this.emit('end');
+      } else {
+        process.exit(1);
+      }
     }
 
     // a handler argument if supplied one when running the task
