@@ -42,7 +42,6 @@ import gulp from 'gulp';
 import gutil from 'gulp-util';
 import mkdirp from 'mkdirp';
 import notifier from 'node-notifier';
-import parcelify from 'parcelify';
 import envify from 'envify/custom';
 import sassCssStream from 'sass-css-stream';
 import source from 'vinyl-source-stream';
@@ -51,6 +50,7 @@ import yargs from 'yargs';
 import gulpif from 'gulp-if';
 import uglify from 'gulp-uglify';
 import streamify from 'gulp-streamify';
+import lrload from 'livereactload';
 
 var argv = yargs.argv;
 
@@ -178,6 +178,7 @@ export default function (opts) {
       entries: [ src ],
       // which transforms to apply to the code
       transform: [ babelTransform, aliasTransform, envifyTransform ],
+      plugin: [ lrload ],
       // lookup paths when importing modules
       paths: [ './src' ],
 
@@ -206,6 +207,7 @@ export default function (opts) {
     });
 
     /**
+<<<<<<< HEAD
      * Parcelify options (for Sass/CSS).
      */
     var parcelified = parcelify(browserified, {
@@ -268,6 +270,8 @@ export default function (opts) {
     });
 
     /**
+=======
+>>>>>>> 71f86c0... test live reload
      * The pack we are going to watch and build
      */
     var bundler = watch ? watchify(browserified) : browserified;
