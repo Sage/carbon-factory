@@ -164,7 +164,11 @@ export default function (opts) {
       // which transforms to apply to the code
       transform: [ babelTransform, aliasTransform, envifyTransform ],
       // lookup paths when importing modules
-      paths: [ './src' ]
+      paths: [ './src' ],
+
+      cache: {},
+
+      packageCache: {}
     };
 
     if (standalone) {
