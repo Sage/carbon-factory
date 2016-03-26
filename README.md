@@ -13,10 +13,6 @@ npm install sage/carbon-factory -g
 npm install sage/carbon-factory --save-dev
 ```
 
-## Setup
-
-First of all ensure you have gone through the [first time installation guide](docs/first-time-installation.md), which will guide you through preparing your development environment.
-
 ## Guides
 
 * [The Command Line Interface](docs/command-line-interface.md)

@@ -1,3 +1,64 @@
+# 0.0.11
+
+* Improve error handling.  Fast fail when running gulp --build.
+
+# 0.0.10
+
+* Locked `es5-shim` to version `4.5.4`.
+
+# 0.0.9
+
+* Added new config param to spec task - `coverageEachFile`. This allows developers to define coverage thresholds file by file (with regex, exclude and override support).
+* Added new config param to spec task - `coverageReporters`. An array to specify what kind of reporters type should karma generate.
+
+# 0.0.8
+
+* Added new config param to spec task - `reporters`. This allows developers to choose which reporters they want to use in the spec task.
+
+# 0.0.7
+
+* Fixes coverage bug introduced with `v0.0.6`.
+* Locks versions to try and mitigate incompatabilities with third party modules.
+* Locks eslint to `v1.10.x` to resolve faulty eslint errors.
+* Locks escope to `v3.3.0` to resolve faulty eslint errors.
+
+# 0.0.6
+
+* Added new config param to spec task - `ignoreCoverage`. This allows developers to choose which directories are ignored when coverage reports are generated.
+
+Example:
+
+```
+import gulp from 'gulp';
+import SpecTask from 'carbon-factory/lib/gulp/spec';
+
+gulp.task('test', SpecTask({
+  ignoreCoverage: [ '**/node_modules/**', '**/__spec__.js' ]
+}));
+```
+
+# 0.0.5
+
+* Added new config param to build task - `additionalSassTransformDirs`. This allows developers to define additional directories in which Sass transforms should be applied, for example:
+
+```
+var opts = {
+  additionalSassTransformDirs: ['./node_modules/carbon-sageone']
+};
+```
+
+# 0.0.4
+
+## Minor Changes
+
+* The build task now outputs a more descriptive message when gulp is ready.
+
+# 0.0.3
+
+## Bug Fixes
+
+* Carbon Factory now compiles code to lib, allowing developers to no longer require installing babel on their computer.
+
 # 0.0.2
 
 ## Added spec_helper
