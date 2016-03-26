@@ -179,7 +179,7 @@ export default function (opts) {
       paths: [ './src' ],
 
       // Caching for watchify see:
-      // https://github.com/substack/watchify/blob/master/readme.markdown
+      // https://github.com/substack/watchify/blob/v3.7.0/readme.markdown#watchifyb-opts
       cache: {},
       packageCache: {}
     };
