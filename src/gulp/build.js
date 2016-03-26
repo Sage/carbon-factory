@@ -178,8 +178,9 @@ export default function (opts) {
       // lookup paths when importing modules
       paths: [ './src' ],
 
+      // Caching for watchify see:
+      // https://github.com/substack/watchify/blob/master/readme.markdown
       cache: {},
-
       packageCache: {}
     };
 
