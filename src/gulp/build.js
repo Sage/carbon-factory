@@ -13,7 +13,8 @@
  *    var opts = {
  *      src: "./src/main.js",
  *      jsDest: "./assets/javascripts",
- *      jsFile: "app.js"
+ *      jsFile: "app.js",
+ *      additionalSassTransformDirs: ['./node_modules/my-custom-package']
  *    }
  *
  *    gulp.task('default', BuildTask(opts));
@@ -70,12 +71,19 @@ export default function (opts) {
         cssFile = opts.cssFile || 'ui.css',
         // the destination for any fonts
         fontDest = opts.fontDest || './assets/fonts',
+        // define directories in which to apply sass transforms
+        additionalSassTransformDirs = ['./node_modules/carbon', './'],
         // a standalone param to expose components globally
         standalone = opts.standalone || null,
         // if single build, or run and watch
         watch = (argv.build === undefined),
         // if in production mode
         production = argv.production || false;
+
+    if (opts.additionalSassTransformDirs) {
+      // define directories in which to apply sass transforms
+      additionalSassTransformDirs = additionalSassTransformDirs.concat(opts.additionalSassTransformDirs);
+    }
 
     if (production) {
       process.env.NODE_ENV = 'production';
@@ -114,7 +122,11 @@ export default function (opts) {
       gutil.log(gutil.colors.red(err.name), message);
 
       // exit task
-      this.emit('end');
+      if (watch) {
+        this.emit('end');
+      } else {
+        process.exit(1);
+      }
     }
 
     // a handler argument if supplied one when running the task
@@ -165,7 +177,12 @@ export default function (opts) {
       transform: [ babelTransform, aliasTransform, envifyTransform ],
       plugin: [ lrload ],
       // lookup paths when importing modules
-      paths: [ './src' ]
+      paths: [ './src' ],
+
+      // Caching for watchify see:
+      // https://github.com/substack/watchify/blob/v3.7.0/readme.markdown#watchifyb-opts
+      cache: {},
+      packageCache: {}
     };
 
     if (standalone) {
@@ -182,6 +199,7 @@ export default function (opts) {
     mkdirp(cssDest, function (err) {
       if (err) console.error(err);
     });
+
 
     /**
      * The pack we are going to watch and build
