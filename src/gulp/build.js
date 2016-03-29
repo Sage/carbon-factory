@@ -176,7 +176,12 @@ export default function (opts) {
       // which transforms to apply to the code
       transform: [ babelTransform, aliasTransform, envifyTransform ],
       // lookup paths when importing modules
-      paths: [ './src' ]
+      paths: [ './src' ],
+
+      // Caching for watchify see:
+      // https://github.com/substack/watchify/blob/v3.7.0/readme.markdown#watchifyb-opts
+      cache: {},
+      packageCache: {}
     };
 
     if (standalone) {
