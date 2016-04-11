@@ -78,7 +78,9 @@ export default function (opts) {
         // if single build, or run and watch
         watch = (argv.build === undefined),
         // if in production mode
-        production = argv.production || false;
+        production = argv.production || false,
+        // callback function, called after single build or watch build
+        callback = opts.callback || null;
 
     if (opts.additionalSassTransformDirs) {
       // define directories in which to apply sass transforms
@@ -235,7 +237,7 @@ export default function (opts) {
       });
       gulp.src(fonts)
         .pipe(gulp.dest(fontDest));
-
+      opts.callback(true);
       // write the css file
       return gulp.src(cssFile)
         .on('error', () => gutil.log("*** Error writing the CSS File ***"))
@@ -252,7 +254,10 @@ export default function (opts) {
      * The main build task.
      */
     function build(f) {
-      if (f) gutil.log('Recompiling ' + f);
+      if (f) { 
+        gutil.log('Recompiling ' + f);
+        opts.callback(false);
+      }
       return bundler
         .bundle()
         .on('error', () => gutil.log("*** Browserify Error ***"))
