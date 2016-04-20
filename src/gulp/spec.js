@@ -61,6 +61,8 @@ import karma from 'karma';
 import istanbul from 'browserify-istanbul';
 import babelify from 'babelify';
 import fs from 'fs';
+import { Instrumenter } from 'isparta';
+var isparta = { Instrumenter: Instrumenter };
 
 var argv = yargs.argv;
 var Server = karma.Server;
@@ -81,7 +83,7 @@ export default function(opts) {
     // an array to specify what kind of reporters type should karma generate
     var coverageReporters = opts.coverageReporters || [{ type: 'text-summary' }, { type: 'html' }];
     // which preprocessors the js files should run through
-    var preProcessors = opts.preProcessors || [ 'eslint', 'babel', 'coverage', 'browserify' ];
+    var preProcessors = opts.preProcessors || [ 'eslint', 'babel', 'sourcemap', 'coverage', 'browserify' ];
     // which preprocessors the spec files should run through
     var specpreProcessors = opts.specpreProcessors || [ 'babel', 'browserify' ];
     // where to find the karma config file
@@ -133,10 +135,8 @@ export default function(opts) {
           babelify.configure({
             // only babelify files in the src directory
             ignore: /node_modules/,
-            // compile experimental es7 class properties
-            optional: [ "es7.classProperties" ],
+            sourceMap: 'inline'
             // ignore code in the coverage that babelify generates
-            auxiliaryCommentBefore: "istanbul ignore next"
           })
         ]
       },
@@ -153,6 +153,10 @@ export default function(opts) {
         check: {
           global: coverageThreshold,
           each: coverageThresholdEachFile
+        },
+        instrumenters: { isparta: isparta },
+        instrumenter: {
+          [src]: 'isparta'
         }
       },
       // config for eslint
