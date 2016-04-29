@@ -1,16 +1,20 @@
 {
   "name": "carbon-factory",
   "version": "0.0.12",
-  "description": "",
+  "description": "Tools to help create user interfaces with Carbon and React.",
   "main": "/lib",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "rm -rf ./lib && babel --stage 0 ./src/gulp --out-dir ./lib/gulp --quiet"
   },
-  "author": "",
+  "author": "The Sage Group plc",
   "license": "BSD-2-Clause",
   "bin": {
     "carbon": "./src/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sage/carbon-factory"
   },
   "dependencies": {
     "aliasify": "~1.7.2",
