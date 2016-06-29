@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "babel --stage 0 ./src/gulp --out-dir ./lib/gulp --quiet"
   },
-  "author": "",
-  "license": "BSD-2-Clause",
+  "author": "The Sage Group plc",
+  "license": "Apache-2.0",
   "bin": {
     "carbon": "./src/cli.js"
   },
