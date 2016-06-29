@@ -182,8 +182,6 @@ export default function(opts) {
       }
     }
 
-    // DO WE NEED THIS?
-
     // if coverage is enabled
     if (argv.build || argv.coverage) {
       process.env.NODE_ENV = 'test';
