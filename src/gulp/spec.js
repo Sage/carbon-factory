@@ -108,8 +108,6 @@ export default function(opts) {
       }
     });
 
-    process.env.NODE_ENV = 'test';
-
     // prefix the paths with where the gulp task was ran from so the files can
     // be found from the correct location
     var src = originPath + path,
@@ -188,6 +186,8 @@ export default function(opts) {
 
     // if coverage is enabled
     if (argv.build || argv.coverage) {
+      process.env.NODE_ENV = 'test';
+
       config.reporters.push('coverage');
       config.browserify.transform.push(
         istanbul({
