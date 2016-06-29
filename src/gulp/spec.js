@@ -13,8 +13,8 @@
  *    var opts = {
  *      path: "/src/*.js",
  *      specs: "/src/*.spec.js",
- *      preProcessors: [ 'babel', 'coverage', 'browserify' ],
- *      specPreProcessors: [ 'babel', 'browserify' ],
+ *      preProcessors: [ 'eslint', 'browserify' ],
+ *      specPreProcessors: [ 'browserify' ],
  *      ignoreCoverage: [ '/path/to/ignore' ],
  *      reporters: ['progress'],
  *      coverageReporters: [{ type: 'text-summary' }, { type: 'html' }],
@@ -61,8 +61,6 @@ import karma from 'karma';
 import istanbul from 'browserify-istanbul';
 import babelify from 'babelify';
 import fs from 'fs';
-import { Instrumenter } from 'isparta';
-var isparta = { Instrumenter: Instrumenter };
 
 var argv = yargs.argv;
 var Server = karma.Server;
@@ -83,9 +81,9 @@ export default function(opts) {
     // an array to specify what kind of reporters type should karma generate
     var coverageReporters = opts.coverageReporters || [{ type: 'text-summary' }, { type: 'html' }];
     // which preprocessors the js files should run through
-    var preProcessors = opts.preProcessors || [ 'eslint', 'babel', 'sourcemap', 'coverage', 'browserify' ];
+    var preProcessors = opts.preProcessors || [ 'eslint', 'browserify' ];
     // which preprocessors the spec files should run through
-    var specpreProcessors = opts.specpreProcessors || [ 'babel', 'browserify' ];
+    var specpreProcessors = opts.specpreProcessors || [ 'browserify' ];
     // where to find the karma config file
     var configFile = opts.configFile || __dirname + '/karma.conf.js';
     // defaults the coverage thresholds
@@ -109,6 +107,8 @@ export default function(opts) {
         process.exit();
       }
     });
+
+    process.env.NODE_ENV = 'test';
 
     // prefix the paths with where the gulp task was ran from so the files can
     // be found from the correct location
@@ -134,9 +134,7 @@ export default function(opts) {
         transform: [
           babelify.configure({
             // only babelify files in the src directory
-            ignore: /node_modules/,
-            sourceMap: 'inline'
-            // ignore code in the coverage that babelify generates
+            ignore: /node_modules/
           })
         ]
       },
@@ -153,10 +151,6 @@ export default function(opts) {
         check: {
           global: coverageThreshold,
           each: coverageThresholdEachFile
-        },
-        instrumenters: { isparta: isparta },
-        instrumenter: {
-          [src]: 'isparta'
         }
       },
       // config for eslint
@@ -189,6 +183,8 @@ export default function(opts) {
         config.browsers = [ config.browsers[0] + '_dev' ];
       }
     }
+
+    // DO WE NEED THIS?
 
     // if coverage is enabled
     if (argv.build || argv.coverage) {
