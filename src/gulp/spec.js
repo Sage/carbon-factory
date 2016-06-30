@@ -132,7 +132,9 @@ export default function(opts) {
         transform: [
           babelify.configure({
             // only babelify files in the src directory
-            ignore: /node_modules/
+            ignore: /node_modules/,
+            babelrc: false, // do not use babelrc files in gulp task
+            extends: originPath + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
           })
         ]
       },

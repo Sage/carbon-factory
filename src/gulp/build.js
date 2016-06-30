@@ -135,7 +135,11 @@ export default function (opts) {
     /**
      * Babel options (for JS/JSX).
      */
-    var babelTransform = babel.configure({});
+    var babelTransform = babel.configure({
+      ignore: /node_modules/,
+      extends: process.cwd() + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
+
+    });
 
     /**
      * Alias options (to include handler specific JS).
