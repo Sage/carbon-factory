@@ -13,8 +13,8 @@
  *    var opts = {
  *      path: "/src/*.js",
  *      specs: "/src/*.spec.js",
- *      preProcessors: [ 'babel', 'coverage', 'browserify' ],
- *      specPreProcessors: [ 'babel', 'browserify' ],
+ *      preProcessors: [ 'eslint', 'browserify' ],
+ *      specPreProcessors: [ 'browserify' ],
  *      ignoreCoverage: [ '/path/to/ignore' ],
  *      reporters: ['progress'],
  *      coverageReporters: [{ type: 'text-summary' }, { type: 'html' }],
@@ -81,9 +81,9 @@ export default function(opts) {
     // an array to specify what kind of reporters type should karma generate
     var coverageReporters = opts.coverageReporters || [{ type: 'text-summary' }, { type: 'html' }];
     // which preprocessors the js files should run through
-    var preProcessors = opts.preProcessors || [ 'eslint', 'babel', 'coverage', 'browserify' ];
+    var preProcessors = opts.preProcessors || [ 'eslint', 'browserify' ];
     // which preprocessors the spec files should run through
-    var specpreProcessors = opts.specpreProcessors || [ 'babel', 'browserify' ];
+    var specpreProcessors = opts.specpreProcessors || [ 'browserify' ];
     // where to find the karma config file
     var configFile = opts.configFile || __dirname + '/karma.conf.js';
     // defaults the coverage thresholds
@@ -132,11 +132,7 @@ export default function(opts) {
         transform: [
           babelify.configure({
             // only babelify files in the src directory
-            ignore: /node_modules/,
-            // compile experimental es7 class properties
-            optional: [ "es7.classProperties" ],
-            // ignore code in the coverage that babelify generates
-            auxiliaryCommentBefore: "istanbul ignore next"
+            ignore: /node_modules/
           })
         ]
       },
@@ -188,6 +184,8 @@ export default function(opts) {
 
     // if coverage is enabled
     if (argv.build || argv.coverage) {
+      process.env.NODE_ENV = 'test';
+
       config.reporters.push('coverage');
       config.browserify.transform.push(
         istanbul({

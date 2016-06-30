@@ -17,15 +17,6 @@ module.exports = function(config) {
     ],
 
 
-    // config for babel
-    babelPreprocessor: {
-      options: {
-        optional: ['es7.classProperties'],
-        auxiliaryCommentBefore: "istanbul ignore next"
-      }
-    },
-
-
     // web server port
     port: 9876,
 

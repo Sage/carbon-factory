@@ -135,10 +135,7 @@ export default function (opts) {
     /**
      * Babel options (for JS/JSX).
      */
-    var babelTransform = babel.configure({
-      // use experimental es7 class properties
-      optional: [ "es7.classProperties" ]
-    });
+    var babelTransform = babel.configure({});
 
     /**
      * Alias options (to include handler specific JS).
