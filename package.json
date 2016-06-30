@@ -37,7 +37,6 @@
     "gulp-streamify": "~1.0.2",
     "gulp-uglify": "~1.5.1",
     "gulp-util": "~3.0.6",
-    "isparta": "^4.0.0",
     "jasmine-core": "~2.3.4",
     "karma": "~0.13.9",
     "karma-browserify": "~4.3.0",
@@ -50,7 +49,6 @@
     "karma-jasmine-ajax": "~0.1.13",
     "karma-phantomjs-launcher": "~0.2.1",
     "karma-safari-launcher": "~0.1.1",
-    "karma-sourcemap-loader": "^0.3.7",
     "mkdirp": "~0.5.1",
     "node-notifier": "~4.3.1",
     "parcelify": "~2.1.0",
@@ -61,8 +59,5 @@
     "vinyl-source-stream": "~1.1.0",
     "watchify": "~3.4.0",
     "yargs": "~3.25.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.7.5"
   }
 }
