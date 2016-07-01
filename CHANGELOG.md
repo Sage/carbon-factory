@@ -1,3 +1,7 @@
+# 0.0.13
+
+* Upgraded to Babel 6
+
 # 0.0.12
 
  * Increase watchify speed from ~8s to ~300ms
