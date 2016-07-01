@@ -136,8 +136,9 @@ export default function (opts) {
      * Babel options (for JS/JSX).
      */
     var babelTransform = babel.configure({
-      // use experimental es7 class properties
-      optional: [ "es7.classProperties" ]
+      ignore: /node_modules/,
+      extends: process.cwd() + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
+
     });
 
     /**
