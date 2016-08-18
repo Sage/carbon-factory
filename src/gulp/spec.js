@@ -116,7 +116,7 @@ export default function(opts) {
     // default configuration for the spec build
     var config = {
       // all the files that should be included
-      files: [ '__spec_helper__/*.js', src, { pattern: specSrc, watched: false, included: true, served: true } ],
+      files: [ '**/__spec_helper__/*.js', src, { pattern: specSrc, watched: false, included: true, served: true } ],
       // the karma config file
       configFile: configFile,
       // the preprocessors to run the files through
