@@ -1,3 +1,7 @@
+# 0.0.14
+
+* remove fs dependencies "fs": "0.0.2"
+
 # 0.0.13
 
 * Upgraded to Babel 6
