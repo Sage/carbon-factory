@@ -71,6 +71,8 @@ export default function (opts) {
         cssFile = opts.cssFile || 'ui.css',
         // the destination for any fonts
         fontDest = opts.fontDest || './assets/fonts',
+        // the destination for any images
+        imageDest = opts.imageDest || './assets/images',
         // define directories in which to apply sass transforms
         additionalSassTransformDirs = ['./node_modules/carbon', './'],
         // a standalone param to expose components globally
@@ -196,6 +198,9 @@ export default function (opts) {
     mkdirp(fontDest, function (err) {
       if (err) console.error(err);
     });
+    mkdirp(imageDest, function (err) {
+      if (err) console.error(err);
+    });
     mkdirp(cssDest, function (err) {
       if (err) console.error(err);
     });
@@ -209,7 +214,8 @@ export default function (opts) {
       // where to bundle the output
       bundles: {
         style: cssDest + '/' + cssFile,
-        fonts: null
+        fonts: null,
+        images: null
       },
       appTransforms : [
         // sass transformer
@@ -245,6 +251,14 @@ export default function (opts) {
       });
       gulp.src(fonts)
         .pipe(gulp.dest(fontDest));
+
+      // copy the images to the correct directory
+      var images = [];
+      parcel.parcelAssetsByType.images.forEach((image) => {
+        images.push(image.srcPath);
+      });
+      gulp.src(images)
+        .pipe(gulp.dest(imageDest));
 
       // write the css file
       return gulp.src(cssFile)

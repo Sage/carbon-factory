@@ -1,3 +1,7 @@
+# 0.0.14
+
+* Added support for image assets
+
 # 0.0.13
 
 * Upgraded to Babel 6
