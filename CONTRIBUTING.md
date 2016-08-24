@@ -29,6 +29,9 @@ To be merged, we prefer the pull request to be reviewed by at least two people w
 * Commit and push changes.
 * If releasing a minor version, open a PR to `master`.
 * If releasing a patch version, open a PR to `release`.
+
+## For Repository Maintainers
+
 * Once merged, create a tag in either the release or master branch. e.g. `git tag v0.1.5`
 * Push tag to Github.
 * Draft a release in GitHub from the new tag.
