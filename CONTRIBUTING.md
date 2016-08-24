@@ -14,7 +14,6 @@ For any feature requests, please use the [issue tracker](https://github.com/sage
 
 When submitting a pull request, please ensure your branch meets the following criteria:
 
-* It is a passing build.
 * The code follows our coding guidelines (TBC).
 
 To be merged, we prefer the pull request to be reviewed by at least two people with merge rights.
