@@ -9,7 +9,7 @@
 
 # 0.0.12
 
- * Increase watchify speed from ~8s to ~300ms
+* Increase watchify speed from ~8s to ~300ms
 
 # 0.0.11
 
