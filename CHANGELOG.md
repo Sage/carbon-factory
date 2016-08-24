@@ -1,5 +1,6 @@
 # 0.0.14
 
+* remove fs dependencies "fs": "0.0.2"
 * Added support for image assets
 
 # 0.0.13
