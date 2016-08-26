@@ -1,3 +1,7 @@
+# 0.0.14
+
+* Updated path to spec_helper for spec task to remove warning
+
 # 0.0.13
 
 * Upgraded to Babel 6
