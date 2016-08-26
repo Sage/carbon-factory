@@ -1,6 +1,8 @@
 # 0.0.14
 
 * Updated path to spec_helper for spec task to remove warning
+* Remove fs dependencies "fs": "0.0.2"
+* Added support for image assets
 
 # 0.0.13
 
