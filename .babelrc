@@ -1,5 +1,4 @@
 {
-  "auxiliaryCommentBefore": "istanbul ignore next",
   "presets": [
     "es2015",
     "react"
@@ -10,6 +9,7 @@
   ],
   "env": {
     "test": {
+      "auxiliaryCommentBefore": "istanbul ignore next",
       "plugins": [ [ "__coverage__", { "ignore": "**/*/__spec__.js" } ] ]
     }
   }

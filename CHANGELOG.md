@@ -1,3 +1,7 @@
+# 0.1.0
+
+* Removes istanbul comments from compiled code.
+
 # 0.0.14
 
 * remove fs dependencies "fs": "0.0.2"
