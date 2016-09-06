@@ -136,7 +136,9 @@ export default function(opts) {
             babelrc: false, // do not use babelrc files in gulp task
             extends: originPath + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
           })
-        ]
+        ],
+        cache: {},
+        packageCache: {}
       },
       // what kind of reporters should karma generate
       reporters: reporters,

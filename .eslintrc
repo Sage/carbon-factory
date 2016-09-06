@@ -4,6 +4,9 @@
     // this stops errors when React is imported but does not appear to be used because of JSX compilation
     "react/jsx-uses-react": 1,
 
+    // see https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-uses-vars.md
+    "react/jsx-uses-vars": 1,
+
     // this is from the babel-eslint setup https://github.com/babel/babel-eslint#setup
     "strict": 0,
 
