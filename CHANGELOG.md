@@ -3,6 +3,7 @@
 * Upgrades most dependencies.
   * Easiest upgrade is to remove all local node_modules and reinstall fresh.
   * ESLint upgrade introduces more accurate ruling.
+* Removes istanbul comments from compiled code.
 
 # 0.0.14
 
