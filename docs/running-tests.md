@@ -35,3 +35,9 @@ You may also want to run coverage tests while in development mode. This is possi
 ```bash
 gulp test --coverage
 ```
+
+The coverage breakdown report can be viewed in any web browser and is accessed by
+
+```bash
+  open coverage/PhantomJS{Version}/index.html
+```

@@ -1,6 +1,7 @@
 # 0.1.0
 
 * Updated path to spec_helper for spec task to remove warning 
+* Removes istanbul comments from compiled code.
 
 # 0.0.14
 
