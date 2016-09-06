@@ -1,10 +1,11 @@
 # 0.1.0
 
+* Updated path to spec_helper for spec task to remove warning 
 * Removes istanbul comments from compiled code.
 
 # 0.0.14
 
-* remove fs dependencies "fs": "0.0.2"
+* Remove fs dependencies "fs": "0.0.2"
 * Added support for image assets
 
 # 0.0.13
