@@ -1,5 +1,8 @@
 # 0.1.0
 
+* Upgrades most dependencies.
+  * Easiest upgrade is to remove all local node_modules and reinstall fresh.
+  * ESLint upgrade introduces more accurate ruling.
 * Updated path to spec_helper for spec task to remove warning 
 * Removes istanbul comments from compiled code.
 
