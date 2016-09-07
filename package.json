@@ -29,6 +29,7 @@
     "babelify": "~7.3.0",
     "browserify": "~13.1.0",
     "browserify-babel-istanbul": "~0.4.0",
+    "browserify-istanbul": "~2.0.0",
     "commander": "~2.9.0",
     "envify": "~3.4.1",
     "es5-shim": "4.5.9",
