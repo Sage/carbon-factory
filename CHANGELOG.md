@@ -1,3 +1,20 @@
+# 0.1.0
+
+* Upgrades most dependencies.
+  * Easiest upgrade is to remove all local node_modules and reinstall fresh.
+  * ESLint upgrade introduces more accurate ruling.
+* Updated path to spec_helper for spec task to remove warning 
+* Removes istanbul comments from compiled code.
+
+# 0.0.14
+
+* Remove fs dependencies "fs": "0.0.2"
+* Added support for image assets
+
+# 0.0.13
+
+* Upgraded to Babel 6
+
 # 0.0.12
 
  * Increase watchify speed from ~8s to ~300ms

@@ -71,6 +71,8 @@ export default function (opts) {
         cssFile = opts.cssFile || 'ui.css',
         // the destination for any fonts
         fontDest = opts.fontDest || './assets/fonts',
+        // the destination for any images
+        imageDest = opts.imageDest || './assets/images',
         // define directories in which to apply sass transforms
         additionalSassTransformDirs = ['./node_modules/carbon', './'],
         // a standalone param to expose components globally
@@ -136,8 +138,9 @@ export default function (opts) {
      * Babel options (for JS/JSX).
      */
     var babelTransform = babel.configure({
-      // use experimental es7 class properties
-      optional: [ "es7.classProperties" ]
+      ignore: /node_modules/,
+      extends: process.cwd() + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
+
     });
 
     /**
@@ -196,10 +199,12 @@ export default function (opts) {
     mkdirp(fontDest, function (err) {
       if (err) console.error(err);
     });
+    mkdirp(imageDest, function (err) {
+      if (err) console.error(err);
+    });
     mkdirp(cssDest, function (err) {
       if (err) console.error(err);
     });
-
 
     /**
      * The pack we are going to watch and build
