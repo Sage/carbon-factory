@@ -1,3 +1,9 @@
+# 0.1.1
+
+## Bug Fixes
+
+* Reverts [#81](https://github.com/Sage/carbon-factory/pull/81) as it caused builds to pull in spec helpers from `node_modules` directory.
+
 # 0.1.0
 
 * Upgrades most dependencies.
