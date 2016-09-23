@@ -1,3 +1,12 @@
+# 0.2.0
+
+## Enhancements
+
+### `gulp test` now takes additional optional flags
+
+* Run `gulp test --reportSlow` to identify tests taking more than 100ms.
+* Run `gulp test --debug` to run Karma in debug mode for additional info.
+
 # 0.1.1
 
 ## Bug Fixes
@@ -9,7 +18,7 @@
 * Upgrades most dependencies.
   * Easiest upgrade is to remove all local node_modules and reinstall fresh.
   * ESLint upgrade introduces more accurate ruling.
-* Updated path to spec_helper for spec task to remove warning 
+* Updated path to spec_helper for spec task to remove warning
 * Removes istanbul comments from compiled code.
 
 # 0.0.14
