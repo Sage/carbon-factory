@@ -169,6 +169,11 @@ export default function(opts) {
       }
     }
 
+    // Report tests slower than value
+    if (argv.reportSlow) {
+      config.reportSlowerThan = 100;
+    }
+
     // tie the preprocessors to the relevant sources
     config.preprocessors[src] = preProcessors;
     config.preprocessors[specSrc] = specpreProcessors;

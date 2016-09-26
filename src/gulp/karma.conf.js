@@ -1,6 +1,16 @@
 // Karma configuration
+import yargs from 'yargs';
+var argv = yargs.argv;
 
 module.exports = function(config) {
+    var logLevel = '';
+    // Set logger level for console output
+    if (argv.debug) {
+      logLevel = config.LOG_DEBUG
+    } else {
+      logLevel = config.LOG_INFO
+    }
+
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -27,7 +37,6 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
-
+    logLevel: logLevel
   })
 }
