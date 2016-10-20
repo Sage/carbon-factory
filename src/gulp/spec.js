@@ -177,7 +177,7 @@ export default function(opts) {
     }
 
     // Report tests slower than value
-    if (argv.reportSlow) {
+    if (argv['report-slow']) {
       config.reportSlowerThan = 100;
     }
 
