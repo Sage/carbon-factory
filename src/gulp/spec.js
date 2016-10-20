@@ -137,6 +137,13 @@ export default function(opts) {
             extends: originPath + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
           })
         ],
+        configure: function(bundle) {
+          bundle.on('prebundle', function() {
+            bundle.external('react/addons');
+            bundle.external('react/lib/ReactContext');
+            bundle.external('react/lib/ExecutionEnvironment');
+          });
+        },
         cache: {},
         packageCache: {}
       },
