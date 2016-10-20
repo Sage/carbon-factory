@@ -4,7 +4,7 @@
 
 ### `gulp test` now takes additional optional flags
 
-* Run `gulp test --reportSlow` to identify tests taking more than 100ms.
+* Run `gulp test --report-slow` to identify tests taking more than 100ms.
 * Run `gulp test --debug` to run Karma in debug mode for additional info.
 
 ### configuration added for Enzyme
