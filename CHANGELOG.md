@@ -7,6 +7,10 @@
 * Run `gulp test --reportSlow` to identify tests taking more than 100ms.
 * Run `gulp test --debug` to run Karma in debug mode for additional info.
 
+### configuration added for Enzyme
+
+* Enzyme requires some configuration tweaks to run with Browserify
+
 # 0.1.1
 
 ## Bug Fixes
