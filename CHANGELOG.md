@@ -1,3 +1,9 @@
+# 0.2.1
+
+## Enhancements
+
+* Adds Jasmine support to eslint.
+
 # 0.2.0
 
 ## Enhancements
