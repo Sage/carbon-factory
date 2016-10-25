@@ -20,3 +20,7 @@ npm install sage/carbon-factory --save-dev
   * [A Standard Build](docs/standard-build.md)
   * [A Standalone Build](docs/standalone-build.md)
 * [Running Tests](docs/running-tests.md)
+
+## Licence
+
+Carbon Factory is licensed under the [Apache-2.0 licence](https://github.com/Sage/carbon-factory/blob/master/LICENSE).
