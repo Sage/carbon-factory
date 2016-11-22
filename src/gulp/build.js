@@ -42,7 +42,6 @@ import gulp from 'gulp';
 import gutil from 'gulp-util';
 import mkdirp from 'mkdirp';
 import notifier from 'node-notifier';
-import parcelify from 'parcelify';
 import envify from 'envify/custom';
 import sassCssStream from 'sass-css-stream';
 import source from 'vinyl-source-stream';
@@ -51,6 +50,7 @@ import yargs from 'yargs';
 import gulpif from 'gulp-if';
 import uglify from 'gulp-uglify';
 import streamify from 'gulp-streamify';
+import lrload from 'livereactload';
 
 var argv = yargs.argv;
 
@@ -178,6 +178,7 @@ export default function (opts) {
       entries: [ src ],
       // which transforms to apply to the code
       transform: [ babelTransform, aliasTransform, envifyTransform ],
+      plugin: [ lrload ],
       // lookup paths when importing modules
       paths: [ './src' ],
 
@@ -203,68 +204,6 @@ export default function (opts) {
     });
     mkdirp(cssDest, function (err) {
       if (err) console.error(err);
-    });
-
-    /**
-     * Parcelify options (for Sass/CSS).
-     */
-    var parcelified = parcelify(browserified, {
-      // watch scss files to update on any changes
-      watch: watch,
-      // where to bundle the output
-      bundles: {
-        style: cssDest + '/' + cssFile,
-        fonts: null,
-        images: null
-      },
-      appTransforms : [
-        // sass transformer
-        function sassTransformer( file ) {
-          // array of include paths allows for overriding entire files
-          return sassCssStream( file, {
-            includePaths: [
-              process.cwd() + "/src/style-config", // check for overrides in local style-config directory
-              process.cwd() + "/node_modules/carbon/lib/style-config", // check for original config files
-              process.cwd() + "/node_modules" // generic namespace for any other lookups
-            ]
-          });
-        }
-      ],
-      // where to apply transforms
-      appTransformDirs: additionalSassTransformDirs
-    }).on('done', function() {
-      // when parcelify is ready
-      gutil.log("Assets are compiled!");
-
-      if (watch) {
-        gutil.log("Gulp is now watching and will rebuild your code when it detects any file changes...");
-      }
-    }).on('error', function(err) {
-      // handle error
-      gutil.log("*** CSS Error ***");
-      handleError.call(this, err);
-    }).on('bundleWritten', function(path, name, parcel) {
-      // copy the fonts to the correct directory
-      var fonts = [];
-      parcel.parcelAssetsByType.fonts.forEach((font) => {
-        fonts.push(font.srcPath);
-      });
-      gulp.src(fonts)
-        .pipe(gulp.dest(fontDest));
-
-      // copy the images to the correct directory
-      var images = [];
-      parcel.parcelAssetsByType.images.forEach((image) => {
-        images.push(image.srcPath);
-      });
-      gulp.src(images)
-        .pipe(gulp.dest(imageDest));
-
-      // write the css file
-      return gulp.src(cssFile)
-        .on('error', () => gutil.log("*** Error writing the CSS File ***"))
-        .on('error', handleError)
-        .pipe(gulp.dest(cssDest));
     });
 
     /**
