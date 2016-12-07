@@ -1,3 +1,9 @@
+# 0.3.0
+
+##  Support for Hot Reloading.
+
+Hot reloading will automatically update the UI whenever a developer makes changes to the JavaScript, meaning they will not have to reload the entire page.
+
 # 0.2.1
 
 ## Enhancements
