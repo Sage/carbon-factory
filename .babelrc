@@ -11,6 +11,16 @@
     "test": {
       "auxiliaryCommentBefore": "istanbul ignore next",
       "plugins": [ [ "__coverage__", { "ignore": "**/*/__spec__.js" } ] ]
+    },
+    "development": {
+      "plugins": [
+        ["react-transform", {
+          "transforms": [{
+            "transform": "livereactload/babel-transform",
+            "imports": ["react"]
+          }]
+        }]
+      ]
     }
   }
 }

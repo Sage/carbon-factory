@@ -179,8 +179,6 @@ export default function (opts) {
       entries: [ src ],
       // which transforms to apply to the code
       transform: [ babelTransform, aliasTransform, envifyTransform ],
-      // which plugins to apply to the code
-      plugin: [ livereactload ],
       // lookup paths when importing modules
       paths: [ './src' ],
 
@@ -190,12 +188,15 @@ export default function (opts) {
       packageCache: {}
     };
 
+    if (watch && !argv.cold) {
+      browserifyOpts.plugin = [ livereactload ];
+    }
+
     if (standalone) {
       browserifyOpts.standalone = standalone;
     }
 
     var browserified = browserify(browserifyOpts);
-
 
     // create dirs for assets
     mkdirp(fontDest, function (err) {
