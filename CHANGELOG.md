@@ -1,3 +1,11 @@
+# 0.3.0
+
+##  Support for Hot Reloading.
+
+Hot reloading will automatically update the UI whenever a developer makes changes to the JavaScript, meaning they will not have to reload the entire page.
+
+You can disable hot-reloading by passing `--cold` as an arg to the build task.
+
 # 0.2.1
 
 ## Enhancements
