@@ -49,8 +49,6 @@ import source from 'vinyl-source-stream';
 import watchify from 'watchify';
 import yargs from 'yargs';
 import gulpif from 'gulp-if';
-import uglify from 'gulp-uglify';
-import streamify from 'gulp-streamify';
 
 var argv = yargs.argv;
 
@@ -282,7 +280,6 @@ export default function (opts) {
         .on('error', () => gutil.log("*** Browserify Error ***"))
         .on('error', handleError)
         .pipe(source(jsFile))
-        .pipe(gulpif(production, streamify(uglify())))
         .pipe(gulp.dest(jsDest));
     };
 

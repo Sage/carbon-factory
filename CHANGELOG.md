@@ -1,3 +1,9 @@
+# 0.2.1
+
+## Bug Fixes
+
+* Removes `uglify` from gulp production command, as it conflicts with Rails uglify and breaks code
+
 # 0.2.0
 
 ## Enhancements
