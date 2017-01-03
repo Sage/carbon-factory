@@ -94,6 +94,10 @@ export default function(opts) {
       functions: 100,
       lines: 100
     }, opts.coverage);
+    // errorThreshold for failing build
+    var errorThreshold = opts.errorThreshold || null;
+    // Stop build if above errorThreshold
+    var stopAboveErrorThreshold = opts.stopAboveErrorThreshold || false;
     // coverage thresholds for each file
     var coverageThresholdEachFile = opts.coverageEachFile || {};
     // where the gulp task was ran from
@@ -166,7 +170,9 @@ export default function(opts) {
       // config for eslint
       eslint: {
         stopOnError: false,
-        stopOnWarning: false
+        stopOnWarning: false,
+        errorThreshold: errorThreshold,
+        stopAboveErrorThreshold: stopAboveErrorThreshold
       },
       // adds additional opts for chrome browser - remembers prefs for console
       customLaunchers: {
@@ -175,7 +181,7 @@ export default function(opts) {
           flags: ['--user-data-dir=./.browser-preferences']
         }
       }
-    }
+    };
 
     // Report tests slower than value
     if (argv['report-slow']) {
