@@ -51,6 +51,7 @@ import yargs from 'yargs';
 import gulpif from 'gulp-if';
 import uglify from 'gulp-uglify';
 import streamify from 'gulp-streamify';
+import livereactload from 'livereactload';
 
 var argv = yargs.argv;
 
@@ -189,12 +190,15 @@ export default function (opts) {
       packageCache: {}
     };
 
+    if (watch && !argv.cold) {
+      browserifyOpts.plugin = [ livereactload ];
+    }
+
     if (standalone) {
       browserifyOpts.standalone = standalone;
     }
 
     var browserified = browserify(browserifyOpts);
-
 
     // create dirs for assets
     mkdirp(fontDest, function (err) {
