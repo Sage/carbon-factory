@@ -83,7 +83,7 @@ export default function (opts) {
         // if in production mode
         production = argv.production || false,
         // if uglify requested
-        doUglify = opts.uglify || true;
+        doUglify = (opts.uglify !== false);
 
     if (opts.additionalSassTransformDirs) {
       // define directories in which to apply sass transforms
