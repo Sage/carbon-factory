@@ -83,7 +83,7 @@ export default function (opts) {
         // if in production mode
         production = argv.production || false,
         // if uglify requested
-        doUglify = opts.uglify && production;
+        doUglify = opts.uglify || true;
 
     if (opts.additionalSassTransformDirs) {
       // define directories in which to apply sass transforms
@@ -288,7 +288,7 @@ export default function (opts) {
         .on('error', () => gutil.log("*** Browserify Error ***"))
         .on('error', handleError)
         .pipe(source(jsFile))
-        .pipe(gulpif(doUglify, streamify(uglify())))
+        .pipe(gulpif(production && doUglify, streamify(uglify())))
         .pipe(gulp.dest(jsDest));
     };
 
