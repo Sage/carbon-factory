@@ -35,6 +35,7 @@
  * This will include a module named `carbon-handler-uki` in the build process.
  */
 
+import './utils/fs-patch';
 import aliasify from 'aliasify';
 import babel from 'babelify';
 import browserify from 'browserify';
