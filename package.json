@@ -36,6 +36,7 @@
     "es5-shim": "4.5.9",
     "eslint": "~3.4.0",
     "eslint-plugin-react": "~6.2.0",
+    "graceful-fs": "^4.1.11",
     "gulp": "~3.9.1",
     "gulp-if": "~2.0.1",
     "gulp-streamify": "~1.0.2",

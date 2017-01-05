@@ -1,3 +1,7 @@
+# 0.3.2
+
+* Installs and implements the `graceful-fs` patch. This is to resolve any `EMFILE` errors that occur due to the `ulimit` being exhausted.
+
 # 0.3.1
 
 ## Bug Fixes

@@ -54,6 +54,7 @@
  *    gulp test -b all
  */
 
+import './utils/fs-patch';
 import gutil from 'gulp-util';
 import S from 'string';
 import yargs from 'yargs';
