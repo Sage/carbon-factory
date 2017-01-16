@@ -170,9 +170,7 @@ export default function(opts) {
       // config for eslint
       eslint: {
         stopOnError: false,
-        stopOnWarning: false,
-        errorThreshold: errorThreshold,
-        stopAboveErrorThreshold: stopAboveErrorThreshold
+        stopOnWarning: false
       },
       // adds additional opts for chrome browser - remembers prefs for console
       customLaunchers: {
@@ -223,6 +221,10 @@ export default function(opts) {
       config.autoWatch = false;
       // stop on lint failures in build mode
       config.eslint.stopOnError = true;
+      // error threshold above which build fails
+      config.eslint.errorThreshold = errorThreshold;
+      // Fail build above error threshold
+      config.eslint.stopAboveErrorThreshold = stopAboveErrorThreshold;
       // disable source maps in build mode
       config.browserify.debug = false;
     } else {
