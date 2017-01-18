@@ -286,7 +286,7 @@ export default function (opts) {
       if (f) gutil.log('Recompiling ' + f);
       return bundler
         .bundle()
-        .on('error', () => gutil.log("*** Browserify Error ***"))
+        .on('error', (error) => { gutil.log("*** Browserify Error ***"); console.log(error) })
         .on('error', handleError)
         .pipe(source(jsFile))
         .pipe(gulpif(production && doUglify, streamify(uglify())))
