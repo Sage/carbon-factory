@@ -1,6 +1,17 @@
 # 0.4.0
 
 * Output browserify error detail for easier debugging
+* Added `errorThreshold` & `stopAboveErrorThreshold` options to control failing build
+```javascript
+var opts = {
+  jsDest: './../host_app/app/assets/javascripts',
+  cssDest: './../host_app/app/assets/stylesheets',
+  fontDest: './../host_app/app/assets/fonts/fonts',
+  imageDest: './../host_app/app/assets/images',
+  errorThreshold: 1000,
+  stopAboveErrorThreshold: true
+};
+```
 
 # 0.3.2
 
