@@ -11,6 +11,8 @@ gulp.task('test', SpecTask({
 });
 ```
 
+* LiveReactLoad has been turned off by default. To turn on live reloading pass `--hot` when running gulp.
+
 # 0.3.2
 
 * Installs and implements the `graceful-fs` patch. This is to resolve any `EMFILE` errors that occur due to the `ulimit` being exhausted.
