@@ -97,7 +97,7 @@ export default function(opts) {
     // eslintThreshold for failing build
     var eslintThreshold = opts.eslintThreshold || null;
     // Stop build if above eslintThreshold
-    var stopAboveEslintThreshold = opts.stopAboveEslintThreshold || !!eslintThreshold;
+    var stopAboveEslintThreshold = !!eslintThreshold;
     // coverage thresholds for each file
     var coverageThresholdEachFile = opts.coverageEachFile || {};
     // where the gulp task was ran from
