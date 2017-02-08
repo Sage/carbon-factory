@@ -1,3 +1,10 @@
+# 1.0.0
+
+* `errorThreshold` option renamed to `eslintThreshold`.
+* `stopAboveEslintThreshold` option renamed to `stopAboveEslintThreshold`.
+* Added multiple ESLint packages to report on recommended syntax. To help updating your codebase to comply to these rules you can set the `eslintThreshold` to allow a certain amount on errors through. You can also modify your own `.eslintrc` file to add/remove rules as you see fit.
+* We have also added the option to skip eslint which you can you use with `--skip-eslint` when running the gulp task.
+
 # 0.4.0
 
 * Output browserify error detail for easier debugging

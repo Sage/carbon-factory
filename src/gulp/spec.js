@@ -82,7 +82,7 @@ export default function(opts) {
     // an array to specify what kind of reporters type should karma generate
     var coverageReporters = opts.coverageReporters || [{ type: 'text-summary' }, { type: 'html' }];
     // which preprocessors the js files should run through
-    var preProcessors = opts.preProcessors || [ 'eslint', 'browserify' ];
+    var preProcessors = opts.preProcessors || [ 'browserify' ];
     // which preprocessors the spec files should run through
     var specpreProcessors = opts.specpreProcessors || [ 'browserify' ];
     // where to find the karma config file
@@ -94,10 +94,10 @@ export default function(opts) {
       functions: 100,
       lines: 100
     }, opts.coverage);
-    // errorThreshold for failing build
-    var errorThreshold = opts.errorThreshold || null;
-    // Stop build if above errorThreshold
-    var stopAboveErrorThreshold = opts.stopAboveErrorThreshold || false;
+    // eslintThreshold for failing build
+    var eslintThreshold = opts.eslintThreshold || null;
+    // Stop build if above eslintThreshold
+    var stopAboveEslintThreshold = opts.stopAboveEslintThreshold || !!eslintThreshold;
     // coverage thresholds for each file
     var coverageThresholdEachFile = opts.coverageEachFile || {};
     // where the gulp task was ran from
@@ -112,6 +112,10 @@ export default function(opts) {
         process.exit();
       }
     });
+
+    if (!argv['skip-eslint']) {
+      specpreProcessors.unshift('eslint');
+    }
 
     // prefix the paths with where the gulp task was ran from so the files can
     // be found from the correct location
@@ -220,11 +224,11 @@ export default function(opts) {
       // if `gulp --build` then use single run mode
       config.autoWatch = false;
       // stop on lint failures in build mode
-      config.eslint.stopOnError = true;
+      config.eslint.stopOnError = !stopAboveEslintThreshold;
       // error threshold above which build fails
-      config.eslint.errorThreshold = errorThreshold;
+      config.eslint.errorThreshold = eslintThreshold;
       // Fail build above error threshold
-      config.eslint.stopAboveErrorThreshold = stopAboveErrorThreshold;
+      config.eslint.stopAboveErrorThreshold = stopAboveEslintThreshold;
       // disable source maps in build mode
       config.browserify.debug = false;
     } else {
