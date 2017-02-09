@@ -1,16 +1,14 @@
-# 0.4.0
+# 1.0.0
 
+* Added multiple ESLint packages to report on recommended syntax. To help updating your codebase to comply to these rules you can set the `eslintThreshold` to allow a certain amount on errors through. You can also modify your own `.eslintrc` file to add/remove rules as you see fit.
+* Added the option to skip eslint which you can you use with `--skip-eslint` when running the gulp task.
 * Output browserify error detail for easier debugging
-* Added `errorThreshold` & `stopAboveErrorThreshold` options to control failing build
+* Added `eslintThreshold` option to control failing the build.
+
 ```javascript
-var opts = {
-  jsDest: './../host_app/app/assets/javascripts',
-  cssDest: './../host_app/app/assets/stylesheets',
-  fontDest: './../host_app/app/assets/fonts/fonts',
-  imageDest: './../host_app/app/assets/images',
-  errorThreshold: 1000,
-  stopAboveErrorThreshold: true
-};
+gulp.task('test', SpecTask({
+  eslintThreshold: 1000
+});
 ```
 
 # 0.3.2
