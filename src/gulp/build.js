@@ -48,6 +48,7 @@ import envify from 'envify/custom';
 import sassCssStream from 'sass-css-stream';
 import source from 'vinyl-source-stream';
 import watchify from 'watchify';
+import tsify from 'tsify';
 import yargs from 'yargs';
 import gulpif from 'gulp-if';
 import uglify from 'gulp-uglify';
@@ -174,6 +175,9 @@ export default function (opts) {
       NODE_ENV: process.env.NODE_ENV
     });
 
+    var tsifyTransform = tsify;
+    console.log(tsifyTransform);
+
     /**
      * Browserify options (for CommonJS).
      */
@@ -191,8 +195,8 @@ export default function (opts) {
       packageCache: {}
     };
 
-    if (watch && argv.hot) {
-      browserifyOpts.plugin = [ livereactload ];
+    if (watch && !argv.cold) {
+      browserifyOpts.plugin = [ livereactload, tsify ];
     }
 
     if (standalone) {
