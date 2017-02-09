@@ -191,7 +191,7 @@ export default function (opts) {
       packageCache: {}
     };
 
-    if (watch && !argv.cold) {
+    if (watch && argv.hot) {
       browserifyOpts.plugin = [ livereactload ];
     }
 
