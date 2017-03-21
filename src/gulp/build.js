@@ -82,6 +82,8 @@ export default function (opts) {
         standalone = opts.standalone || null,
         // if single build, or run and watch
         watch = (argv.build === undefined),
+        // if using typescript
+        typescript = opts.typescript || false,
         // if in production mode
         production = argv.production || false,
         // if uglify requested
@@ -145,7 +147,6 @@ export default function (opts) {
     var babelTransform = babel.configure({
       ignore: /node_modules/,
       extends: process.cwd() + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
-
     });
 
     /**
@@ -175,9 +176,6 @@ export default function (opts) {
       NODE_ENV: process.env.NODE_ENV
     });
 
-    var tsifyTransform = tsify;
-    console.log(tsifyTransform);
-
     /**
      * Browserify options (for CommonJS).
      */
@@ -195,9 +193,17 @@ export default function (opts) {
       packageCache: {}
     };
 
+    var plugins = []
+
     if (watch && !argv.cold) {
-      browserifyOpts.plugin = [ livereactload, tsify ];
+      plugins.push(livereactload);
     }
+
+    if (typescript) {
+      plugins.push(tsify);
+    }
+
+    browserifyOpts.plugin = plugins;
 
     if (standalone) {
       browserifyOpts.standalone = standalone;
