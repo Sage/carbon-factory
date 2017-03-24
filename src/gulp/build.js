@@ -195,7 +195,7 @@ export default function (opts) {
 
     var plugins = []
 
-    if (watch && !argv.cold) {
+    if (watch && argv.hot) {
       plugins.push(livereactload);
     }
 

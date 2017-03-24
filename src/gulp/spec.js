@@ -194,7 +194,7 @@ export default function(opts) {
     }
 
     if (typescript) {
-      config.browserify.plugin = tsify;
+      config.browserify.plugin = [ tsify ];
     }
 
     // tie the preprocessors to the relevant sources
