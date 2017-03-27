@@ -4,6 +4,7 @@
 * Added the option to skip eslint which you can you use with `--skip-eslint` when running the gulp task.
 * Output browserify error detail for easier debugging
 * Added `eslintThreshold` option to control failing the build.
+* Added support for TypeScript
 
 ```javascript
 gulp.task('test', SpecTask({

@@ -48,6 +48,7 @@ import envify from 'envify/custom';
 import sassCssStream from 'sass-css-stream';
 import source from 'vinyl-source-stream';
 import watchify from 'watchify';
+import tsify from 'tsify';
 import yargs from 'yargs';
 import gulpif from 'gulp-if';
 import uglify from 'gulp-uglify';
@@ -81,6 +82,8 @@ export default function (opts) {
         standalone = opts.standalone || null,
         // if single build, or run and watch
         watch = (argv.build === undefined),
+        // if using typescript
+        typescript = opts.typescript || false,
         // if in production mode
         production = argv.production || false,
         // if uglify requested
@@ -144,7 +147,6 @@ export default function (opts) {
     var babelTransform = babel.configure({
       ignore: /node_modules/,
       extends: process.cwd() + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
-
     });
 
     /**
@@ -191,9 +193,17 @@ export default function (opts) {
       packageCache: {}
     };
 
+    var plugins = []
+
     if (watch && argv.hot) {
-      browserifyOpts.plugin = [ livereactload ];
+      plugins.push(livereactload);
     }
+
+    if (typescript) {
+      plugins.push(tsify);
+    }
+
+    browserifyOpts.plugin = plugins;
 
     if (standalone) {
       browserifyOpts.standalone = standalone;
