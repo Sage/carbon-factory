@@ -102,7 +102,7 @@ export default function(opts) {
     // coverage thresholds for each file
     var coverageThresholdEachFile = opts.coverageEachFile || {};
     // if using typescript
-    var typescript = opts.typescript || false,
+    var typescript = opts.typescript || false;
     // where the gulp task was ran from
     var originPath = process.cwd();
 
