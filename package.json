@@ -1,6 +1,6 @@
 {
   "name": "carbon-factory",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Tools to help create user interfaces with Carbon and React.",
   "main": "/lib",
   "scripts": {

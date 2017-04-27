@@ -37,7 +37,6 @@
 
 import './utils/fs-patch';
 import aliasify from 'aliasify';
-import babel from 'babelify';
 import browserify from 'browserify';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
@@ -84,7 +83,9 @@ export default function (opts) {
         // if in production mode
         production = argv.production || false,
         // if uglify requested
-        doUglify = (opts.uglify !== false);
+        doUglify = (opts.uglify !== false),
+        // array of modules to apply babel transforms to
+        babelTransforms = opts.babelTransforms || [];
 
     if (opts.additionalSassTransformDirs) {
       // define directories in which to apply sass transforms
@@ -139,15 +140,6 @@ export default function (opts) {
     var handler = argv.handler;
 
     /**
-     * Babel options (for JS/JSX).
-     */
-    var babelTransform = babel.configure({
-      ignore: /node_modules/,
-      extends: process.cwd() + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
-
-    });
-
-    /**
      * Alias options (to include handler specific JS).
      */
     var aliasTransform = null;
@@ -181,7 +173,7 @@ export default function (opts) {
       // the entry points for the application
       entries: [ src ],
       // which transforms to apply to the code
-      transform: [ babelTransform, aliasTransform, envifyTransform ],
+      transform: [ aliasTransform, envifyTransform ],
       // lookup paths when importing modules
       paths: [ './src' ],
 
@@ -199,7 +191,20 @@ export default function (opts) {
       browserifyOpts.standalone = standalone;
     }
 
-    var browserified = browserify(browserifyOpts);
+    var only = "^((?!node_modules).";
+
+    babelTransforms.forEach((module) => {
+      only += "|(node_modules\/" + module + ")";
+    });
+
+    only += ")*$";
+
+    var browserified = browserify(browserifyOpts).transform("babelify", {
+      extends: process.cwd() + '/node_modules/carbon-factory/.babelrc',
+      global: true,
+      only: new RegExp(only),
+      babelrc: false
+    });
 
     // create dirs for assets
     mkdirp(fontDest, function (err) {

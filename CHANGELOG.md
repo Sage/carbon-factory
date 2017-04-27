@@ -1,3 +1,7 @@
+# 0.3.3
+
+* Adds option for `babelTransforms`, which is an array of modules to which you want to apply Babel transforms to during compilation.
+
 # 0.3.2
 
 * Installs and implements the `graceful-fs` patch. This is to resolve any `EMFILE` errors that occur due to the `ulimit` being exhausted.
