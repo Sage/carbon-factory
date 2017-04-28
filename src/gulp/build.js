@@ -191,20 +191,25 @@ export default function (opts) {
       browserifyOpts.standalone = standalone;
     }
 
-    var only = "^((?!node_modules).";
+    var babelTransformOptions = {
+      extends: process.cwd() + '/node_modules/carbon-factory/.babelrc'
+    };
 
-    babelTransforms.forEach((module) => {
-      only += "|(node_modules\/" + module + ")";
-    });
+    if (babelTransforms.length) {
+      var only = "^((?!node_modules).";
 
-    only += ")*$";
+      babelTransforms.forEach((module) => {
+        only += "|(node_modules\/" + module + ")";
+      });
 
-    var browserified = browserify(browserifyOpts).transform("babelify", {
-      extends: process.cwd() + '/node_modules/carbon-factory/.babelrc',
-      global: true,
-      only: new RegExp(only),
-      babelrc: false
-    });
+      only += ")*$";
+
+      babelTransformOptions.global = true;
+      babelTransformOptions.only = new RegExp(only);
+      babelTransformOptions.babelrc = false;
+    }
+
+    var browserified = browserify(browserifyOpts).transform("babelify", babelTransformOptions);
 
     // create dirs for assets
     mkdirp(fontDest, function (err) {
