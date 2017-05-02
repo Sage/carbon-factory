@@ -1,6 +1,7 @@
 # 1.0.1
 
 * Fixes eslint on spec runner.
+* Turns off import/extensions rule.
 
 # 1.0.0
 
