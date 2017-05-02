@@ -117,7 +117,7 @@ export default function(opts) {
     });
 
     if (!argv['skip-eslint']) {
-      specpreProcessors.unshift('eslint');
+      preProcessors.unshift('eslint');
     }
 
     // prefix the paths with where the gulp task was ran from so the files can

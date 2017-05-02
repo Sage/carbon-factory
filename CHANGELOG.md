@@ -1,3 +1,7 @@
+# 1.0.1
+
+* Fixes eslint on spec runner.
+
 # 1.0.0
 
 * Added multiple ESLint packages to report on recommended syntax. To help updating your codebase to comply to these rules you can set the `eslintThreshold` to allow a certain amount on errors through. You can also modify your own `.eslintrc` file to add/remove rules as you see fit.
