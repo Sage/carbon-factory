@@ -1,3 +1,7 @@
+# 1.0.2
+
+* Removes the eslint align rule.
+
 # 1.0.1
 
 * Fixes eslint on spec runner.
