@@ -98,6 +98,8 @@ export default function(opts) {
     var coverageThresholdEachFile = opts.coverageEachFile || {};
     // where the gulp task was ran from
     var originPath = process.cwd();
+    // array of modules to apply babel transforms to
+    var babelTransforms = opts.babelTransforms || [];
 
     // check if eslintrc file exists, if not then prompt dev to create one
     fs.stat(originPath + '/.eslintrc', function(err, stat) {
@@ -112,7 +114,27 @@ export default function(opts) {
     // prefix the paths with where the gulp task was ran from so the files can
     // be found from the correct location
     var src = originPath + path,
-        specSrc = originPath + specs;
+        specSrc = originPath + specs,
+        babelOptions = {
+          babelrc: false, // do not use babelrc files in gulp task
+          extends: originPath + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
+        };
+
+    if (babelTransforms.length) {
+      var only = "^((?!node_modules).";
+
+      babelTransforms.forEach((module) => {
+        only += "|(node_modules\/" + module + ")";
+      });
+
+      only += ")*$";
+
+      babelOptions.global = true;
+      babelOptions.only = new RegExp(only);
+    } else {
+      // only babelify files in the src directory
+      babelOptions.ignore = /node_modules/;
+    }
 
     // default configuration for the spec build
     var config = {
@@ -131,12 +153,7 @@ export default function(opts) {
         paths: [ originPath + '/src' ],
         // configure any transforms for browserify
         transform: [
-          babelify.configure({
-            // only babelify files in the src directory
-            ignore: /node_modules/,
-            babelrc: false, // do not use babelrc files in gulp task
-            extends: originPath + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
-          })
+          babelify.configure(babelOptions)
         ],
         configure: function(bundle) {
           bundle.on('prebundle', function() {
