@@ -1,6 +1,10 @@
-# 1.0.2
+# 1.0.3
 
 * Adds option for `babelTransforms`, which is an array of modules to which you want to apply Babel transforms to during compilation.
+
+# 1.0.2
+
+* Removes the eslint align rule.
 
 # 1.0.1
 

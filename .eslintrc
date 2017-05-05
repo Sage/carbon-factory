@@ -80,9 +80,6 @@
     // http://eslint.org/docs/rules/space-before-function-parentheses
     "space-before-function-paren": "off",
 
-    // http://eslint.org/docs/rules/key-spacing
-    "key-spacing": ["error", { "align": "value" }],
-
     // http://eslint.org/docs/rules/prefer-const
     "prefer-const": ["error", {"destructuring": "any"}],
 
