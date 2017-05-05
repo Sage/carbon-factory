@@ -1,3 +1,7 @@
+# 1.0.4
+
+* Adds option for `babelTransforms` for spec task.
+
 # 1.0.3
 
 * Adds option for `babelTransforms`, which is an array of modules to which you want to apply Babel transforms to during compilation.
@@ -26,6 +30,10 @@ gulp.task('test', SpecTask({
 ```
 
 * LiveReactLoad has been turned off by default. To turn on live reloading pass `--hot` when running gulp.
+
+# 0.3.4
+
+* Adds option for `babelTransforms` for spec task.
 
 # 0.3.3
 
