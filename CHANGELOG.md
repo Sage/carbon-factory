@@ -1,3 +1,7 @@
+# 1.0.5
+
+* Change package used for coverage reporting to babel-plugin-istanbul to allow `istanbul ignore`
+
 # 1.0.4
 
 * Adds option for `babelTransforms` for spec task.
