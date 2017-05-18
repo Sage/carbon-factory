@@ -61,6 +61,7 @@ import yargs from 'yargs';
 import karma from 'karma';
 import istanbul from 'browserify-istanbul';
 import babelify from 'babelify';
+import tsify from 'tsify';
 import fs from 'fs';
 
 var argv = yargs.argv;
@@ -82,7 +83,7 @@ export default function(opts) {
     // an array to specify what kind of reporters type should karma generate
     var coverageReporters = opts.coverageReporters || [{ type: 'text-summary' }, { type: 'html' }];
     // which preprocessors the js files should run through
-    var preProcessors = opts.preProcessors || [ 'eslint', 'browserify' ];
+    var preProcessors = opts.preProcessors || [ 'browserify' ];
     // which preprocessors the spec files should run through
     var specpreProcessors = opts.specpreProcessors || [ 'browserify' ];
     // where to find the karma config file
@@ -94,8 +95,14 @@ export default function(opts) {
       functions: 100,
       lines: 100
     }, opts.coverage);
+    // eslintThreshold for failing build
+    var eslintThreshold = opts.eslintThreshold || null;
+    // Stop build if above eslintThreshold
+    var stopAboveEslintThreshold = !!eslintThreshold;
     // coverage thresholds for each file
     var coverageThresholdEachFile = opts.coverageEachFile || {};
+    // if using typescript
+    var typescript = opts.typescript || false;
     // where the gulp task was ran from
     var originPath = process.cwd();
     // array of modules to apply babel transforms to
@@ -110,6 +117,10 @@ export default function(opts) {
         process.exit();
       }
     });
+
+    if (!argv['skip-eslint']) {
+      preProcessors.unshift('eslint');
+    }
 
     // prefix the paths with where the gulp task was ran from so the files can
     // be found from the correct location
@@ -192,11 +203,15 @@ export default function(opts) {
           flags: ['--user-data-dir=./.browser-preferences']
         }
       }
-    }
+    };
 
     // Report tests slower than value
     if (argv['report-slow']) {
       config.reportSlowerThan = 100;
+    }
+
+    if (typescript) {
+      config.browserify.plugin = [ tsify ];
     }
 
     // tie the preprocessors to the relevant sources
@@ -233,7 +248,11 @@ export default function(opts) {
       // if `gulp --build` then use single run mode
       config.autoWatch = false;
       // stop on lint failures in build mode
-      config.eslint.stopOnError = true;
+      config.eslint.stopOnError = !stopAboveEslintThreshold;
+      // error threshold above which build fails
+      config.eslint.errorThreshold = eslintThreshold;
+      // Fail build above error threshold
+      config.eslint.stopAboveErrorThreshold = stopAboveEslintThreshold;
       // disable source maps in build mode
       config.browserify.debug = false;
     } else {
