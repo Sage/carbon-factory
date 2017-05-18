@@ -51,7 +51,7 @@
     "karma-chrome-launcher": "~2.0.0",
     "karma-coverage": "~1.1.1",
     "karma-es5-shim": "0.0.4",
-    "karma-eslint": "git@github.com:abramin/karma-eslint.git#report-error-tally",
+    "karma-eslint": "git://github.com/abramin/karma-eslint.git#report-error-tally",
     "karma-firefox-launcher": "~1.0.0",
     "karma-jasmine-ajax": "~0.1.13",
     "karma-jasmine": "~1.0.2",
