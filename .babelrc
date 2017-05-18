@@ -10,7 +10,7 @@
   "env": {
     "test": {
       "auxiliaryCommentBefore": "istanbul ignore next",
-      "plugins": [ [ "__coverage__", { "ignore": ["**/*/__spec__.js", "**/node_modules/**"] } ] ]
+      "plugins": [ [ "istanbul", { "exclude": ["**/*/__spec__.js", "**/node_modules/**"] } ] ]
     },
     "development": {
       "plugins": [
