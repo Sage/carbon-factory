@@ -35,3 +35,10 @@ To be merged, we prefer the pull request to be reviewed by at least two people w
 * Push tag to Github.
 * Draft a release in GitHub from the new tag.
 * If you have merged into `release`, open a PR to merge back into `master`.
+
+## CLA
+
+To accept any third party contributions we require a Contributor License Agreement to be signed. Please find links to the relevent documents below:
+
+* [Individual CLA](https://github.com/Sage/carbon/blob/master/cla/SAGE-CLA.docx)
+* [Corporate CLA](https://github.com/Sage/carbon/blob/master/cla/SAGE-CCLA.docx)
