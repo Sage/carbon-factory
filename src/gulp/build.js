@@ -173,7 +173,7 @@ export default function (opts) {
       // the entry points for the application
       entries: [ src ],
       // which transforms to apply to the code
-      transform: [ aliasTransform, envifyTransform ],
+      transform: [ aliasTransform ],
       // lookup paths when importing modules
       paths: [ './src', process.cwd() + '/node_modules' ],
 
@@ -209,7 +209,9 @@ export default function (opts) {
       babelTransformOptions.babelrc = false;
     }
 
-    var browserified = browserify(browserifyOpts).transform("babelify", babelTransformOptions);
+    var browserified = browserify(browserifyOpts)
+                       .transform("babelify", babelTransformOptions)
+                       .transform(envifyTransform);
 
     // create dirs for assets
     mkdirp(fontDest, function (err) {
