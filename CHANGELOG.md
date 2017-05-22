@@ -1,39 +1,6 @@
-# 1.0.5
+# 0.3.6
 
-* Change package used for coverage reporting to babel-plugin-istanbul to allow `istanbul ignore`
-
-# 1.0.4
-
-* Adds option for `babelTransforms` for spec task.
-
-# 1.0.3
-
-* Adds option for `babelTransforms`, which is an array of modules to which you want to apply Babel transforms to during compilation.
-
-# 1.0.2
-
-* Removes the eslint align rule.
-
-# 1.0.1
-
-* Fixes eslint on spec runner.
-* Turns off import/extensions rule.
-
-# 1.0.0
-
-* Added multiple ESLint packages to report on recommended syntax. To help updating your codebase to comply to these rules you can set the `eslintThreshold` to allow a certain amount on errors through. You can also modify your own `.eslintrc` file to add/remove rules as you see fit.
-* Added the option to skip eslint which you can you use with `--skip-eslint` when running the gulp task.
-* Output browserify error detail for easier debugging
-* Added `eslintThreshold` option to control failing the build.
-* Added support for TypeScript
-
-```javascript
-gulp.task('test', SpecTask({
-  eslintThreshold: 1000
-});
-```
-
-* LiveReactLoad has been turned off by default. To turn on live reloading pass `--hot` when running gulp.
+* Change order of babelify, envify transforms to fix parsing error with `process.env.NODE_ENV`
 
 # 0.3.5
 
