@@ -1,3 +1,7 @@
+# 1.0.6
+
+* Change order of babelify, envify transforms to fix parsing error with `process.env.NODE_ENV`
+
 # 1.0.5
 
 * Change package used for coverage reporting to babel-plugin-istanbul to allow `istanbul ignore`
