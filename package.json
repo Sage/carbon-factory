@@ -5,7 +5,7 @@
   "main": "/lib",
   "scripts": {
     "release-version": "npm install && npm publish",
-    "prepare": "rm -rf ./lib && babel ./src/gulp --out-dir ./lib/gulp"
+    "prepublish": "rm -rf ./lib && babel ./src/gulp --out-dir ./lib/gulp"
   },
   "author": "The Sage Group plc",
   "license": "Apache-2.0",
