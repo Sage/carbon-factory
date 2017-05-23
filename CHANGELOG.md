@@ -1,3 +1,7 @@
+# 1.1.0
+
+* **IMPORTANT**: From this version on you will need to install the Carbon library as `carbon-react`.
+
 # 1.0.4
 
 * Adds option for `babelTransforms` for spec task.
