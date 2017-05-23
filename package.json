@@ -4,7 +4,7 @@
   "description": "Tools to help create user interfaces with Carbon and React.",
   "main": "/lib",
   "scripts": {
-    "prepublishOnly": "npm install && npm run-script release",
+    "prepare": "npm run-script release",
     "release": "rm -rf ./lib && babel ./src/gulp --out-dir ./lib/gulp"
   },
   "author": "The Sage Group plc",
