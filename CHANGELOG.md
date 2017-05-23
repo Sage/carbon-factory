@@ -1,3 +1,7 @@
+# 1.1.0
+
+* **IMPORTANT**: From this version on you will need to install the Carbon library as `carbon-react`.
+
 # 1.0.6
 
 * Change order of babelify, envify transforms to fix parsing error with `process.env.NODE_ENV`

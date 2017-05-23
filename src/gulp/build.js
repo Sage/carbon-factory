@@ -76,7 +76,7 @@ export default function (opts) {
         // the destination for any images
         imageDest = opts.imageDest || './assets/images',
         // define directories in which to apply sass transforms
-        additionalSassTransformDirs = ['./node_modules/carbon', './'],
+        additionalSassTransformDirs = ['./node_modules/carbon-react', './'],
         // a standalone param to expose components globally
         standalone = opts.standalone || null,
         // if single build, or run and watch
@@ -254,7 +254,7 @@ export default function (opts) {
           return sassCssStream( file, {
             includePaths: [
               process.cwd() + "/src/style-config", // check for overrides in local style-config directory
-              process.cwd() + "/node_modules/carbon/lib/style-config", // check for original config files
+              process.cwd() + "/node_modules/carbon-react/lib/style-config", // check for original config files
               process.cwd() + "/node_modules" // generic namespace for any other lookups
             ]
           });
