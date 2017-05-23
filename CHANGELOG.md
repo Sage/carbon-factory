@@ -1,3 +1,11 @@
+# 1.1.2
+
+* Resolves the previously broken version, adding the lib directory to the package.
+
+# 1.1.1
+
+* :warning: does not include lib directory
+
 # 1.1.0
 
 * **IMPORTANT**: From this version on you will need to install the Carbon library as `carbon-react`.
