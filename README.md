@@ -1,4 +1,4 @@
-# Carbon Factory
+# Carbon Factory [![npm](https://img.shields.io/npm/v/carbon-factory.svg)](https://www.npmjs.com/package/carbon-factory)
 
 Tools to help create user interfaces with [Carbon](https://github.com/sage/carbon) and [React](http://facebook.github.io/react/).
 

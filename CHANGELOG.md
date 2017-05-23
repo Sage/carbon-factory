@@ -2,6 +2,14 @@
 
 * **IMPORTANT**: From this version on you will need to install the Carbon library as `carbon-react`.
 
+# 1.0.6
+
+* Change order of babelify, envify transforms to fix parsing error with `process.env.NODE_ENV`
+
+# 1.0.5
+
+* Change package used for coverage reporting to babel-plugin-istanbul to allow `istanbul ignore`
+
 # 1.0.4
 
 * Adds option for `babelTransforms` for spec task.
@@ -34,6 +42,10 @@ gulp.task('test', SpecTask({
 ```
 
 * LiveReactLoad has been turned off by default. To turn on live reloading pass `--hot` when running gulp.
+
+# 0.3.5
+
+* Change package used for coverage reporting to babel-plugin-istanbul to allow `istanbul ignore`
 
 # 0.3.4
 
