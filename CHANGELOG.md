@@ -1,3 +1,7 @@
+# 1.1.3
+
+* Bump .eslintrc max function params to 5
+
 # 1.1.2
 
 * Resolves the previously broken version, adding the lib directory to the package.
