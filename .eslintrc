@@ -66,7 +66,7 @@
     // http://eslint.org/docs/rules/array-bracket-spacing
     "array-bracket-spacing": ["error", "never"],
 
-    "max-params": ["error", 3],
+    "max-params": ["error", 5],
 
     // http://eslint.org/docs/rules/arrow-body-style
     "arrow-body-style": "off",
