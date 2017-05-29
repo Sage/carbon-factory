@@ -1,3 +1,7 @@
+# next
+
+* Use `ssh` instead of `git://` URLs in `package.json`
+
 # 1.1.3
 
 * Bump .eslintrc max function params to 5
