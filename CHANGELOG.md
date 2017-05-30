@@ -1,3 +1,7 @@
+# 1.1.4
+
+* Update branch of karma-eslint package to fix build passing when errors present. 
+
 # 1.1.3
 
 * Bump .eslintrc max function params to 5
