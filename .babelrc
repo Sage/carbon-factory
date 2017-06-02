@@ -8,10 +8,6 @@
     "transform-class-properties"
   ],
   "env": {
-    "test": {
-      "auxiliaryCommentBefore": "istanbul ignore next",
-      "plugins": [ [ "istanbul", { "exclude": ["**/*/__spec__.js", "**/node_modules/**"] } ] ]
-    },
     "development": {
       "plugins": [
         ["react-transform", {
