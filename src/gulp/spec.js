@@ -128,7 +128,13 @@ export default function(opts) {
         specSrc = originPath + specs,
         babelOptions = {
           babelrc: false, // do not use babelrc files in gulp task
-          extends: originPath + '/node_modules/carbon-factory/.babelrc' // manually set babelrc for gulp task
+          extends: originPath + '/node_modules/carbon-factory/.babelrc', // manually set babelrc for gulp task
+          env: {
+            test: {
+              auxiliaryCommentBefore: "istanbul ignore next",
+              plugins: [ [ "istanbul", { exclude: ignoreCoverage } ] ]
+            }
+          }
         };
 
     if (babelTransforms.length) {
@@ -238,7 +244,6 @@ export default function(opts) {
       config.reporters.push('coverage');
       config.browserify.transform.push(
         istanbul({
-          // ignore these files from code coverage
           ignore: ignoreCoverage
         })
       );

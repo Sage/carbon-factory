@@ -1,6 +1,10 @@
+# 1.1.5
+
+* Fixes an issue where the overriding the coverage ignore option was not being used during gulp.
+
 # 1.1.4
 
-* Update branch of karma-eslint package to fix build passing when errors present. 
+* Update branch of karma-eslint package to fix build passing when errors present.
 
 # 1.1.3
 
