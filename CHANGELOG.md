@@ -1,3 +1,7 @@
+# 1.1.6
+
+* Fix overly strict eslint rule to allow object property reassignment
+
 # 1.1.5
 
 * Fixes an issue where the overriding the coverage ignore option was not being used during gulp.
