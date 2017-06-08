@@ -1,3 +1,7 @@
+# 1.1.7
+
+* Configures 'no-use-before-define' to skip functions and classes.
+
 # 1.1.6
 
 * Fix overly strict eslint rule to allow object property reassignment

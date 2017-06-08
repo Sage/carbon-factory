@@ -94,7 +94,10 @@
     'jsx-a11y/no-static-element-interactions': 'off',
 
     // http://eslint.org/docs/rules/no-param-reassign
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+
+    // http://eslint.org/docs/rules/no-use-before-define
+    "no-use-before-define": ["error", { "functions": false, "classes": false }]
   },
   "env": {
     "es6": true,
