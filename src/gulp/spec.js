@@ -34,7 +34,7 @@
  *
  *    gulp test
  *
- * By default this will automatically run in PhantomJS and will watch for any
+ * By default this will automatically run in ChromeHeadless and will watch for any
  * changes. You can supply additional arguments to run in alternative modes:
  *
  * == To run in watch mode with coverage reports:
@@ -162,7 +162,7 @@ export default function(opts) {
       // the preprocessors to run the files through
       preprocessors: {},
       // which browsers to run the specs through
-      browsers: [ 'PhantomJS' ],
+      browsers: [ 'ChromeHeadless' ],
       // options for browserify
       browserify: {
         debug: true,
@@ -226,7 +226,7 @@ export default function(opts) {
 
     if (argv.b == 'all') {
       // if `gulp -b all` then run through all browsers
-      config.browsers = [ 'PhantomJS', 'Chrome_dev', 'Firefox', 'Safari' ];
+      config.browsers = [ 'ChromeHeadless', 'Chrome_dev', 'Firefox', 'Safari' ];
     } else if (argv.b) {
       // if `gulp -b [browser]` then use the browser supplied
       config.browsers = [ S(argv.b).capitalize().s ];
