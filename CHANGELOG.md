@@ -1,3 +1,7 @@
+# 1.2.0
+
+* Replace PhantomJS with ChromeHeadless
+
 # 1.1.7
 
 * Configures 'no-use-before-define' to skip functions and classes.

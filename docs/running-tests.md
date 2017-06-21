@@ -6,7 +6,7 @@ In development, you can run tests by using Gulp.
 gulp test
 ```
 
-This will run the tests using PhantomJS and automatically watch for any file changes to run the tests again.
+This will run the tests using ChromeHeadless and automatically watch for any file changes to run the tests again.
 
 You can also run the tests as a single run.
 
@@ -39,5 +39,5 @@ gulp test --coverage
 The coverage breakdown report can be viewed in any web browser and is accessed by
 
 ```bash
-  open coverage/PhantomJS{Version}/index.html
+  open coverage/HeadlessChrome{Version}/index.html
 ```
