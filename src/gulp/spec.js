@@ -2,12 +2,9 @@ var exec = require('child_process').exec;
 var gulp = require('gulp');
 var jest = require('jest-cli');
 var yargs = require('yargs');
-// var jest = require('gulp-jest').default;
-// var shell = require('gulp-shell');
-// var exec = require('child_process').exec;
-// var spawn = require('child_process').spawn;
 
-var jestConfig = {
+// TODO: Replace with file load ?
+var baseJestConfig = {
   testMatch: [ "**/__spec__.js" ],
   moduleDirectories: [ "node_modules", "src" ],
   collectCoverage: true,
@@ -25,37 +22,17 @@ var jestConfig = {
 
 var argv = yargs.argv;
 
+// TODO: get this to run a full build (linting, specs, coverage, etc)
 export default function(opts) {
-  var options = opts;
-  // Argument or gulpfile option or default
-  var jestFiles = argv.file || opts.file || ".";
-  var watchedFiles = process.cwd() + "/src/**/*.js";
+  // TODO: Replace with file load ?
+  var config = Object.assign({}, baseJestConfig, opts.jestConfig);
 
-  // TODO: get this to run a full build (linting, specs, coverage, etc)
+  var watch = argv.build ? false : true;
+
   return function(done) {
-    jest.runCLI({ watch: true, config : jestConfig }, [files], function() {
+    // https://github.com/facebook/jest/blob/master/packages/jest-cli/src/cli/index.js
+    jest.runCLI({ watchAll: watch, config: config }, '.', function() {
       done();
     });
-    // gulp.start('jest');
-    // gulp.watch([ files ], ['jest']);
-    // var jestCli = jestTest(jestFiles)
-    // jestCli(done);
-    // gulp.watch([ watchedFiles ], function() {
-    //   jestCli(done)
-    // });
   }
 }
-
-
-// var jestTest = function(files) {
-//   return function(done) {
-//     jest.runCLI({ watch: true, config : jestConfig }, [files], function() {
-//       done();
-//     });
-//   };
-// }
-// gulp.task('jest', function() {
-//   jest.runCLI({ config : jestConfig }, '.', function() {
-//     done();
-//   });
-// });
