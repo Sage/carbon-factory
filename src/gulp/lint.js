@@ -6,7 +6,7 @@ const PluginError = require('gulp-util').PluginError;
 var argv = yargs.argv;
 
 export default function(opts) {
-  var errorThreshold = opts.eslintThreshold || 1;
+  var errorThreshold = opts.eslintThreshold || 0;
 
   var eslintTask = gulp.src([
       'src/**/!(__spec__|definition).js',
@@ -18,12 +18,10 @@ export default function(opts) {
 
   if (argv.build) {
     eslintTask = eslintTask.pipe(eslint.results((results, callback) => {
-      console.log(`Total Errors: ${results.errorCount}`);
       if (errorThreshold && errorThreshold < results.errorCount) {
-        console.log('Above Threshold Limit');
-        throw new PluginError('gulp-eslint', {
-          name: 'ESLint THRESHOLD Error',
-          message: 'LIMIT'
+        throw new PluginError('Carbon Factory Lint', {
+          name: 'ESLint Threshold Error',
+          message: 'Error Count (' + results.errorCount + ') is greater than the threshold (' + errorThreshold + ')'
         });
       }
       callback();
