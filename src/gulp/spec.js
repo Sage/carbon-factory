@@ -27,17 +27,35 @@ var argv = yargs.argv;
 
 export default function(opts) {
   var options = opts;
+  // Argument or gulpfile option or default
+  var jestFiles = argv.file || opts.file || ".";
+  var watchedFiles = process.cwd() + "/src/**/*.js";
 
   // TODO: get this to run a full build (linting, specs, coverage, etc)
   return function(done) {
-    var files = '.' || argv.file
-
-    jest.runCLI({ config : jestConfig }, files, function() {
+    jest.runCLI({ watch: true, config : jestConfig }, [files], function() {
       done();
     });
+    // gulp.start('jest');
+    // gulp.watch([ files ], ['jest']);
+    // var jestCli = jestTest(jestFiles)
+    // jestCli(done);
+    // gulp.watch([ watchedFiles ], function() {
+    //   jestCli(done)
+    // });
   }
 }
 
-gulp.task('jest', function() {
 
-});
+// var jestTest = function(files) {
+//   return function(done) {
+//     jest.runCLI({ watch: true, config : jestConfig }, [files], function() {
+//       done();
+//     });
+//   };
+// }
+// gulp.task('jest', function() {
+//   jest.runCLI({ config : jestConfig }, '.', function() {
+//     done();
+//   });
+// });
