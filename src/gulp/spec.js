@@ -1,15 +1,16 @@
-var exec = require('child_process').exec;
 var gulp = require('gulp');
 var jest = require('jest-cli');
 var yargs = require('yargs');
 
 // TODO: Replace with file load ?
+// Config Options https://facebook.github.io/jest/docs/configuration.html
 var baseJestConfig = {
   testMatch: [ "**/__spec__.js" ],
   moduleDirectories: [ "node_modules", "src" ],
   collectCoverage: true,
   coverageReporters: [ 'text-summary', 'html' ],
   coverageDirectory: process.cwd() + '/coverage',
+  notify: true,
   coverageThreshold: {
     global: {
       branches: 100,
