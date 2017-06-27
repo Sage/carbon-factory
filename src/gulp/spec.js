@@ -1,34 +1,43 @@
 var exec = require('child_process').exec;
 var gulp = require('gulp');
-var jest = require('gulp-jest').default;
-var shell = require('gulp-shell');
-var exec = require('child_process').exec;
-var spawn = require('child_process').spawn;
+var jest = require('jest-cli');
+var yargs = require('yargs');
+// var jest = require('gulp-jest').default;
+// var shell = require('gulp-shell');
+// var exec = require('child_process').exec;
+// var spawn = require('child_process').spawn;
 
-export default function(opts) {
-  // TODO: get this to run a full build (linting, specs, coverage, etc)
-  return function(cb) {
-    var bat = spawn('"jest"', [], { shell: true });
-
-    bat.stdout.on('data', (data) => {
-      console.log(data.toString());
-    });
-
-    bat.stderr.on('data', (data) => {
-      console.log(data.toString());
-    });
-
-    bat.on('exit', (code) => {
-      console.log(`Child exited with code ${code}`);
-    });
-    // var e = exec('jest --watch', function (err, stdout, stderr) {
-    //   console.log(stdout);
-    //   console.log(stderr);
-    //   cb(err);
-    // });
-
-    // e.stdout.on('data', function(data) {
-    //     console.log(data); 
-    // });
+var jestConfig = {
+  testMatch: [ "**/__spec__.js" ],
+  moduleDirectories: [ "node_modules", "src" ],
+  collectCoverage: true,
+  coverageReporters: [ 'text-summary', 'html' ],
+  coverageDirectory: process.cwd() + '/coverage',
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100
+    }
   }
 }
+
+var argv = yargs.argv;
+
+export default function(opts) {
+  var options = opts;
+
+  // TODO: get this to run a full build (linting, specs, coverage, etc)
+  return function(done) {
+    var files = '.' || argv.file
+
+    jest.runCLI({ config : jestConfig }, files, function() {
+      done();
+    });
+  }
+}
+
+gulp.task('jest', function() {
+
+});
