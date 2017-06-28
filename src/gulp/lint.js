@@ -7,10 +7,9 @@ var argv = yargs.argv;
 
 export default function(opts) {
   var errorThreshold = opts.eslintThreshold || 0;
+  var path = opts.path || 'src/**/!(__spec__|definition).js';
 
-  var eslintTask = gulp.src([
-      'src/**/!(__spec__|definition).js',
-    ], { base: process.cwd() })
+  var eslintTask = gulp.src([path], { base: process.cwd() })
     .pipe(eslint({
       configFile:  process.cwd() + '/.eslintrc'
     }))
