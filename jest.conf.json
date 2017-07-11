@@ -1,9 +1,16 @@
 {
-  "testMatch": [
-    "**/__spec__.js"
-  ],
-  "moduleDirectories": [
-    "node_modules",
-    "src"
-  ]
+  "testMatch": [ "**/__spec__.js" ],
+  "moduleDirectories": [ "src", "node_modules" ],
+  "collectCoverage": true,
+  "coverageReporters": [ "text-summary", "html" ],
+  "coverageDirectory": "<rootDir>/coverage",
+  "notify": true,
+  "coverageThreshold": {
+    "global": {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100
+    }
+  }
 }

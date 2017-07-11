@@ -2,34 +2,22 @@ var gulp = require('gulp');
 var jest = require('jest-cli');
 var yargs = require('yargs');
 var lint = require('./lint').default;
+var exec = require('child_process').exec;
 
 gulp.task('lint', lint);
 
-// TODO: Replace with file load ?
+console.log(process.cwd());
+
 // Config Options https://facebook.github.io/jest/docs/configuration.html
 var baseJestConfig = {
-  testMatch: [ "**/__spec__.js" ],
-  moduleDirectories: [ "node_modules", "src" ],
-  collectCoverage: true,
-  coverageReporters: [ 'text-summary', 'html' ],
-  coverageDirectory: process.cwd() + '/coverage',
-  notify: true,
-  coverageThreshold: {
-    global: {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100
-    }
-  }
+  preset: __dirname + "/jest.conf.json"
 }
 
 var argv = yargs.argv;
 
-// TODO: get this to run a full build (linting, specs, coverage, etc)
 export default function(opts) {
-  // TODO: Replace with file load ?
   var config = Object.assign({}, baseJestConfig, opts.jestConfig);
+  console.log("CONFIG: ----:", config);
   var cliOptions = { watch: true, onlyChanged: true, config: config }
 
   if (argv.build) {
@@ -37,8 +25,7 @@ export default function(opts) {
     cliOptions = { config: config }
   }
 
-  // TODO: Can we pass more arguments here to jestCliu
-
+  // TODO: Can we pass more arguments here to jestCli
   return function(done) {
     // https://github.com/facebook/jest/blob/master/packages/jest-cli/src/cli/index.js
     jest.runCLI(cliOptions, '.', function() {
