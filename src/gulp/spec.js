@@ -2,11 +2,8 @@ var gulp = require('gulp');
 var jest = require('jest-cli');
 var yargs = require('yargs');
 var lint = require('./lint').default;
-var exec = require('child_process').exec;
 
 gulp.task('lint', lint);
-
-console.log(process.cwd());
 
 // Config Options https://facebook.github.io/jest/docs/configuration.html
 var baseJestConfig = {
@@ -17,7 +14,6 @@ var argv = yargs.argv;
 
 export default function(opts) {
   var config = Object.assign({}, baseJestConfig, opts.jestConfig);
-  console.log("CONFIG: ----:", config);
   var cliOptions = { watch: true, onlyChanged: true, config: config }
 
   if (argv.build) {
