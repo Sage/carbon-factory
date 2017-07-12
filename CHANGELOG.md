@@ -1,3 +1,7 @@
+# 1.1.8
+
+* Update the `package.json` created when running `carbon app myapp` to use `carbon-react` and `carbon-factory` from npm, and to use the same version of common dependendencies as used in `carbon-react`.
+
 # 1.1.7
 
 * Configures 'no-use-before-define' to skip functions and classes.
