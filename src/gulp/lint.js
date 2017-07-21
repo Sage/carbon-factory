@@ -6,11 +6,12 @@ const PluginError = require('gulp-util').PluginError;
 var argv = yargs.argv;
 
 export default function(opts) {
-  var errorThreshold = opts.eslintThreshold || 0;
+  var options = opts || {};
 
-  var eslintTask = gulp.src([
-      'src/**/!(__spec__|definition).js',
-    ], { base: process.cwd() })
+  var errorThreshold = options.eslintThreshold || 0;
+  var path = options.path || 'src/**/!(__spec__|definition).js';
+
+  var eslintTask = gulp.src([path], { base: process.cwd() })
     .pipe(eslint({
       configFile:  process.cwd() + '/.eslintrc'
     }))
