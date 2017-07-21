@@ -1,3 +1,7 @@
+# 2.0.0
+
+* `gulp test` now uses Jest for running tests. It no longer uses Jasmine and Karma.
+
 # 1.1.7
 
 * Configures 'no-use-before-define' to skip functions and classes.
