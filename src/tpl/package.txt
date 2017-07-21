@@ -8,18 +8,18 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "carbon": "git+ssh://git@github.com/Sage/carbon.git",
-    "flux": "^2.1.1",
-    "history": "^1.12.5",
+    "carbon-react": "^1.0.0",
+    "flux": "~2.1.1",
+    "history": "~1.12.5",
     "i18n-js": "http://github.com/fnando/i18n-js/archive/v3.0.0.rc8.tar.gz",
-    "immutable": "^3.7.5",
-    "react": "^0.14.0",
-    "react-addons-css-transition-group": "^0.14.0",
-    "react-dom": "^0.14.0",
-    "react-router": "^1.0.0"
+    "immutable": "~3.8.1",
+    "react": "~15.5.0",
+    "react-addons-css-transition-group": "~15.5.0",
+    "react-dom": "~15.5.0",
+    "react-router": "~2.8.0"
   },
   "devDependencies": {
-    "carbon-factory": "git+ssh://git@github.com/Sage/carbon-factory.git",
-    "gulp": "^3.9.0"
+    "carbon-factory": "^1.0.0",
+    "gulp": "~3.9.0"
   }
 }
