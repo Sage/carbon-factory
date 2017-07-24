@@ -1,3 +1,30 @@
+/**
+ * A Gulp task for running ESLint
+ *
+ * To use this in a gulpfile.js:
+ *
+ *    import LintTask from 'carbon-factory/lib/gulp/lint';
+ *
+ *    gulp.task('lint', LintTask);
+ *
+ *
+ * The lint task allows you to specify an errorThreshold (defaulted to 0) where the task will fail if the threshold is exceeded
+ * Simply pass the errorThreshold to your gulp task:
+ *
+ *   gulp.task('lintfoo', LintTask({
+ *     errorThreshold: 11,
+ *   }));
+ *
+ * The gulp task assumes that you have a .eslintrc file set up in your repository.
+ *
+ * A the most basic example of this file would be
+ *
+ *    {
+ *      "extends": "./node_modules/carbon-factory/.eslintrc"
+ *    }
+ *
+ */
+
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const yargs = require('yargs');
@@ -10,7 +37,9 @@ var argv = yargs.argv;
 export default function(opts) {
   var options = opts || {};
 
-  var errorThreshold = options.eslintThreshold || 0;
+  var errorThreshold = options.eslintThreshold || errorThreshold || 0;
+  var warningThreshold = options.warningThreshold || 0;
+
   var path = options.path || 'src/**/!(__spec__|definition).js';
 
   fs.stat(process.cwd() + '/.eslintrc', function(err, stat) {
@@ -30,10 +59,22 @@ export default function(opts) {
 
   if (argv.build) {
     eslintTask = eslintTask.pipe(eslint.results((results, callback) => {
+      var error, message = '';
+
       if (errorThreshold && errorThreshold < results.errorCount) {
+        error = true;
+        message += 'Error Count (' + results.errorCount + ') is greater than the threshold (' + errorThreshold + ')\n'
+      }
+
+      if (warningThreshold && warningThreshold < results.warningCount) {
+        error = true;
+        message += 'Warning Count (' + results.warningCount + ') is greater than the threshold (' + warningThreshold + ')'
+      }
+
+      if (error) {
         throw new PluginError('Carbon Factory Lint', {
           name: 'ESLint Threshold Error',
-          message: 'Error Count (' + results.errorCount + ') is greater than the threshold (' + errorThreshold + ')'
+          message: message
         });
       }
       callback();
