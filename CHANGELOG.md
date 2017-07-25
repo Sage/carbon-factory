@@ -1,6 +1,6 @@
 # 2.0.0
 
-* `gulp test` now uses Jest for running tests. It no longer uses Jasmine and Karma.
+* Jest has been introduced in favor of Jasmine and Karma. See [migration document for details](https://github.com/Sage/carbon-factory/blob/master/docs/migrating/v1-v2.md)
 
 # 1.1.8
 
