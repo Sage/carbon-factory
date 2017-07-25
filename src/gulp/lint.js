@@ -7,13 +7,18 @@
  *
  *    gulp.task('lint', LintTask);
  *
- *
  * The lint task allows you to specify an errorThreshold (defaulted to 0) where the task will fail if the threshold is exceeded
  * Simply pass the errorThreshold to your gulp task:
  *
- *   gulp.task('lintfoo', LintTask({
- *     errorThreshold: 11,
- *   }));
+ *   gulp.task('lint', function() {
+ *     return LintTask({ errorThreshold: 1 });
+ *   });
+ *
+ * Other options:
+ *
+ *   warningThreshold - fail when warning count is over threshold
+ *   eslintThreshold - alias for errorThreshold
+ *   format - eslint output format. default 'stylish' http://eslint.org/docs/user-guide/formatters/#output-examples
  *
  * The gulp task assumes that you have a .eslintrc file set up in your repository.
  *
@@ -37,8 +42,10 @@ var argv = yargs.argv;
 export default function(opts) {
   var options = opts || {};
 
-  var errorThreshold = options.eslintThreshold || errorThreshold || 0;
+  var errorThreshold = options.eslintThreshold || options.errorThreshold || 0;
   var warningThreshold = options.warningThreshold || 0;
+  // http://eslint.org/docs/user-guide/formatters/#output-examples
+  var format = options.format || 'stylish';
 
   var path = options.path || 'src/**/!(__spec__|definition).js';
 
@@ -55,10 +62,10 @@ export default function(opts) {
     .pipe(eslint({
       configFile:  process.cwd() + '/.eslintrc'
     }))
-    .pipe(eslint.format());
+    .pipe(eslint.format(format));
 
   if (argv.build) {
-    eslintTask = eslintTask.pipe(eslint.results((results, callback) => {
+    return eslintTask.pipe(eslint.results((results, callback) => {
       var error, message = '';
 
       if (errorThreshold && errorThreshold < results.errorCount) {
@@ -79,7 +86,7 @@ export default function(opts) {
       }
       callback();
     }));
+  } else {
+    return eslintTask;
   }
-
-  return eslintTask;
 }
