@@ -19,7 +19,11 @@ npm install sage/carbon-factory --save-dev
 * Compiling Your Code
   * [A Standard Build](docs/standard-build.md)
   * [A Standalone Build](docs/standalone-build.md)
+* [Migrating from Carbon Factory v1 to v2](migrating/v1-v2.md)
+* [Setting up JestCLI](docs/setting-up-jest-cli.md)
 * [Running Tests](docs/running-tests.md)
+* [Debugging Tests](docs/debugging-tests.md)
+* [Help with Jest](docs/help-with-jest.md)
 
 ## Licence
 
