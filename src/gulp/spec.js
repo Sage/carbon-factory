@@ -36,6 +36,8 @@ var gulp = require('gulp');
 var jest = require('jest-cli');
 var yargs = require('yargs');
 var lint = require('./lint').default;
+var gutil = require('gulp-util');
+var fs = require('fs');
 
 gulp.task('lint', lint);
 
@@ -47,8 +49,18 @@ var baseJestConfig = {
 var argv = yargs.argv;
 
 export default function(opts) {
-  var config = Object.assign({}, baseJestConfig, opts.jestConfig);
-  var cliOptions = { watch: true, onlyChanged: true, config: config }
+  // use custom config supplied via opts, or use our base config
+  var config = opts.jestConfig || baseJestConfig,
+      cliOptions = { watch: true, onlyChanged: true, config: config }
+
+  fs.stat(process.cwd() + '/.babelrc', function(err, stat) {
+    if (err == null) { return }
+    if (err.code == 'ENOENT') {
+      gutil.log(gutil.colors.red("Cannot find '.babelrc' file"));
+      gutil.log(gutil.colors.white("Create a '.babelrc' file in the root of your project and add the following code:\n{\n  \"extends\": \"./node_modules/carbon-factory/.babelrc\"\n}"));
+      process.exit();
+    }
+  });
 
   if (argv.build) {
     gulp.start('lint');
