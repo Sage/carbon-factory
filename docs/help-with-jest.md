@@ -52,38 +52,64 @@ https://facebook.github.io/jest/docs/tutorial-react.html#snapshot-testing
 
 Snapshot testing a React Component involves creating a JSON representation of the component and saving it. When the component code changes, the new JSON representation is compared to the saved value - if they differ, the test fails.
 
-This can be easily done using React’s test renderer.
+For testing components it is best practice to use a shallow renderer, this ensures that we are just taking snapshots of the component we are testing - and not the composition of it's child components!
 
-```js
+For example, given the following component:
+
+```
 import React from 'react';
-import Button from 'carbon-react/src/components/button';
-import renderer from 'react-test-renderer';
+import Form from 'carbon/lib/components/form';
 
-it('renders correctly', () => {
-  const tree = renderer.create(
-    <Button>Save</Button>
-  ).toJSON();
-  expect(tree).toMatchSnapshot();
+class MyComponent extends React.Component {
+  render() {
+    return (
+      <Form saveText="Submit!">
+        My children!
+      </Form>
+    );
+  }
+};
+```
+
+This could be tested like this:
+
+```
+import React from 'react';
+import { shallow } from 'enzyme';
+
+describe('MyComponent', () => {
+  it('renders with a form', () => {
+    const wrapper = shallow(<MyComponent />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });
 ```
 
-This would create the following snapshot file.
+This would take the following snapshot:
 
-```js
-exports[`Button snapshots A basic button renders a button with defaults 1`] = `
-<button
-  className="carbon-button carbon-button--secondary carbon-button--blue carbon-button--medium"
-  data-component="button"
-  disabled={false}
+```
+exports[`MyComponent snapshot renders with a form 1`] = `
+<Form
+  activeInput={null}
+  buttonAlign="right"
+  cancel={true}
+  customSaveButton={null}
+  save={true}
+  saveText="Submit!"
+  saving={false}
+  showSummary={true}
+  validateOnMount={false}
 >
-  Save
-</button>
+  My children
+</Form>
 `;
 ```
 
+It does not tell us what a `Form` renders, it only saves the props that are set (including the defaults), and the children I have defined.
+
 This has several advantages over writing specs that examine each prop and className individually. It means writing less code, which in turn means less likelihood of making errors in specs.
 
-Please note that where possible we should be performing shallow snapshots of UI. We should not be committing snapshots containing HTML from components you are not testing. Also when testing different contexts, focus your snapshots on the area of the UI which is changing. Enzyme should be able to help with this.
+It is also important to try and focus snapshots on specific areas if you're testing different contexts/scenarios. For example if when a certain prop is `true` the only change is that a button becomes disabled, I should snapshot the area with that button rather than the entire component tree - otherwise we'll need to update a lot more specs when we make code change in the future. See https://github.com/adriantoine/enzyme-to-json#focused-tests
 
 ### Use in existing Specs
 

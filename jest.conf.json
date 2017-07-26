@@ -1,4 +1,5 @@
 {
+  "snapshotSerializers": ["enzyme-to-json/serializer"],
   "testMatch": [ "**/__spec__.js" ],
   "moduleDirectories": [ "src", "node_modules" ],
   "collectCoverage": true,
