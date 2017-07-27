@@ -68,6 +68,10 @@ export default function(options) {
       cliOptions = { config: config }
     }
 
+    if (argv.runInBand) {
+      cliOptions.runInBand = true;
+    }
+
     // TODO: Can we pass more arguments here to jestCli
     // https://github.com/facebook/jest/blob/master/packages/jest-cli/src/cli/index.js
     jest.runCLI(cliOptions, '.', function(results) {
