@@ -18,6 +18,38 @@ Unfortunately debugging tests in the browser via Node is not great, but they are
   * RubyMine may automatically detect that you want to debug a Jest test and will suggest a debug configuration for you to run on the line you have highlighted automatically.
   * If not you can add a new configuration for Jest, and select `Debug`.
 
+## Debugging in VisualStudioCode
+
+* Open your JavaScript application.
+* Add a `debugger;` statement into the file and line you want to trigger a breakpoint, add a red check on the line number.
+* Open the debugger panel by clicking on the debugger icon on the left.
+* Choose to add a configuration at the top of the debugger panel.
+* Add the following config to the `launch.json` file which is opened:
+
+```
+{
+  "type": "node",
+  "request": "launch",
+  "name": "Run Tests",
+  "program": "${workspaceRoot}/node_modules/.bin/jest",
+  "args": [
+    "--runInBand",
+    "${file}"
+  ],
+  "runtimeArgs": [
+    "--nolazy"
+  ],
+  "stopOnEntry": false,
+  "cwd": "${workspaceRoot}",
+  "sourceMaps": true,
+  "console": "internalConsole"
+}
+
+```
+
+* Save `launch.json`.
+* Run the debugger by pressing the play button at the top of the debugger panel.
+
 ## Debugging in the Browser
 
 ### Setup
