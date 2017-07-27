@@ -1,6 +1,22 @@
 # 2.0.0
 
-* Jest has been introduced in favor of Jasmine and Karma. See [migration document for details](https://github.com/Sage/carbon-factory/blob/master/docs/migrating/v1-v2.md)
+* Jasmine and Karma have been replaced by Jest. See our [migration document for details](https://github.com/Sage/carbon-factory/blob/master/docs/migrating/v1-v2.md).
+* We have added a new gulp task for just running eslint, you can set it up like this:
+
+```
+import LintTask from 'carbon-factory/lib/gulp/lint';
+
+gulp.task('lint', LinkTask());
+```
+
+You can also pass it additional options to add an error and/or warning threshold:
+
+```
+gulp.task('lint', LinkTask({
+  errorThreshold: 10,
+  warningThreshold: 20
+}));
+```
 
 # 1.1.8
 
