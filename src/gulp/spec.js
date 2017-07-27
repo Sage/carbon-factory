@@ -65,8 +65,6 @@ export default function(options) {
     });
 
     if (argv.build) {
-      gulp.task('lint', lint(opts));
-      gulp.start('lint');
       cliOptions = { config: config }
     }
 
@@ -77,6 +75,11 @@ export default function(options) {
 
       if (results.success) {
         gutil.log(gutil.colors.green('UI Tests SUCCEEDED'));
+
+        if (argv.build) {
+          gulp.task('lint', lint(opts));
+          gulp.start('lint');
+        }
       } else {
         gutil.log(gutil.colors.red('UI Tests FAILED'));
         process.exit(1);
