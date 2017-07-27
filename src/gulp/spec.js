@@ -81,6 +81,7 @@ export default function(options) {
         gutil.log(gutil.colors.green('UI Tests SUCCEEDED'));
 
         if (argv.build) {
+          gutil.log('Starting Lint Task...');
           gulp.task('lint', lint(opts));
           gulp.start('lint');
         }
