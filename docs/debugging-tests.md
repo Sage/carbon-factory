@@ -5,9 +5,22 @@ There are a number of ways to debug your code, please see the following links fo
 * https://facebook.github.io/jest/docs/troubleshooting.html
 * https://nodejs.org/en/docs/inspector/
 
-You can follow our guides below to get started:
+Unfortunately debugging tests in the browser via Node is not great, but they are working on it (we have some guides below on how to do this). Please refer to the following issues to learn more and keep track on progress:
 
-## Setup
+* https://github.com/facebook/jest/issues/1652
+* https://github.com/nodejs/node/issues/7593
+
+## Debugging in RubyMine
+
+* Open your JavaScript application.
+* Add a `debugger;` statement into the file and line you want to trigger a breakpoint.
+* From the top menu, choose `Run` > `Debug...`.
+  * RubyMine may automatically detect that you want to debug a Jest test and will suggest a debug configuration for you to run on the line you have highlighted automatically.
+  * If not you can add a new configuration for Jest, and select `Debug`.
+
+## Debugging in the Browser
+
+### Setup
 
 If you application has not yet been set up to debug, you will need to add the following scripts to your application's `package.json`:
 
@@ -18,7 +31,7 @@ If you application has not yet been set up to debug, you will need to add the fo
 }
 ```
 
-## Debugging
+### Debugging
 
 Add a `debugger;` statement to the test you’d like to debug
 
