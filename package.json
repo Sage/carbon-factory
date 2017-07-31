@@ -50,6 +50,7 @@
     "mkdirp": "~0.5.1",
     "node-inspector": "^1.1.1",
     "node-notifier": "~4.6.1",
+    "npm-run": "^4.1.2",
     "parcelify": "~2.1.0",
     "promptly": "~2.1.0",
     "react-proxy": "~1.1.8",

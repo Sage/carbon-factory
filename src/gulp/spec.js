@@ -38,6 +38,7 @@ var yargs = require('yargs');
 var lint = require('./lint').default;
 var gutil = require('gulp-util');
 var fs = require('fs');
+const npmRun = require('npm-run');
 
 
 // Config Options https://facebook.github.io/jest/docs/configuration.html
@@ -74,10 +75,12 @@ export default function(options) {
 
     // TODO: Can we pass more arguments here to jestCli
     // https://github.com/facebook/jest/blob/master/packages/jest-cli/src/cli/index.js
-    jest.runCLI(cliOptions, '.', function(results) {
+    npmRun.exec('npm run test --', cliOptions, function(err, stdout, stderr) { // results) {
+    // jest.runCLI(cliOptions, '.', function(results) {
       done();
 
-      if (results.success) {
+      if (!err) {
+      // if (results.success) {
         gutil.log(gutil.colors.green('UI Tests SUCCEEDED'));
 
         if (argv.build) {
