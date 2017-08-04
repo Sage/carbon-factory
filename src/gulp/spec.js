@@ -86,6 +86,8 @@ export default function(opts) {
     var preProcessors = opts.preProcessors || [ 'browserify' ];
     // which preprocessors the spec files should run through
     var specpreProcessors = opts.specpreProcessors || [ 'browserify' ];
+    // Options to configure karma spec reporter
+    var specReporterOpts = opts.specReporterOpts || { suppressSkipped: true };
     // where to find the karma config file
     var configFile = opts.configFile || __dirname + '/karma.conf.js';
     // defaults the coverage thresholds
@@ -188,6 +190,9 @@ export default function(opts) {
       autoWatch: true,
       // only run the specs once
       singleRun: true,
+
+      specReporter: specReporterOpts,
+
       // setup config for coverage
       coverageReporter: {
         dir: originPath + '/coverage',
