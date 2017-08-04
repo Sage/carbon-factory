@@ -1,3 +1,7 @@
+# 1.1.8
+
+* Add specReporter options to configure karma-spec-reporter from gulpfile.
+
 # 1.1.7
 
 * Configures 'no-use-before-define' to skip functions and classes.
