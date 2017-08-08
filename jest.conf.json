@@ -1,6 +1,7 @@
 {
   "snapshotSerializers": ["enzyme-to-json/serializer"],
   "testMatch": [ "**/__spec__.js" ],
+  "collectCoverageFrom": [ "src/***/**/!(__spec__).js" ],
   "moduleDirectories": [ "src", "node_modules" ],
   "collectCoverage": true,
   "coverageReporters": [ "text-summary", "html" ],
