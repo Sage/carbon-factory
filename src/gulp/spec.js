@@ -65,7 +65,8 @@ export default function(options) {
     });
 
     if (argv.build) {
-      cliOptions = { config: config }
+      config.collectCoverageFrom = [ "src/***/**/!(__spec__).js" ]; // ensures all files are checked for coverage
+      cliOptions = { config: config };
     }
 
     if (argv.runInBand) {
