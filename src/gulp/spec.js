@@ -48,7 +48,7 @@ var baseJestConfig = {
 var argv = yargs.argv;
 
 export default function(options) {
-  var opts = options;
+  var opts = options || {};
 
   return function(done) {
     // use custom config supplied via opts, or use our base config
