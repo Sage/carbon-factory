@@ -254,9 +254,9 @@ For example, let's consider the following code:
 export default {
   makeRequest: () => {
     Request
-      .get("/my-endpoint?abc=123")
-      .set("X-CSRF-TOKEN", "my-token")
-      .type("json")
+      .get('/my-endpoint?abc=123')
+      .set('X-CSRF-TOKEN', 'my-token')
+      .type('json')
       .end((err, response) => {
         if (err) {
           Dispatcher.dispatch({
@@ -281,9 +281,16 @@ import Request from 'superagent';
 
 jest.mock('superagent');
 
-describe("superagent example", () => {
-  describe("on success", () => {
+describe('superagent example', () => {
+  beforeEach(() => {
+    spyOn(Dispatcher, 'dispatch');
+  });
+  
+  describe('on success', () => {
     beforeEach(() => {
+      Request.get = jest.fn().mockReturnThis();
+      Request.set = jest.fn().mockReturnThis();
+      Request.type = jest.fn().mockReturnThis();
       Request.__setMockResponse({
         status() {
           return 200;
@@ -291,26 +298,38 @@ describe("superagent example", () => {
         ok() {
           return true;
         },
-        body: "success!"
+        body: 'success!'
       });
       Actions.makeRequest();
     });
     
-    it("dispatches a successful event", () => {
+    it('queries the correct endpoint', () => {
+      expect(Request.get).toHaveBeenCalledWith(/my-endpoint?abc=123);
+    });
+    
+    it('sets the correct header', () => {
+      expect(Request.set).toHaveBeenCalledWith('X-CSRF-TOKEN', 'my-token');
+    });
+    
+    it('sets the correct type', () => {
+      expect(Request.type).toHaveBeenCalledWith('json');
+    });
+    
+    it('dispatches a successful event', () => {
       expect(Dispatcher.dispatch).toHaveBeenCalledWith({
         actionType: SUCCESS,
-        message: "success!"
+        message: 'success!'
       });
     });
   });
   
-  describe("on error", () => {
+  describe('on error', () => {
     beforeEach(() => {
       Request.__setMockError(true);
       Actions.makeRequest();
     });
     
-    it("dispatches an erroneous event", () => {
+    it('dispatches an erroneous event', () => {
       expect(Dispatcher.dispatch).toHaveBeenCalledWith({
         actionType: ERROR
       });
