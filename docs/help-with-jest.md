@@ -247,3 +247,74 @@ Or the mock delay if required:
 ```js
 Request.__setMockDelay(true);
 ```
+
+For example, let's consider the following code:
+
+```js
+export default {
+  makeRequest: () => {
+    Request
+      .get("/my-endpoint?abc=123")
+      .set("X-CSRF-TOKEN", "my-token")
+      .type("json")
+      .end((err, response) => {
+        if (err) {
+          Dispatcher.dispatch({
+            actionType: ERROR
+          });
+        } else {
+          Dispatcher.dispatch({
+            actionType: SUCCESS,
+            message: response.body
+          });
+        }
+      });
+  }
+};
+```
+
+You could test it with the following:
+
+```js
+import Actions from './actions';
+import Request from 'superagent';
+
+jest.mock('superagent');
+
+describe("superagent example", () => {
+  describe("on success", () => {
+    beforeEach(() => {
+      Request.__setMockResponse({
+        status() {
+          return 200;
+        },
+        ok() {
+          return true;
+        },
+        body: "success!"
+      });
+      Actions.makeRequest();
+    });
+    
+    it("dispatches a successful event", () => {
+      expect(Dispatcher.dispatch).toHaveBeenCalledWith({
+        actionType: SUCCESS,
+        message: "success!"
+      });
+    });
+  });
+  
+  describe("on error", () => {
+    beforeEach(() => {
+      Request.__setMockError(true);
+      Actions.makeRequest();
+    });
+    
+    it("dispatches an erroneous event", () => {
+      expect(Dispatcher.dispatch).toHaveBeenCalledWith({
+        actionType: ERROR
+      });
+    });
+  });
+});
+```
