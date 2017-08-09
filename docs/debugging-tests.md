@@ -30,10 +30,11 @@ Unfortunately debugging tests in the browser via Node is not great, but they are
 {
   "type": "node",
   "request": "launch",
-  "name": "Run Tests",
+  "name": "Run Current Spec",
   "program": "${workspaceRoot}/node_modules/.bin/jest",
   "args": [
     "--runInBand",
+    "--config=./jest.conf.json"
     "${file}"
   ],
   "runtimeArgs": [
@@ -48,7 +49,7 @@ Unfortunately debugging tests in the browser via Node is not great, but they are
 ```
 
 * Save `launch.json`.
-* Run the debugger by pressing the play button at the top of the debugger panel.
+* Run the debugger by pressing the play button at the top of the debugger panel. This will debug the currently active file in the editor.
 
 ## Debugging in the Browser
 
