@@ -304,7 +304,7 @@ describe('superagent example', () => {
     });
     
     it('queries the correct endpoint', () => {
-      expect(Request.get).toHaveBeenCalledWith(/my-endpoint?abc=123);
+      expect(Request.get).toHaveBeenCalledWith('/my-endpoint?abc=123');
     });
     
     it('sets the correct header', () => {
