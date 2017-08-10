@@ -1,0 +1,33 @@
+{
+  "name": "carbon-factory--test",
+  "version": "1.0.0",
+  "description": "Test plugin for Carbon Factory",
+  "scripts": {
+    "release-version": "npm install && npm publish",
+    "prepublish": "rm -rf ./lib && NODE_ENV=production babel ./src --out-dir ./lib"
+  },
+  "main": "./lib/test.js",
+  "author": "The Sage Group plc",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sage/carbon-factory"
+  },
+  "peerDependencies": {
+    "carbon-factory": "^2.0.0-rc4"
+  },
+  "dependencies": {
+    "babel-eslint": "~6.1.2",
+    "babel-jest": "^20.0.3",
+    "enzyme-to-json": "^1.5.1",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "~6.8.0",
+    "gulp-eslint": "~3.0.0",
+    "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
+    "node-inspector": "^1.1.1"
+  }
+}

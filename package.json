@@ -4,8 +4,7 @@
   "description": "Tools to help create user interfaces with Carbon and React.",
   "main": "./jest.conf.json",
   "scripts": {
-    "release-version": "npm install && npm publish",
-    "prepublish": "rm -rf ./lib && NODE_ENV=production babel ./src/gulp --out-dir ./lib/gulp"
+    "release-version": "npm install && npm publish"
   },
   "author": "The Sage Group plc",
   "license": "Apache-2.0",
@@ -16,48 +15,29 @@
     "type": "git",
     "url": "https://github.com/Sage/carbon-factory"
   },
+  "peerDependencies": {
+    "carbon-factory": "^2.0.0-rc4",
+    "gulp": "^3.9.1"
+  },
   "dependencies": {
-    "aliasify": "~1.7.2",
     "babel-cli": "~6.14.0",
-    "babel-eslint": "~6.1.2",
-    "babel-jest": "^20.0.3",
     "babel-plugin-react-transform": "~2.0.2",
     "babel-plugin-transform-class-properties": "~6.11.5",
     "babel-plugin-transform-object-rest-spread": "~6.8.0",
     "babel-preset-es2015": "~6.14.0",
     "babel-preset-react": "~6.11.1",
-    "babelify": "~7.3.0",
-    "browserify": "~13.1.0",
     "commander": "~2.9.0",
-    "envify": "~3.4.1",
-    "enzyme-to-json": "^1.5.1",
     "es5-shim": "4.5.9",
-    "eslint": "^3.12.2",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "2.2.3",
-    "eslint-plugin-react": "~6.8.0",
-    "graceful-fs": "^4.1.11",
-    "gulp": "~3.9.1",
     "gulp-eslint": "~3.0.0",
-    "gulp-if": "~2.0.1",
-    "gulp-streamify": "~1.0.2",
-    "gulp-uglify": "~2.0.0",
     "gulp-util": "~3.0.7",
-    "jest": "^20.0.4",
-    "jest-cli": "^20.0.4",
     "livereactload": "~3.1.1",
     "mkdirp": "~0.5.1",
-    "node-inspector": "^1.1.1",
-    "node-notifier": "~4.6.1",
-    "parcelify": "~2.1.0",
     "promptly": "~2.1.0",
     "react-proxy": "~1.1.8",
-    "sass-css-stream": "~0.1.6",
     "string": "~3.3.1",
-    "tsify": "^3.0.1",
-    "vinyl-source-stream": "~1.1.0",
-    "watchify": "~3.7.0",
     "yargs": "~5.0.0"
+  },
+  "devDependencies": {
+    "gulp": "~3.9.1"
   }
 }
