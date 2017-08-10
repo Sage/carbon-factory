@@ -154,6 +154,23 @@ myMock.mockReturnThis();
 
 You can find more information on the [official Jest Documentation](https://facebook.github.io/jest/docs/mock-function-api.html).
 
+NOTE: `jasmine.createSpyObj` is no longer supported. You will need to redefine these:
+
+Previously you would write:
+
+```js
+const obj = jasmine.createSpyObj('obj', ['foo', 'bar']);
+```
+
+Now you would write:
+
+```js
+const obj = {
+  foo: jest.fn(),
+  bar: jest.fn()
+};
+```
+
 ## Timer Mocks
 
 Where previously you used `jasmine.clock()` to mock `setTimeout` and `setInterval`, in Jest you need to use `jest.useFakeTimers()`. To uninstall the i fake timers you can use `jest.useRealTimers()`.
