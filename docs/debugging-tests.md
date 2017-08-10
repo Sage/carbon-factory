@@ -65,7 +65,7 @@ If you application has not yet been set up to debug, you will need to add the fo
 
 ```
 "scripts": {
-  "debug:listen": "node --debug-brk ./node_modules/.bin/jest --runInBand",
+  "debug:listen": "node --debug-brk ./node_modules/.bin/jest --runInBand --config=./jest.conf.json",
   "debug:start": "node-inspector"
 }
 ```
