@@ -91,3 +91,29 @@ This outputs a URL e.g. http://127.0.0.1:8080?port=5858
 Open the URL in Chrome. This will open the Chrome Developer Tools and a breakpoint will be set at the first line of the Jest CLI script.
 
 Hit the play button to continue running the test. The script should pause when it hits your debugger statement you placed in the code.
+
+## Debugging in the Terminal
+
+Debugging in the terminal can be a quick way to debug your tests.
+
+### Setup
+
+If you application has not yet been set up to debug, you will need to add the following scripts to your application's `package.json`:
+
+```
+"scripts": {
+  "debug:terminal": "node debug ./node_modules/.bin/jest --runInBand --config=./jest.conf.json"
+}
+```
+
+### Debugging
+
+Add a `debugger;` statement to the test you’d like to debug
+
+In the terminal run the `debug:terminal` script (you can also pass additional options such as the file we want to test):
+
+```bash
+npm run debug:terminal relative/path/to/spec
+```
+
+Once it boots, execute the character `c` to continue past the initial breakpoint. The code will then continue to execute until it reaches your breakpoint. To inspect and run commands execute `repl`, this will allow you to inspect your code as you like.
