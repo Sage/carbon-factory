@@ -130,6 +130,8 @@ If you have made a valid change to component code which means a snapshot test is
 const myMock = jest.fn();
 ```
 
+In order to apply your mock to the right part of your code, just set the property to equal the mock, `MyComp.func = mock`. This is the equivalent of `spyOn(MyComp, 'func')`.
+
 The mock object has a mock property attached to it, which lets you track calls, arguments, etc.:
 
 ```js
