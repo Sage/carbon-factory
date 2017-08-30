@@ -34,7 +34,6 @@ Unfortunately debugging tests in the browser via Node is not great, but they are
 * Add the following config to the `launch.json` replacing the contents of the `configurations` array:
 
 ```
-// this should be the only element inside the configurations array
 {
   "type": "node",
   "request": "launch",
@@ -57,7 +56,7 @@ Unfortunately debugging tests in the browser via Node is not great, but they are
 ```
 
 * Save `launch.json`.
-* Focus on the target file by selecting it's tab.
+* Focus on the __spec__ file by selecting it's tab.
 * Run the debugger by pressing the play button which will run the currently focused file.
 
 ## Debugging in the Browser
