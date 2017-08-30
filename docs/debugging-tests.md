@@ -26,13 +26,15 @@ Unfortunately debugging tests in the browser via Node is not great, but they are
 
 ## Debugging in VisualStudioCode
 
-* Open your JavaScript application.
-* Add a `debugger;` statement into the file and line you want to trigger a breakpoint, add a red check on the line number.
+* Open your JavaScript project (either the folder, or go straight for the file you want to debug and open that).
+* Add a `debugger;` statement into the file and line you want to trigger a breakpoint (or add a red check on the line number).
 * Open the debugger panel by clicking on the debugger icon on the left.
-* Choose to add a configuration at the top of the debugger panel.
-* Add the following config to the `launch.json` file which is opened:
+* Select add a configuration at the top of the debugger panel.
+* Click on the cog to select this option and create a config file.
+* Add the following config to the `launch.json` replacing the contents of the `configurations` array:
 
 ```
+// this should be the only element inside the configurations array
 {
   "type": "node",
   "request": "launch",
@@ -55,7 +57,8 @@ Unfortunately debugging tests in the browser via Node is not great, but they are
 ```
 
 * Save `launch.json`.
-* Run the debugger by pressing the play button at the top of the debugger panel. This will debug the currently active file in the editor.
+* Focus on the target file by selecting it's tab.
+* Run the debugger by pressing the play button which will run the currently focused file.
 
 ## Debugging in the Browser
 
