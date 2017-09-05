@@ -1,3 +1,9 @@
+# 2.0.1
+
+## Bug Fixes:
+
+* Envify now runs across all node modules.
+
 # 2.0.0
 
 * Jasmine and Karma have been replaced by Jest. See our [migration document for details](https://github.com/Sage/carbon-factory/blob/master/docs/migrating/v1-v2.md).
