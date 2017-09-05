@@ -1,0 +1,35 @@
+{
+  "name": "carbon-factory--build",
+  "version": "1.0.0",
+  "description": "Build plugin for Carbon Factory",
+  "scripts": {
+    "release-version": "npm install && npm publish",
+    "prepublish": "rm -rf ./lib && NODE_ENV=production babel ./src --out-dir ./lib"
+  },
+  "main": "./lib/build.js",
+  "author": "The Sage Group plc",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sage/carbon-factory"
+  },
+  "peerDependencies": {
+    "carbon-factory": "^2.0.0-rc4"
+  },
+  "dependencies": {
+    "aliasify": "~1.7.2",
+    "babelify": "~7.3.0",
+    "browserify": "~13.1.0",
+    "envify": "~3.4.1",
+    "graceful-fs": "^4.1.11",
+    "gulp-if": "~2.0.1",
+    "gulp-streamify": "~1.0.2",
+    "gulp-uglify": "~2.0.0",
+    "node-notifier": "~4.6.1",
+    "parcelify": "~2.1.0",
+    "sass-css-stream": "~0.1.6",
+    "tsify": "^3.0.1",
+    "vinyl-source-stream": "~1.1.0",
+    "watchify": "~3.7.0"
+  }
+}

@@ -39,10 +39,9 @@ var lint = require('./lint').default;
 var gutil = require('gulp-util');
 var fs = require('fs');
 
-
 // Config Options https://facebook.github.io/jest/docs/configuration.html
 var baseJestConfig = {
-  preset: __dirname + "./../../jest.conf.json"
+  preset: __dirname + "./../jest.conf.json"
 }
 
 var argv = yargs.argv;
