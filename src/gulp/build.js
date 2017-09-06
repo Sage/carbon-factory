@@ -164,7 +164,6 @@ export default function (opts) {
      * Envify options (sets env options when compiling code).
      */
     var envifyTransform = envify({
-      global: true,
       _: 'purge',
       NODE_ENV: process.env.NODE_ENV
     });
@@ -222,7 +221,7 @@ export default function (opts) {
 
     var browserified = browserify(browserifyOpts)
                        .transform("babelify", babelTransformOptions)
-                       .transform(envifyTransform);
+                       .transform(envifyTransform, { global: true });
 
     // create dirs for assets
     mkdirp(fontDest, function (err) {
