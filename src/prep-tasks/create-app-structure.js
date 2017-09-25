@@ -8,7 +8,6 @@ var CreateAppStructure = function(name) {
   createDirectory(name, '/src/actions');
   createDirectory(name, '/src/stores');
   createDirectory(name, '/src/views');
-  createDirectory(name, '/src/dispatcher');
 
   function writeFiles() {
     var transform = function(data) {
@@ -17,12 +16,12 @@ var CreateAppStructure = function(name) {
 
     // clone required files for application
     cloneFile(name, '/../tpl/main.js', '/src/main.js');
-    cloneFile(name, '/../tpl/dispatcher.js', '/src/dispatcher/index.js');
     cloneFile(name, '/../tpl/index.html', '/index.html');
     cloneFile(name, '/../tpl/package.txt', '/package.json', transform);
     cloneFile(name, '/../tpl/gulpfile.js', '/gulpfile.js');
     cloneFile(name, '/../tpl/gitignore.txt', '/.gitignore');
     cloneFile(name, '/../tpl/eslintrc.txt', '/.eslintrc');
+    cloneFile(name, '/../tpl/babelrc.txt', '/.babelrc');
   };
 
   // wait 200ms to ensure the directories have finished being built

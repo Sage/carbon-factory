@@ -13,7 +13,7 @@ carbon --help
 To upgrade to the latest version of the CLI, run:
 
 ```
-npm install sage/carbon-factory -g
+npm install carbon-factory -g
 ```
 
 ## Available Commands
