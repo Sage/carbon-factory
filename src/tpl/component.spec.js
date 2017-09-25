@@ -1,5 +1,4 @@
 import React from 'react';
-import TestUtils from 'react/lib/ReactTestUtils';
 import MODULENAME from './FILENAME';
 
 describe('MODULENAME', () => {
