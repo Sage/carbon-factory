@@ -1,6 +1,6 @@
 {
   "name": "carbon-factory",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Tools to help create user interfaces with Carbon and React.",
   "main": "./jest.conf.json",
   "scripts": {
