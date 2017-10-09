@@ -1,3 +1,7 @@
+# 3.0.0-rc1
+
+* Updated `enzyme-to-json` to `3.1.2` to support [Enzyme 3](https://github.com/adriantoine/enzyme-to-json/issues/67).
+
 # 2.1.0
 
 * Updated Carbon CLI for setting up applications based on Carbon v2 and Carbon-Factory v2.
