@@ -1,3 +1,7 @@
+# 2.2.0
+
+* Enabled sourcemaps when running in watch mode. Alternatively you can control if they are enabled/disabled with the `--sourcemaps` flag when running gulp.
+
 # 2.1.0
 
 * Updated Carbon CLI for setting up applications based on Carbon v2 and Carbon-Factory v2.
