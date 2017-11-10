@@ -89,6 +89,8 @@ export default function (opts) {
         doUglify = (opts.uglify !== false),
         // array of modules to apply babel transforms to
         babelTransforms = opts.babelTransforms || [],
+        // array of additional paths/directories to lookup modules from
+        additionalLookups = opts.additionalLookups || [],
         // enable sourcemaps (enabled for watch mode by default)
         sourcemaps = watch;
 
@@ -176,6 +178,8 @@ export default function (opts) {
       NODE_ENV: process.env.NODE_ENV
     });
 
+    var lookups = [ './src', process.cwd() + '/node_modules' ].concat(additionalLookups);
+
     /**
      * Browserify options (for CommonJS).
      */
@@ -185,7 +189,7 @@ export default function (opts) {
       // which transforms to apply to the code
       transform: [ aliasTransform ],
       // lookup paths when importing modules
-      paths: [ './src', process.cwd() + '/node_modules' ],
+      paths: lookups,
       // enable/disable sourcemaps
       debug: sourcemaps,
 
