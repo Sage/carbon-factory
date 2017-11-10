@@ -11,11 +11,12 @@ This will only work using Node v8 or higher.
 
 ### Setup
 
-Add the following script to your `package.json` to make running the test easier in the future:
+* Install [NiM (Node Inspector Manager)](https://chrome.google.com/webstore/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj). This will allow Chrome to automatically connect when a debugger is detected.
+* Add the following script to your `package.json` to make running the test easier in the future:
 
 ```
 "scripts": {
-  "debug": "node --inspect ./node_modules/.bin/jest --watch --config=./jest.conf.json",
+  "debug": "node --inspect ./node_modules/.bin/jest --watch --config=./jest.conf.json"
 }
 ```
 
