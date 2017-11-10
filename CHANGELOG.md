@@ -1,3 +1,7 @@
+# 3.0.0-rc1
+
+* Updated `enzyme-to-json` to `3.1.2` to support [Enzyme 3](https://github.com/adriantoine/enzyme-to-json/issues/67).
+
 # 2.2.0
 
 * Disables `notify` on Jest, as it is causing memory leaks.

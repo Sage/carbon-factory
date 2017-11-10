@@ -1,6 +1,6 @@
 {
   "name": "carbon-factory",
-  "version": "2.2.0",
+  "version": "3.0.0-rc1",
   "description": "Tools to help create user interfaces with Carbon and React.",
   "main": "./jest.conf.json",
   "scripts": {
@@ -30,7 +30,7 @@
     "browserify": "~13.1.0",
     "commander": "~2.9.0",
     "envify": "~3.4.1",
-    "enzyme-to-json": "^1.5.1",
+    "enzyme-to-json": "^3.1.2",
     "es5-shim": "4.5.9",
     "eslint": "^3.12.2",
     "eslint-config-airbnb": "^13.0.0",
