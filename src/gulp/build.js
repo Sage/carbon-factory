@@ -90,7 +90,15 @@ export default function (opts) {
         // array of modules to apply babel transforms to
         babelTransforms = opts.babelTransforms || [],
         // array of additional paths/directories to lookup modules from
-        additionalLookups = opts.additionalLookups || [];
+        additionalLookups = opts.additionalLookups || [],
+        // enable sourcemaps (enabled for watch mode by default)
+        sourcemaps = watch;
+
+    if (argv.sourcemaps === 'false') {
+      sourcemaps = false;
+    } else if (argv.sourcemaps) {
+      sourcemaps = true;
+    }
 
     if (opts.additionalSassTransformDirs) {
       // define directories in which to apply sass transforms
@@ -182,6 +190,8 @@ export default function (opts) {
       transform: [ aliasTransform ],
       // lookup paths when importing modules
       paths: lookups,
+      // enable/disable sourcemaps
+      debug: sourcemaps,
 
       // Caching for watchify see:
       // https://github.com/substack/watchify/blob/v3.7.0/readme.markdown#watchifyb-opts
