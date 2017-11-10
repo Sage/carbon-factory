@@ -1,6 +1,7 @@
 # 2.2.0
 
 * Disables `notify` on Jest, as it is causing memory leaks.
+* Allows additional lookup paths to be defined for the build task.
 * Enabled sourcemaps when running in watch mode. Alternatively you can control if they are enabled/disabled with the `--sourcemaps` flag when running gulp.
 * Removes dependency `node-inspector`, allowing use of Node v8.
 
