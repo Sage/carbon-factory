@@ -88,7 +88,15 @@ export default function (opts) {
         // if uglify requested
         doUglify = (opts.uglify !== false),
         // array of modules to apply babel transforms to
-        babelTransforms = opts.babelTransforms || [];
+        babelTransforms = opts.babelTransforms || [],
+        // enable sourcemaps (enabled for watch mode by default)
+        sourcemaps = watch;
+
+    if (argv.sourcemaps === 'false') {
+      sourcemaps = false;
+    } else if (argv.sourcemaps) {
+      sourcemaps = true;
+    }
 
     if (opts.additionalSassTransformDirs) {
       // define directories in which to apply sass transforms
@@ -178,6 +186,8 @@ export default function (opts) {
       transform: [ aliasTransform ],
       // lookup paths when importing modules
       paths: [ './src', process.cwd() + '/node_modules' ],
+      // enable/disable sourcemaps
+      debug: sourcemaps,
 
       // Caching for watchify see:
       // https://github.com/substack/watchify/blob/v3.7.0/readme.markdown#watchifyb-opts
