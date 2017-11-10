@@ -1,6 +1,7 @@
 # 2.2.0
 
 * Disables `notify` on Jest, as it is causing memory leaks.
+* Removes dependency `node-inspector`, allowing use of Node v8.
 
 # 2.1.0
 
