@@ -1,6 +1,7 @@
 # 2.2.0
 
 * Allows additional lookup paths to be defined for the build task.
+* Removes dependency `node-inspector`, allowing use of Node v8.
 
 # 2.1.0
 
