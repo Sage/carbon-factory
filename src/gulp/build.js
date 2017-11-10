@@ -88,7 +88,9 @@ export default function (opts) {
         // if uglify requested
         doUglify = (opts.uglify !== false),
         // array of modules to apply babel transforms to
-        babelTransforms = opts.babelTransforms || [];
+        babelTransforms = opts.babelTransforms || [],
+        // array of additional paths/directories to lookup modules from
+        additionalLookups = opts.additionalLookups || [];
 
     if (opts.additionalSassTransformDirs) {
       // define directories in which to apply sass transforms
@@ -168,6 +170,8 @@ export default function (opts) {
       NODE_ENV: process.env.NODE_ENV
     });
 
+    var lookups = [ './src', process.cwd() + '/node_modules' ].concat(additionalLookups);
+
     /**
      * Browserify options (for CommonJS).
      */
@@ -177,7 +181,7 @@ export default function (opts) {
       // which transforms to apply to the code
       transform: [ aliasTransform ],
       // lookup paths when importing modules
-      paths: [ './src', process.cwd() + '/node_modules' ],
+      paths: lookups,
 
       // Caching for watchify see:
       // https://github.com/substack/watchify/blob/v3.7.0/readme.markdown#watchifyb-opts
