@@ -1,3 +1,7 @@
+# 2.2.0
+
+* Removes dependency `node-inspector`, allowing use of Node v8.
+
 # 2.1.0
 
 * Updated Carbon CLI for setting up applications based on Carbon v2 and Carbon-Factory v2.
