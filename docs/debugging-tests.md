@@ -59,7 +59,7 @@ npm run debug
   "program": "${workspaceRoot}/node_modules/.bin/jest",
   "args": [
     "--runInBand",
-    "--config=./jest.conf.json"
+    "--config=./jest.conf.json",
     "${file}"
   ],
   "runtimeArgs": [
