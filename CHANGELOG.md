@@ -1,6 +1,7 @@
-# 3.0.0-rc1
+# 3.0.0
 
 * Updated `enzyme-to-json` to `3.1.2` to support [Enzyme 3](https://github.com/adriantoine/enzyme-to-json/issues/67).
+* Upgraded `sass-css-stream` to `1.0.0` which includes an upgrade to `node-sass` to `4.7.2`.
 
 # 2.2.0
 
