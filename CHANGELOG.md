@@ -1,5 +1,6 @@
 # 3.0.0
 
+* Added `raf` at `3.4.0` to support [React 16](https://github.com/facebook/jest/issues/4545)
 * Updated `enzyme-to-json` to `3.1.2` to support [Enzyme 3](https://github.com/adriantoine/enzyme-to-json/issues/67).
 * Upgraded `sass-css-stream` to `1.0.0` which includes an upgrade to `node-sass` to `4.7.2`.
 

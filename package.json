@@ -1,6 +1,6 @@
 {
   "name": "carbon-factory",
-  "version": "3.0.0-rc3",
+  "version": "3.0.0-rc4",
   "description": "Tools to help create user interfaces with Carbon and React.",
   "main": "./jest.conf.json",
   "scripts": {
@@ -51,6 +51,7 @@
     "node-notifier": "~4.6.1",
     "parcelify": "~2.1.0",
     "promptly": "~2.1.0",
+    "raf": "^3.4.0",
     "react-proxy": "~1.1.8",
     "sass-css-stream": "~1.0.0",
     "string": "~3.3.1",
