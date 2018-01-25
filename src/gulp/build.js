@@ -53,6 +53,7 @@ import gulpif from 'gulp-if';
 import uglify from 'gulp-uglify';
 import streamify from 'gulp-streamify';
 import livereactload from 'livereactload';
+import { Spinner } from 'cli-spinner';
 
 var argv = yargs.argv;
 
@@ -319,14 +320,34 @@ export default function (opts) {
      * The main build task.
      */
     function build(f) {
-      if (f) gutil.log('Recompiling ' + f);
+      var message = f ? 'Recompiling ' : 'Precompiling ';
+      message = gutil.colors.green(message);
+      message += f || '(please wait)';
+      var spinner = new Spinner('%s ' + message);
+      spinner.setSpinnerString(18);
+
+      if (!f) {
+        // if on init, use small timeout to give a bit leeway
+        setTimeout(() => {
+          spinner.start();
+        }, 10);
+      } else {
+        spinner.start();
+      }
+
       return bundler
         .bundle()
         .on('error', (error) => { gutil.log("*** Browserify Error ***"); console.log(error) })
         .on('error', handleError)
         .pipe(source(jsFile))
         .pipe(gulpif(production && doUglify, streamify(uglify())))
-        .pipe(gulp.dest(jsDest));
+        .pipe(gulp.dest(jsDest))
+        .on('end', () => {
+          spinner.stop(true);
+          if (f) {
+            gutil.log('Recompiled ' + f);
+          }
+        });
     };
 
     // run the build immediately and whenever the bundler updates
