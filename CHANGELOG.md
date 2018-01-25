@@ -1,3 +1,7 @@
+# 3.1.1
+
+* Fixes multi line issue with build spinner.
+
 # 3.1.0
 
 * Adds a spinner to the build task to indicate when it is busy.

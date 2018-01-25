@@ -278,7 +278,7 @@ export default function (opts) {
       appTransformDirs: additionalSassTransformDirs
     }).on('done', function() {
       // when parcelify is ready
-      gutil.log("Assets are compiled!");
+      gutil.log(gutil.colors.green("Assets are compiled!"));
 
       if (watch) {
         gutil.log("Gulp is now watching and will rebuild your code when it detects any file changes...");
@@ -320,9 +320,10 @@ export default function (opts) {
      * The main build task.
      */
     function build(f) {
+      f = f ? f[0].replace(process.cwd(), '') : null;
       var message = f ? 'Recompiling ' : 'Precompiling ';
       message = gutil.colors.green(message);
-      message += f || '(please wait)';
+      message += '(please wait)';
       var spinner = new Spinner('%s ' + message);
       spinner.setSpinnerString(18);
 
@@ -332,6 +333,7 @@ export default function (opts) {
           spinner.start();
         }, 10);
       } else {
+        gutil.log(gutil.colors.yellow('File changed: ') + f);
         spinner.start();
       }
 
@@ -345,7 +347,7 @@ export default function (opts) {
         .on('end', () => {
           spinner.stop(true);
           if (f) {
-            gutil.log('Recompiled ' + f);
+            gutil.log(gutil.colors.green('Recompiled: ') + f);
           }
         });
     };
