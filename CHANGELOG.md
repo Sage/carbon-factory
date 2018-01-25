@@ -1,3 +1,7 @@
+# 3.1.0
+
+* Adds a spinner to the build task to indicate when it is busy.
+
 # 3.0.0
 
 * Updated `enzyme-to-json` to `3.1.2` to support [Enzyme 3](https://github.com/adriantoine/enzyme-to-json/issues/67).
