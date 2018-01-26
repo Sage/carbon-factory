@@ -1,3 +1,7 @@
+# 3.2.0
+
+`dir` option for Build and Lint tasks. Settings this value allows you to control which directory to search in to run tests.
+
 # 3.1.1
 
 * Fixes multi line issue with build spinner.
