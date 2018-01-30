@@ -1,5 +1,6 @@
 # 3.2.0
 
+* `dir` option for Build and Lint tasks. Settings this value allows you to control which directory to search in to run tests.
 * Update eslint from 3.19 to 4.16
 
 # 3.1.1

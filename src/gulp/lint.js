@@ -49,7 +49,8 @@ export default function(options) {
     // http://eslint.org/docs/user-guide/formatters/#output-examples
     var format = options.format || 'stylish';
 
-    var path = options.path || 'src/**/!(__spec__|__definition__).js';
+    var path = options.path || '/**/!(__spec__|__definition__).js';
+    path = (options.dir || 'src') + path;
 
     fs.stat(process.cwd() + '/.eslintrc', function(err, stat) {
       if (err == null) { return }
