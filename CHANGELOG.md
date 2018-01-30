@@ -1,3 +1,7 @@
+# 3.2.0
+
+* Update eslint from 3.19 to 4.16
+
 # 3.1.1
 
 * Fixes multi line issue with build spinner.
