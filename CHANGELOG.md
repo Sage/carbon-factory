@@ -1,3 +1,13 @@
+# 3.3.0
+
+## Gzip
+
+As part of the build task we will now gzip your assets if using the `--production` flag. You can disable gzip compression by passing `gzip: false` to the config.
+
+## Clean CSS
+
+We now run [Clean CSS](https://github.com/jakubpawlowicz/clean-css) on the compiled stylesheet.
+
 # 3.2.0
 
 * `dir` option for Build and Lint tasks. Settings this value allows you to control which directory to search in to run tests.
