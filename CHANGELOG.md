@@ -1,3 +1,7 @@
+# 3.3.1
+
+Gzipped assets are no longer created with a `.gz` extension.
+
 # 3.3.0
 
 ## Gzip

@@ -298,7 +298,7 @@ export default function (opts) {
         fonts.push(font.srcPath);
       });
       gulp.src(fonts)
-        .pipe(gulpif(production && gzip, gulpGzip()))
+        .pipe(gulpif(production && gzip, gulpGzip({ append: false })))
         .pipe(gulp.dest(fontDest));
 
       // copy the images to the correct directory
@@ -312,7 +312,7 @@ export default function (opts) {
       // write the css file
       return gulp.src(cssDest + '/' + cssFile)
         .pipe(cleanCSS())
-        .pipe(gulpif(production && gzip, gulpGzip()))
+        .pipe(gulpif(production && gzip, gulpGzip({ append: false })))
         .pipe(gulp.dest(cssDest));
     });
 
@@ -348,7 +348,7 @@ export default function (opts) {
         .on('error', handleError)
         .pipe(source(jsFile))
         .pipe(gulpif(production && doUglify, streamify(uglify())))
-        .pipe(gulpif(production && gzip, gulpGzip()))
+        .pipe(gulpif(production && gzip, gulpGzip({ append: false })))
         .pipe(gulp.dest(jsDest))
         .on('end', () => {
           spinner.stop(true);
