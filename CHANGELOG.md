@@ -1,3 +1,13 @@
+# 3.2.1
+
+## Bug Fixes:
+
+* Update eslint-config-airbnb from 13.0.0 to 15.0.0
+* Update eslint-plugin-import from 2.2.0 to 2.7.0
+* Update eslint-plugin-jsx-a11y from 2.2.3 to 5.1.1
+* Update eslint-plugin-react from 6.8.0 to 7.1.0
+* In cases of breaking changes where lint rules are now defaulting to true, set back to false in .eslintrc
+
 # 3.2.0
 
 * `dir` option for Build and Lint tasks. Settings this value allows you to control which directory to search in to run tests.
