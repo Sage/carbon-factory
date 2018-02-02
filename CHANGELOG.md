@@ -1,3 +1,7 @@
+# 3.3.2
+
+The `dir` option for the spec task uses Jest's `rootDir` instead of `roots`.
+
 # 3.3.1
 
 Gzipped assets are no longer created with a `.gz` extension.

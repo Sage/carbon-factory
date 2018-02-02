@@ -74,7 +74,7 @@ export default function(options) {
     }
 
     if (opts.dir) {
-      cliOptions.roots = [opts.dir, '__mocks__'];
+      cliOptions.rootDir = opts.dir;
     }
 
     // TODO: Can we pass more arguments here to jestCli
