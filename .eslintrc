@@ -2,7 +2,15 @@
   "parser": "babel-eslint",
   "rules": {
     // Prevent missing parentheses around multilines JSX
-    "react/jsx-wrap-multilines": [2, { declaration: "parens-new-line", assignment: "parens-new-line", return: "parens-new-line", arrow: "parens-new-line", condition: "parens-new-line", logical: "parens-new-line", prop: "parens-new-line" }],
+    "react/jsx-wrap-multilines": [2, {
+      declaration: "parens-new-line",
+      assignment: "parens-new-line",
+      return: "parens-new-line",
+      arrow: "parens-new-line",
+      condition: "parens-new-line",
+      logical: "parens-new-line",
+      prop: "parens-new-line"
+    }],
 
     //Limit maximum of props on a single line in JSX
     "react/jsx-max-props-per-line": [2, { "maximum": 2 }],
@@ -15,6 +23,9 @@
 
     // this is from the babel-eslint setup https://github.com/babel/babel-eslint#setup
     "strict": 0,
+
+    // https://eslint.org/docs/rules/function-paren-newline
+    "function-paren-newline": [2, "consistent"],
 
     "no-trailing-spaces": [2],
 
