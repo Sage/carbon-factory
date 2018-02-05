@@ -1,134 +1,98 @@
 {
-  "parser": "babel-eslint",
-  "rules": {
-    // Prevent missing parentheses around multilines JSX
-    "react/jsx-wrap-multilines": [2, {
-      declaration: "parens-new-line",
-      assignment: "parens-new-line",
-      return: "parens-new-line",
-      arrow: "parens-new-line",
-      condition: "parens-new-line",
-      logical: "parens-new-line",
-      prop: "parens-new-line"
-    }],
-
-    //Limit maximum of props on a single line in JSX
-    "react/jsx-max-props-per-line": [2, { "maximum": 2 }],
-
-    // this stops errors when React is imported but does not appear to be used because of JSX compilation
-    "react/jsx-uses-react": 1,
-
-    // see https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-uses-vars.md
-    "react/jsx-uses-vars": 1,
-
-    // this is from the babel-eslint setup https://github.com/babel/babel-eslint#setup
-    "strict": 0,
-
-    // https://eslint.org/docs/rules/function-paren-newline
-    "function-paren-newline": [2, "consistent"],
-
-    "no-trailing-spaces": [2],
-
+  'parser': 'babel-eslint',
+  'rules': {
+    'strict': 0, // this is from the babel-eslint setup
+    'array-bracket-spacing': ['error', 'never'],
+    'arrow-body-style': 'off',
+    'class-methods-use-this': 'off',
+    'comma-dangle': ['error', 'never'],
+    'func-names': 'off',
+    'function-paren-newline': ['error', 'consistent'],
+    'guard-for-in': 'off',
+    'import/extensions': ['off', 'never'],
+    'import/no-extraneous-dependencies': 'off',
+    'import/no-unresolved': 'off',
     // indentation of 2 spaces, and specific indentation for stacked variable declarations and switch/case statements
-    "indent": [2, 2, {
-      "VariableDeclarator": 2,
-      "SwitchCase": 1
+    'indent': ['error', 2, {
+      'VariableDeclarator': 2,
+      'SwitchCase': 1
     }],
-
-    // line breaks for unix based systems
-    "linebreak-style": [2, "unix"],
-
-    // enable semi-colons
-    "semi": [2, "always"],
-
-    // enable semi-colon spacing
-    "semi-spacing": [2, {"before": false, "after": true}],
-
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-    "import/no-extraneous-dependencies": "off",
-
-    // http://eslint.org/docs/rules/comma-dangle
-    "comma-dangle": ["error", "never"],
-
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
-    "react/jsx-filename-extension": "off",
-
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md
-    "react/jsx-curly-spacing": [2, "always"],
-
-    //http://eslint.org/docs/rules/guard-for-in
-    "guard-for-in": "off",
-
-    // http://eslint.org/docs/rules/one-var-declaration-per-line
-    "one-var-declaration-per-line": "off",
-
-    // http://eslint.org/docs/rules/one-var
-    "one-var": "off",
-
-    // http://eslint.org/docs/rules/no-restricted-syntax
-    "no-restricted-syntax": "off",
-
-    "jsx-quotes": ["error", "prefer-single"],
-
-    // http://eslint.org/docs/rules/no-underscore-dangle
-    "no-underscore-dangle": "off",
-
-    "react/forbid-prop-types": "off",
-
-    // http://eslint.org/docs/rules/no-plusplus
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-
-    "max-len": ["error", 120],
-
-    // http://eslint.org/docs/rules/array-bracket-spacing
-    "array-bracket-spacing": ["error", "never"],
-
-    "max-params": ["error", 5],
-
-    // http://eslint.org/docs/rules/arrow-body-style
-    "arrow-body-style": "off",
-
-    // http://eslint.org/docs/rules/func-names
-    "func-names": "off",
-
-    // http://eslint.org/docs/rules/multiline-ternary
-    "multiline-ternary": ["error", "never"],
-
-    // http://eslint.org/docs/rules/space-before-function-parentheses
-    "space-before-function-paren": "off",
-
-    // http://eslint.org/docs/rules/prefer-const
-    "prefer-const": ["error", {"destructuring": "any"}],
-
-    // http://eslint.org/docs/rules/class-methods-use-this
-    "class-methods-use-this": "off",
-
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-    "import/no-unresolved": "off",
-    "import/extensions": ["off", "never"],
-
-    // https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-static-element-interactions.md
-    'jsx-a11y/no-static-element-interactions': 'off',
-
-    // http://eslint.org/docs/rules/no-param-reassign
-    "no-param-reassign": ["error", { "props": false }],
-
-    // http://eslint.org/docs/rules/no-use-before-define
-    "no-use-before-define": ["error", { "functions": false, "classes": false }]
+    'jsx-a11y/anchor-is-valid': 'warn',
+    'jsx-a11y/click-events-have-key-events': 'warn',
+    'jsx-a11y/label-has-for': 'warn',
+    'jsx-a11y/mouse-events-have-key-events': 'warn',
+    'jsx-a11y/no-noninteractive-element-interactions': 'warn',
+    'jsx-a11y/no-static-element-interactions': 'warn',
+    'jsx-quotes': ['error', 'prefer-single'],
+    'linebreak-style': ['error', 'unix'], // line breaks for unix based systems
+    'max-len': ['error', 120],
+    'max-params': ['error', 5],
+    'multiline-ternary': ['error', 'never'],
+    'no-param-reassign': ['error', { 'props': false }],
+    'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
+    'no-restricted-syntax': 'off',
+    'no-trailing-spaces': ['error'],
+    'no-underscore-dangle': 'off',
+    'no-use-before-define': ['error', { 'functions': false, 'classes': false }]
+    'one-var': 'off',
+    'one-var-declaration-per-line': 'off',
+    'prefer-const': ['error', {'destructuring': 'any'}],
+    'prefer-destructuring': ['error', {
+      'VariableDeclarator': {
+        'array': false,
+        'object': true
+      },
+      'AssignmentExpression': {
+        'array': false,
+        'object': false
+      }
+    }],
+    'react/jsx-curly-spacing': ['error', 'always'],
+    'react/jsx-filename-extension': 'off',
+    // Limit maximum of props on a single line in JSX
+    'react/jsx-max-props-per-line': ['error', { 'maximum': 2 }],
+    // this stops errors when React is imported but does not appear to be used because of JSX compilation
+    'react/jsx-uses-react': 'warn',
+    'react/jsx-uses-vars': 'warn',
+    // Prevent missing parentheses around multilines JSX
+    'react/jsx-wrap-multilines': ['error', {
+      declaration: 'parens-new-line',
+      assignment: 'parens-new-line',
+      return: 'parens-new-line',
+      arrow: 'parens-new-line',
+      condition: 'parens-new-line',
+      logical: 'parens-new-line',
+      prop: 'parens-new-line'
+    }],
+    'react/forbid-prop-types': 'off',
+    'react/no-array-index-key': 'warn',
+    'react/require-default-props': 'off',
+    'react/sort-comp': ['error', {
+      order: [
+        'static-methods',
+        'lifecycle',
+        '/^on.+$/',
+        '/^(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
+        'everything-else',
+        '/^render.+$/',
+        'render'
+      ],
+    }],
+    'semi': ['error', 'always'], // enable semi-colons
+    'semi-spacing': ['error', {'before': false, 'after': true}], // enable semi-colon spacing
+    'space-before-function-paren': 'off',
   },
-  "env": {
-    "es6": true,
-    "browser": true,
-    "jasmine": true
+  'env': {
+    'es6': true,
+    'browser': true,
+    'jasmine': true
   },
-  "extends": [ "eslint:recommended", "plugin:react/recommended", "airbnb"],
-  "ecmaFeatures": {
-    "jsx": true,
-    "experimentalObjectRestSpread": true,
-    "modules": true,
-    "arrowFunctions": true
-  },
-  "plugins": [
-    "react"
+  'extends': [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'airbnb'
+  ],
+  'plugins': [
+    'react'
   ]
 }
