@@ -6,7 +6,7 @@
 * Update eslint-plugin-import from 2.2.0 to 2.7.0
 * Update eslint-plugin-jsx-a11y from 2.2.3 to 5.1.1
 * Update eslint-plugin-react from 6.8.0 to 7.1.0
-* In cases of breaking changes where lint rules are now defaulting to true, set back to false in .eslintrc
+* Some rules have been set to warning so as to not affect builds. These may be turned to errors in future version of carbon-factory.
 
 # 3.2.0
 

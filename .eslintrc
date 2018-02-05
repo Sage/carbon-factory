@@ -6,34 +6,34 @@
     "react/require-default-props": 0,
 
     // Prevent missing props validation in a React component definition
-    "react/prop-types": 0,
+    "react/prop-types": 1,
 
     // Enforce component methods order
     "react/sort-comp": 0,
 
     // Prevent missing parentheses around multilines JSX
-    "react/jsx-wrap-multilines": 0,
+    "react/jsx-wrap-multilines": [1, { declaration: "parens-new-line", assignment: "parens-new-line", return: "parens-new-line", arrow: "parens-new-line", condition: "parens-new-line", logical: "parens-new-line", prop: "parens-new-line" }],
 
     //Limit maximum of props on a single line in JSX
-    "react/jsx-max-props-per-line": 0,
+    "react/jsx-max-props-per-line": [1, { "maximum": 2 }],
 
     // Prevent void DOM elements from receiving children
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/void-dom-elements-no-children.md
-    "react/void-dom-elements-no-children": 0,
+    "react/void-dom-elements-no-children": 2,
 
     // Prevent using Array index in `key` props
-    "react/no-array-index-key": 0,
+    "react/no-array-index-key": 1,
 
     // A non-interactive element does not support event handlers (mouse and key handlers)
     // https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-noninteractive-element-interactions.md
-    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 1,
 
     // Requires or disallows a whitespace (space or tab) beginning a comment
-    "spaced-comment": 0,
+    "spaced-comment": 1,
 
     // disallow use of chained assignment expressions
     // http://eslint.org/docs/rules/no-multi-assign
-    "no-multi-assign": 0,
+    "no-multi-assign": 1,
 
     // this stops errors when React is imported but does not appear to be used because of JSX compilation
     "react/jsx-uses-react": 1,
