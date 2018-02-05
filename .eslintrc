@@ -33,7 +33,7 @@
     'no-restricted-syntax': 'off',
     'no-trailing-spaces': ['error'],
     'no-underscore-dangle': 'off',
-    'no-use-before-define': ['error', { 'functions': false, 'classes': false }]
+    'no-use-before-define': ['error', { 'functions': false, 'classes': false }],
     'one-var': 'off',
     'one-var-declaration-per-line': 'off',
     'prefer-const': ['error', {'destructuring': 'any'}],
@@ -80,7 +80,7 @@
     }],
     'semi': ['error', 'always'], // enable semi-colons
     'semi-spacing': ['error', {'before': false, 'after': true}], // enable semi-colon spacing
-    'space-before-function-paren': 'off',
+    'space-before-function-paren': 'off'
   },
   'env': {
     'es6': true,

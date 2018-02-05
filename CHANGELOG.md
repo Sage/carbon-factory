@@ -10,7 +10,7 @@
 * Update eslint-plugin-jsx-a11y from 2.2.3 to 6.0.3
 * Update eslint-plugin-react from 6.8.0 to 7.6.1
 
-:note: Upgrading these dependencies updates some rules and introduces some new ones. You may need to resolve these issues or you can configure your application's `.eslintrc` file to turn them down to warnings. Using `--fix` may be the easiest solution.
+:note: Upgrading these dependencies updates some rules and introduces some new ones. You may need to resolve these issues or you can configure your application's `.eslintrc` file to turn them down to warnings. Using `--fix` may be the easiest solution. We do not recommend turning these rules off entirely.
 
 # 3.2.0
 
