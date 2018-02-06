@@ -1,3 +1,17 @@
+# 3.3.3
+
+## Bug Fixes:
+
+* Update eslint from 4.16.0 to 4.17.0
+* Update gulp-eslint from 3.0.0 to 4.0.2
+* Update babel-eslint from 6.1.2 to 8.2.1
+* Update eslint-config-airbnb from 13.0.0 to 16.10
+* Update eslint-plugin-import from 2.2.0 to 2.8.0
+* Update eslint-plugin-jsx-a11y from 2.2.3 to 6.0.3
+* Update eslint-plugin-react from 6.8.0 to 7.6.1
+
+:note: Upgrading these dependencies updates some rules and introduces some new ones. You may need to resolve these issues or you can configure your application's `.eslintrc` file to turn them down to warnings. Using `--fix` may be the easiest solution. We do not recommend turning these rules off entirely.
+
 # 3.3.2
 
 The `dir` option for the spec task uses Jest's `rootDir` instead of `roots`.
