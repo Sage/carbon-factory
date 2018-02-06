@@ -51,6 +51,8 @@ import tsify from 'tsify';
 import yargs from 'yargs';
 import gulpif from 'gulp-if';
 import uglify from 'gulp-uglify';
+import cleanCSS from 'gulp-clean-css';
+import gulpGzip from 'gulp-gzip';
 import streamify from 'gulp-streamify';
 import livereactload from 'livereactload';
 import { Spinner } from 'cli-spinner';
@@ -88,6 +90,8 @@ export default function (opts) {
         production = argv.production || false,
         // if uglify requested
         doUglify = (opts.uglify !== false),
+        // if gzip requested
+        gzip = (opts.gzip !== false),
         // array of modules to apply babel transforms to
         babelTransforms = opts.babelTransforms || [],
         // array of additional paths/directories to lookup modules from
@@ -294,6 +298,7 @@ export default function (opts) {
         fonts.push(font.srcPath);
       });
       gulp.src(fonts)
+        .pipe(gulpif(production && gzip, gulpGzip({ append: false })))
         .pipe(gulp.dest(fontDest));
 
       // copy the images to the correct directory
@@ -305,9 +310,9 @@ export default function (opts) {
         .pipe(gulp.dest(imageDest));
 
       // write the css file
-      return gulp.src(cssFile)
-        .on('error', () => gutil.log("*** Error writing the CSS File ***"))
-        .on('error', handleError)
+      return gulp.src(cssDest + '/' + cssFile)
+        .pipe(cleanCSS())
+        .pipe(gulpif(production && gzip, gulpGzip({ append: false })))
         .pipe(gulp.dest(cssDest));
     });
 
@@ -343,6 +348,7 @@ export default function (opts) {
         .on('error', handleError)
         .pipe(source(jsFile))
         .pipe(gulpif(production && doUglify, streamify(uglify())))
+        .pipe(gulpif(production && gzip, gulpGzip({ append: false })))
         .pipe(gulp.dest(jsDest))
         .on('end', () => {
           spinner.stop(true);

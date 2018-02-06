@@ -1,6 +1,6 @@
 {
   "name": "carbon-factory",
-  "version": "3.2.1",
+  "version": "3.3.2",
   "description": "Tools to help create user interfaces with Carbon and React.",
   "main": "./jest.conf.json",
   "scripts": {
@@ -40,7 +40,9 @@
     "eslint-plugin-react": "7.6.1",
     "graceful-fs": "^4.1.11",
     "gulp": "~3.9.1",
+    "gulp-clean-css": "^3.9.2",
     "gulp-eslint": "4.0.2",
+    "gulp-gzip": "^1.4.2",
     "gulp-if": "~2.0.1",
     "gulp-streamify": "~1.0.2",
     "gulp-uglify": "~2.0.0",

@@ -1,3 +1,21 @@
+# 3.3.2
+
+The `dir` option for the spec task uses Jest's `rootDir` instead of `roots`.
+
+# 3.3.1
+
+Gzipped assets are no longer created with a `.gz` extension.
+
+# 3.3.0
+
+## Gzip
+
+As part of the build task we will now gzip your assets if using the `--production` flag. You can disable gzip compression by passing `gzip: false` to the config.
+
+## Clean CSS
+
+We now run [Clean CSS](https://github.com/jakubpawlowicz/clean-css) on the compiled stylesheet.
+
 # 3.2.1
 
 ## Bug Fixes:
