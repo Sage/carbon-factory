@@ -1,3 +1,7 @@
+# 3.4.0
+
+Updated versions of packages. Please [see commit](https://github.com/Sage/carbon-factory/commit/8afe6ef2f23b4fdea33daf2b10211e5c63f9912f) for all changes.
+
 # 3.3.3
 
 ## Bug Fixes:
