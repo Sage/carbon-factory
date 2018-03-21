@@ -50,6 +50,8 @@ var argv = yargs.argv;
 export default function(options) {
   var opts = options || {};
 
+  gutil.log(gutil.colors.red("The SPEC task provided by Carbon Factory is deprecated and will be removed in the next version. You should update to use Jest directly. Please see the following for more information: https://github.com/Sage/carbon-factory/wiki/Spec-Task-Deprecation"));
+
   return function(done) {
     // use custom config supplied via opts, or use our base config
     var config = opts.jestConfig || baseJestConfig,
