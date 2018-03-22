@@ -44,6 +44,7 @@
     "gulp-eslint": "4.0.2",
     "gulp-gzip": "1.4.2",
     "gulp-if": "2.0.2",
+    "gulp-rebase-css-urls": "0.0.2",
     "gulp-streamify": "1.0.2",
     "gulp-uglify": "2.1.2",
     "gulp-util": "3.0.8",

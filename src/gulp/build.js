@@ -54,6 +54,7 @@ import uglify from 'gulp-uglify';
 import cleanCSS from 'gulp-clean-css';
 import gulpGzip from 'gulp-gzip';
 import streamify from 'gulp-streamify';
+import rebaseCssUrls from 'gulp-rebase-css-urls';
 import livereactload from 'livereactload';
 import { Spinner } from 'cli-spinner';
 
@@ -311,6 +312,7 @@ export default function (opts) {
 
       // write the css file
       return gulp.src(cssDest + '/' + cssFile)
+        .pipe(rebaseCssUrls('/foobar'))
         .pipe(cleanCSS())
         .pipe(gulpif(production && gzip, gulpGzip({ append: false })))
         .pipe(gulp.dest(cssDest));
