@@ -51,6 +51,7 @@ import tsify from 'tsify';
 import yargs from 'yargs';
 import gulpif from 'gulp-if';
 import uglify from 'gulp-uglify';
+import urlAdjuster from 'gulp-css-replace-url';
 import cleanCSS from 'gulp-clean-css';
 import gulpGzip from 'gulp-gzip';
 import streamify from 'gulp-streamify';
@@ -92,6 +93,8 @@ export default function (opts) {
         doUglify = (opts.uglify !== false),
         // if gzip requested
         gzip = (opts.gzip !== false),
+        // url to rebase asset paths to in the css file
+        assetsUrl = argv.assetsUrl,
         // array of modules to apply babel transforms to
         babelTransforms = opts.babelTransforms || [],
         // array of additional paths/directories to lookup modules from
@@ -311,6 +314,7 @@ export default function (opts) {
 
       // write the css file
       return gulp.src(cssDest + '/' + cssFile)
+        .pipe(gulpif(!!assetsUrl, urlAdjuster({ prepend: assetsUrl })))
         .pipe(cleanCSS())
         .pipe(gulpif(production && gzip, gulpGzip({ append: false })))
         .pipe(gulp.dest(cssDest));
