@@ -2,6 +2,12 @@
 
 Updated versions of packages. Please [see commit](https://github.com/Sage/carbon-factory/commit/8afe6ef2f23b4fdea33daf2b10211e5c63f9912f) for all changes. Build tasks should still work, however some tests may need updating.
 
+## Assets URL
+
+You can now prepend the assets URL with a different address.
+
+By default assets are rendered in the CSS file with `/assets/my-file`. You can now pass `gulp build --assetsUrl /custom-url` and the output will be `/custom-url/assets/my-file`.
+
 # 3.3.3
 
 ## Bug Fixes:
