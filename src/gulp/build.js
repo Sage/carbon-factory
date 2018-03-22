@@ -314,7 +314,7 @@ export default function (opts) {
 
       // write the css file
       return gulp.src(cssDest + '/' + cssFile)
-        .pipe(gulpif(assetsUrl, urlAdjuster({ prepend: assetsUrl })))
+        .pipe(gulpif(!!assetsUrl, urlAdjuster({ prepend: assetsUrl })))
         .pipe(cleanCSS())
         .pipe(gulpif(production && gzip, gulpGzip({ append: false })))
         .pipe(gulp.dest(cssDest));
