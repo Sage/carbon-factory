@@ -28,3 +28,7 @@ npm install carbon-factory --save-dev
 ## Licence
 
 Carbon Factory is licensed under the [Apache-2.0 licence](https://github.com/Sage/carbon-factory/blob/master/LICENSE).
+
+## Copyright
+
+Copyright (c) 2018 Sage Group Plc. All rights reserved.
