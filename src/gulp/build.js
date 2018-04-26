@@ -54,6 +54,7 @@ import uglify from 'gulp-uglify';
 import urlAdjuster from 'gulp-css-replace-url';
 import cleanCSS from 'gulp-clean-css';
 import gulpGzip from 'gulp-gzip';
+import gulpHoist from 'gulp-hoist-css-imports';
 import streamify from 'gulp-streamify';
 import livereactload from 'livereactload';
 import { Spinner } from 'cli-spinner';
@@ -315,6 +316,7 @@ export default function (opts) {
       // write the css file
       return gulp.src(cssDest + '/' + cssFile)
         .pipe(gulpif(!!assetsUrl, urlAdjuster({ prepend: assetsUrl })))
+        .pipe(gulpHoist())
         .pipe(cleanCSS())
         .pipe(gulpif(production && gzip, gulpGzip({ append: false })))
         .pipe(gulp.dest(cssDest));
