@@ -47,15 +47,9 @@ Extends default config from `carbon-factory`.
 ```js
 const gulp = require('gulp');
 const BuildTask = require('carbon-factory/lib/gulp/build').default;
-const SpecTask = require('carbon-factory/lib/gulp/spec').default;
 const connect = require('gulp-connect');
-const jestConfig = require('./jest.conf.json');
 
 gulp.task('build', BuildTask());
-gulp.task('test', SpecTask({
-  jestConfig,
-  path: 'src/***/**/*.js'
-}));
 gulp.task('serve', function () {
   connect.server({
     root: '.',
