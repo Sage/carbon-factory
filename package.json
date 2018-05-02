@@ -9,9 +9,6 @@
   },
   "author": "The Sage Group plc",
   "license": "Apache-2.0",
-  "bin": {
-    "carbon": "./src/cli.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Sage/carbon-factory"
@@ -29,7 +26,6 @@
     "babelify": "8.0.0",
     "browserify": "16.1.1",
     "cli-spinner": "0.2.8",
-    "commander": "2.15.1",
     "envify": "4.1.0",
     "enzyme-to-json": "3.3.3",
     "es5-shim": "4.5.10",
