@@ -109,12 +109,11 @@ The app dependencies
 
 ```json
 {
-  "name": "dummy-app",
+  "name": "demo-app",
   "version": "0.0.1",
   "description": "My App",
   "scripts": {
-    "jest": "./node_modules/.bin/jest",
-    "test": "jest --config=./jest.conf.json"
+    "test": "./node_modules/.bin/jest --config=./jest.conf.json --watch"
   },
   "author": "",
   "license": "",
@@ -128,13 +127,7 @@ The app dependencies
     "carbon-factory": "4.0.1",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "enzyme-to-json": "3.3.3",
-    "gulp": "~3.9.0",
     "gulp-connect": "^4.0.0",
-    "jest": "22.4.2",
-    "babelify": "8.0.0",
-    "livereactload": "3.3.0",
-    "react-proxy": "1.1.8",
     "react-test-renderer": "^16.2.0"
   }
 }
