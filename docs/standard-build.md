@@ -15,6 +15,8 @@ my-carbon-app
 ├── index.html
 ├── package.json
 └── src/
+    ├── __spec_helper__/
+    │     └── index.js
     ├── main.js
     ├── components/
     └── views/
@@ -142,7 +144,7 @@ The app dependencies
 
 This contains your application code. We have added a demo `view` and demo `component` do you can see these items in situ.
 
-#### main.js
+#### src/main.js
 
 This is the default entry point for your code
 
@@ -162,11 +164,11 @@ var routes = (
 startRouter(routes);
 ```
 
-### components/demo/
+### src/components/demo/
 
 A basic demo component that inherits form `React.component` so you get things like `state` and `lifecycle` functions for free.
 
-#### components/demo/demo.js
+#### src/components/demo/demo.js
 
 ```js
 import React from 'react';
@@ -188,7 +190,7 @@ class Demo extends React.Component {
 export default Demo;
 ```
 
-#### components/demo/__spec\__.js
+#### src/components/demo/__spec\__.js
 
 ```js
 import React from 'react';
@@ -204,7 +206,7 @@ describe('render', () => {
 });
 ```
 
-#### components/demo/packages.json
+#### src/components/demo/packages.json
 
 ```json
 {
@@ -213,11 +215,11 @@ describe('render', () => {
 }
 ```
 
-### views/demo-view/
+### src/views/demo-view/
 
 This demo view is about as basic as you can get. It is called a stateless component. It shows that if you don't need all the extra functionality you component can just be a simple function.
 
-#### views/demo-view/demo-view.js
+#### src/views/demo-view/demo-view.js
 
 ```js
 import React from 'react';
@@ -230,7 +232,7 @@ const DemoView = () => (
 export default DemoView;
 ```
 
-#### views/demo-view/__spec\__.js
+#### src/views/demo-view/__spec\__.js
 
 ```js
 import React from 'react';
@@ -246,13 +248,24 @@ describe('render', () => {
 });
 ```
 
-#### views/demo-view/package.json
+#### src/views/demo-view/package.json
 
 ```
 {
   "main": "./demo-view.js",
   "name": "DemoView"
 }
+```
+
+### src/__spec_helper\__/index.js
+
+Spec helpers run before any of the tests
+
+```js
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 ```
 
 Once all these files are in place you can install its dependencies by running `npm install` from inside the projects root directory.
