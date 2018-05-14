@@ -1,6 +1,87 @@
-# 3.0.0-rc1
+# 4.0.1
+
+Hoists `@import` CSS rules to the top of the CSS file.
+
+# 4.0.0
+
+Updated versions of packages. Please [see commit](https://github.com/Sage/carbon-factory/commit/8afe6ef2f23b4fdea33daf2b10211e5c63f9912f) for all changes. Build tasks should still work, however some tests may need updating.
+
+## Assets URL
+
+You can now prepend the assets URL with a different address.
+
+By default assets are rendered in the CSS file with `/assets/my-file`. You can now pass `gulp build --assetsUrl /custom-url` and the output will be `/custom-url/assets/my-file`.
+
+# 3.3.3
+
+## Bug Fixes:
+
+* Update eslint from 4.16.0 to 4.17.0
+* Update gulp-eslint from 3.0.0 to 4.0.2
+* Update babel-eslint from 6.1.2 to 8.2.1
+* Update eslint-config-airbnb from 13.0.0 to 16.10
+* Update eslint-plugin-import from 2.2.0 to 2.8.0
+* Update eslint-plugin-jsx-a11y from 2.2.3 to 6.0.3
+* Update eslint-plugin-react from 6.8.0 to 7.6.1
+
+:note: Upgrading these dependencies updates some rules and introduces some new ones. You may need to resolve these issues or you can configure your application's `.eslintrc` file to turn them down to warnings. Using `--fix` may be the easiest solution. We do not recommend turning these rules off entirely.
+
+# 3.3.2
+
+The `dir` option for the spec task uses Jest's `rootDir` instead of `roots`.
+
+# 3.3.1
+
+Gzipped assets are no longer created with a `.gz` extension.
+
+# 3.3.0
+
+## Gzip
+
+As part of the build task we will now gzip your assets if using the `--production` flag. You can disable gzip compression by passing `gzip: false` to the config.
+
+## Clean CSS
+
+We now run [Clean CSS](https://github.com/jakubpawlowicz/clean-css) on the compiled stylesheet.
+
+# 3.2.1
+
+## Bug Fixes:
+
+* Update eslint from 4.16.0 to 4.17.0
+* Update gulp-eslint from 3.0.0 to 4.0.2
+* Update babel-eslint from 6.1.2 to 8.2.1
+* Update eslint-config-airbnb from 13.0.0 to 16.10
+* Update eslint-plugin-import from 2.2.0 to 2.8.0
+* Update eslint-plugin-jsx-a11y from 2.2.3 to 6.0.3
+* Update eslint-plugin-react from 6.8.0 to 7.6.1
+
+:note: Upgrading these dependencies updates some rules and introduces some new ones. You may need to resolve these issues or you can configure your application's `.eslintrc` file to turn them down to warnings. Using `--fix` may be the easiest solution. We do not recommend turning these rules off entirely.
+
+# 3.2.0
+
+* `dir` option for Build and Lint tasks. Settings this value allows you to control which directory to search in to run tests.
+* Update eslint from 3.19 to 4.16
+
+# 3.1.1
+
+* Fixes multi line issue with build spinner.
+
+# 3.1.0
+
+* Adds a spinner to the build task to indicate when it is busy.
+
+# 3.0.0
 
 * Updated `enzyme-to-json` to `3.1.2` to support [Enzyme 3](https://github.com/adriantoine/enzyme-to-json/issues/67).
+* Upgraded `sass-css-stream` to `1.0.0` which includes an upgrade to `node-sass` to `4.7.2`.
+
+# 2.2.0
+
+* Disables `notify` on Jest, as it is causing memory leaks.
+* Allows additional lookup paths to be defined for the build task.
+* Enabled sourcemaps when running in watch mode. Alternatively you can control if they are enabled/disabled with the `--sourcemaps` flag when running gulp.
+* Removes dependency `node-inspector`, allowing use of Node v8.
 
 # 2.1.0
 

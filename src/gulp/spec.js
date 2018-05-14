@@ -50,6 +50,8 @@ var argv = yargs.argv;
 export default function(options) {
   var opts = options || {};
 
+  gutil.log(gutil.colors.red("The SPEC task provided by Carbon Factory is deprecated and will be removed in the next version. You should update to use Jest directly. Please see the following for more information: https://github.com/Sage/carbon-factory/wiki/Spec-Task-Deprecation"));
+
   return function(done) {
     // use custom config supplied via opts, or use our base config
     var config = opts.jestConfig || baseJestConfig,
@@ -72,6 +74,12 @@ export default function(options) {
     if (argv.runInBand) {
       cliOptions.runInBand = true;
     }
+
+    if (opts.dir) {
+      cliOptions.rootDir = opts.dir;
+    }
+
+    cliOptions.config = JSON.stringify(cliOptions.config);
 
     // TODO: Can we pass more arguments here to jestCli
     // https://github.com/facebook/jest/blob/master/packages/jest-cli/src/cli/index.js
