@@ -13,49 +13,42 @@ module.exports = {
     ]
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        enforce: 'pre',
-        use: ['parcelify-loader'],
-        include: [
-          path + '/src',
-          path + '/demo'
-        ]
-      },
-      {
-        test: /\.js$/,
-        include: /^((?!node_modules).|(node_modules\/s1-artefacts-ui))*$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env'],
-            plugins: ['transform-class-properties']
-          }
+    rules: [{
+      test: /\.js$/,
+      enforce: 'pre',
+      use: ['parcelify-loader'],
+      include: [
+        path + '/src',
+        path + '/demo'
+      ]
+    }, {
+      test: /\.js$/,
+      include: /^((?!node_modules).|(node_modules\/s1-artefacts-ui))*$/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['env'],
+          plugins: ['transform-class-properties']
         }
-      },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader'
-            },
-
-            {
-              loader: 'sass-loader',
-              options: {
-                includePaths: [
-                  path + '/src/style-config',
-                  path + '/node_modules/carbon-react/lib/style-config'
-                ]
-              }
-            }
-          ],
-          fallback: 'style-loader'
-        })
       }
-    ]
+    }, {
+      test: /\.scss$/,
+      use: ExtractTextPlugin.extract({
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }, {
+          loader: 'sass-loader',
+          options: {
+            includePaths: [
+              path + '/src/style-config',
+              path + '/node_modules/carbon-react/lib/style-config'
+            ]
+          }
+        }]
+      })
+    }]
   },
   plugins: [
     new ExtractTextPlugin('stylesheets/ui.css'),
