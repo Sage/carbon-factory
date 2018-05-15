@@ -11,29 +11,34 @@ module.exports = function(opts) {
   const entryPoint = opts.entryPoint || '/src/main.js';
   const outputPath = opts.outputPath || '/assets';
   const serverBase = opts.serverBase || '/';
+  const publicPath = opts.publicPath || '/assets/';
+  const host = opts.host || '0.0.0.0';
+  const port = opts.port || 8080;
+  const public = opts.public || `${host}:${port}`;
+  const lookupPaths = opts.lookupPaths || [];
+  const parcelifyPaths = opts.parcelifyPaths || [];
 
   const config = {
     entry: path + entryPoint,
     output: {
       path: path + outputPath,
-      publicPath: '/assets/',
+      publicPath: publicPath,
       filename: 'javascripts/ui.js'
     },
     resolve: {
-      modules: [
+      modules: lookupPaths.concat([
         path + '/src',
         path + '/node_modules'
-      ]
+      ])
     },
     module: {
       rules: [{
         test: /\.js$/,
         enforce: 'pre',
         use: ['parcelify-loader'],
-        include: [
-          path + '/src',
-          path + '/demo'
-        ]
+        include: parcelifyPaths.concat([
+          path + '/src'
+        ])
       }, {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -45,7 +50,7 @@ module.exports = function(opts) {
           }
         }
       }, {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: [{
           loader: production ? MiniCssExtractPlugin.loader : 'style-loader'
         }, {
@@ -64,10 +69,20 @@ module.exports = function(opts) {
   };
 
   config.mode = production ? 'production' : 'development';
+
   config.devServer = production ? {} : {
     contentBase: path + serverBase,
-    hot: true
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true
+    },
+    host: host,
+    hot: true,
+    port: port,
+    public: public,
+    publicPath: publicPath
   };
+
   if (production) {
     config.plugins = [
       new UglifyJsPlugin({
