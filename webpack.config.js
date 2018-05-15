@@ -60,6 +60,22 @@ module.exports = function(opts) {
     }],
   };
 
+  /* Image Loader */
+  const imageLoader = {
+    test: /\.(png|svg|jpg|gif)$/,
+    use: [
+      'file-loader'
+    ]
+  };
+
+  /* Font Loader */
+  const fontLoader = {
+    test: /\.(woff|woff2|eot|ttf|otf)$/,
+    use: [
+      'file-loader'
+    ]
+  };
+
   /* Webpack Config */
   const config = {
     entry: path + entryPoint,
@@ -75,7 +91,13 @@ module.exports = function(opts) {
       ])
     },
     module: {
-      rules: [parcelifyLoader, babelLoader, cssLoader]
+      rules: [
+        parcelifyLoader,
+        babelLoader,
+        cssLoader,
+        imageLoader,
+        fontLoader
+      ]
     }
   };
 
