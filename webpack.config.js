@@ -65,7 +65,9 @@ module.exports = function(opts) {
     test: /\.(png|svg|jpg|gif)$/,
     use: [{
       loader: 'file-loader',
-      outputPath: 'images/'
+      options: {
+        outputPath: 'images/'
+      }
     }]
   };
 
@@ -74,7 +76,9 @@ module.exports = function(opts) {
     test: /\.(woff|woff2|eot|ttf|otf)$/,
     use: [{
       loader: 'file-loader',
-      outputPath: 'fonts/'
+      options: {
+        outputPath: 'fonts/'
+      }
     }]
   };
 
