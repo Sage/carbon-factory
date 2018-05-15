@@ -28,6 +28,7 @@
     "babel-preset-react": "6.24.1",
     "babelify": "8.0.0",
     "browserify": "16.1.1",
+    "chokidar": "^2.0.3",
     "cli-spinner": "0.2.8",
     "commander": "2.15.1",
     "envify": "4.1.0",
