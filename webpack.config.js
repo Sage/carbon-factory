@@ -7,6 +7,7 @@ const path = process.cwd();
 const production = process.env.NODE_ENV == 'production';
 
 module.exports = function(opts) {
+  /* Extract Options */
   opts = opts || {};
   const entryPoint = opts.entryPoint || '/src/main.js';
   const outputPath = opts.outputPath || '/assets';
@@ -18,6 +19,48 @@ module.exports = function(opts) {
   const lookupPaths = opts.lookupPaths || [];
   const parcelifyPaths = opts.parcelifyPaths || [];
 
+  /* Parcelify Loader */
+  const parcelifyLoader = {
+    test: /\.js$/,
+    enforce: 'pre',
+    use: ['parcelify-loader'],
+    include: parcelifyPaths.concat([
+      path + '/src'
+    ])
+  };
+
+  /* Babel Loader */
+  const babelLoader = {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['env'],
+        plugins: ['transform-class-properties']
+      }
+    }
+  };
+
+  /* CSS Loader */
+  const cssLoader = {
+    test: /\.(scss|css)$/,
+    use: [{
+      loader: production ? MiniCssExtractPlugin.loader : 'style-loader'
+    }, {
+      loader: 'css-loader'
+    }, {
+      loader: 'sass-loader',
+      options: {
+        includePaths: [
+          path + '/src/style-config',
+          path + '/node_modules/carbon-react/lib/style-config'
+        ]
+      }
+    }],
+  };
+
+  /* Webpack Config */
   const config = {
     entry: path + entryPoint,
     output: {
@@ -32,44 +75,14 @@ module.exports = function(opts) {
       ])
     },
     module: {
-      rules: [{
-        test: /\.js$/,
-        enforce: 'pre',
-        use: ['parcelify-loader'],
-        include: parcelifyPaths.concat([
-          path + '/src'
-        ])
-      }, {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env'],
-            plugins: ['transform-class-properties']
-          }
-        }
-      }, {
-        test: /\.(scss|css)$/,
-        use: [{
-          loader: production ? MiniCssExtractPlugin.loader : 'style-loader'
-        }, {
-          loader: 'css-loader'
-        }, {
-          loader: 'sass-loader',
-          options: {
-            includePaths: [
-              path + '/src/style-config',
-              path + '/node_modules/carbon-react/lib/style-config'
-            ]
-          }
-        }],
-      }]
+      rules: [parcelifyLoader, babelLoader, cssLoader]
     }
   };
 
+  /* Compilation Mode */
   config.mode = production ? 'production' : 'development';
 
+  /* Dev Server Config */
   config.devServer = production ? {} : {
     contentBase: path + serverBase,
     headers: {
@@ -84,6 +97,7 @@ module.exports = function(opts) {
   };
 
   if (production) {
+    /* Production Plugins */
     config.plugins = [
       new UglifyJsPlugin({
         cache: true,
@@ -98,6 +112,7 @@ module.exports = function(opts) {
       })
     ]
   } else {
+    /* Development Plugins */
     config.plugins = [
       new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin()
