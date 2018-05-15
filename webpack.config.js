@@ -122,11 +122,13 @@ module.exports = function(opts) {
     hot: true,
     port: port,
     public: public,
-    publicPath: publicPath,
-    historyApiFallback: {
-      index: index
-    }
+    publicPath: publicPath
   };
+  if (!production && index) {
+    config.devServer.historyApiFallback = {
+      index: index
+    };
+  }
 
   if (production) {
     /* Production Plugins */
