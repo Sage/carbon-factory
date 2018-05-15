@@ -18,6 +18,7 @@ module.exports = function(opts) {
   const public = opts.public || `${host}:${port}`;
   const lookupPaths = opts.lookupPaths || [];
   const parcelifyPaths = opts.parcelifyPaths || [];
+  const index = opts.index;
 
   /* Parcelify Loader */
   const parcelifyLoader = {
@@ -121,7 +122,10 @@ module.exports = function(opts) {
     hot: true,
     port: port,
     public: public,
-    publicPath: publicPath
+    publicPath: publicPath,
+    historyApiFallback: {
+      index: index
+    }
   };
 
   if (production) {
