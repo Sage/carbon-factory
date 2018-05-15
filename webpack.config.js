@@ -63,17 +63,19 @@ module.exports = function(opts) {
   /* Image Loader */
   const imageLoader = {
     test: /\.(png|svg|jpg|gif)$/,
-    use: [
-      'file-loader'
-    ]
+    use: [{
+      loader: 'file-loader',
+      outputPath: 'images/'
+    }]
   };
 
   /* Font Loader */
   const fontLoader = {
     test: /\.(woff|woff2|eot|ttf|otf)$/,
-    use: [
-      'file-loader'
-    ]
+    use: [{
+      loader: 'file-loader',
+      outputPath: 'fonts/'
+    }]
   };
 
   /* Webpack Config */
