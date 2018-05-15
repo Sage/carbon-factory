@@ -1,3 +1,7 @@
+# 5.0.0
+
+Updated packages to resolve issues highlighted by `npm audit`.
+
 # 4.0.1
 
 Hoists `@import` CSS rules to the top of the CSS file.
