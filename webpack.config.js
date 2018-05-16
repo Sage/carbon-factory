@@ -70,6 +70,7 @@ module.exports = function(opts) {
     use: [{
       loader: 'file-loader',
       options: {
+        name: '[name].[ext]',
         outputPath: 'images/'
       }
     }]
@@ -81,6 +82,7 @@ module.exports = function(opts) {
     use: [{
       loader: 'file-loader',
       options: {
+        name: '[name].[ext]',
         outputPath: 'fonts/'
       }
     }]
