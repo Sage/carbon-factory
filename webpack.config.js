@@ -139,7 +139,7 @@ module.exports = function(opts) {
   if (production) {
     /* Production Plugins */
     config.plugins = [
-      new CleanWebpackPlugin([path + outputPath]),
+      new CleanWebpackPlugin([path + outputPath], { root: path }),
       new UglifyJsPlugin({
         cache: true,
         parallel: true
@@ -155,7 +155,7 @@ module.exports = function(opts) {
   } else {
     /* Development Plugins */
     config.plugins = [
-      new CleanWebpackPlugin([path + outputPath]),
+      new CleanWebpackPlugin([path + outputPath], { root: path }),
       new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin()
     ];
