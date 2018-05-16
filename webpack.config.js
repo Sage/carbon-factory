@@ -2,6 +2,7 @@ const CompressionPlugin = require("compression-webpack-plugin")
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const path = process.cwd();
 const production = process.env.NODE_ENV == 'production';
@@ -138,6 +139,7 @@ module.exports = function(opts) {
   if (production) {
     /* Production Plugins */
     config.plugins = [
+      new CleanWebpackPlugin([path + outputPath]),
       new UglifyJsPlugin({
         cache: true,
         parallel: true
@@ -153,6 +155,7 @@ module.exports = function(opts) {
   } else {
     /* Development Plugins */
     config.plugins = [
+      new CleanWebpackPlugin([path + outputPath]),
       new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin()
     ];
