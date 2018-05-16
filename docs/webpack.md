@@ -59,6 +59,36 @@ if (module.hot) {
 
 You can find out more on the [official documentation](https://webpack.js.org/guides/hot-module-replacement/).
 
+### Jest
+
+There are a couple of additions needed for webpack to work with Jest.
+
+Firstly you will need to have css and scss files handled by the `identity-obj-proxy` module. This is already set up in Carbon Factory's Jest config.
+
+Secondly, you will need to have other file types handled. We recommend using a file transformer. Add the following config to your Jest config:
+
+```
+transform: {
+  "^.+\\.js$": "babel-jest",
+  "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+    "./fileTransformer.js"
+}
+```
+
+Then create the `fileTransformer.js` file:
+
+```
+const path = require('path');
+
+module.exports = {
+  process(src, filename, config, options) {
+    return 'module.exports = ' + JSON.stringify(path.basename(filename)) + ';';
+  },
+};
+```
+
+For more information on enabling Webpack for Jest, please see the [official documentation](https://facebook.github.io/jest/docs/en/webpack.html).
+
 ## Upgrading from Carbon Factory
 
 If you were using a previous version of Carbon Factory, you will need to do the following additional steps.
