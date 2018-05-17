@@ -7,8 +7,13 @@ const webpack = require('webpack');
 const path = process.cwd();
 const production = process.env.NODE_ENV == 'production';
 
+const imageFormats = 'png|svg|jpg|gif';
+
 module.exports = function(opts) {
-  /* Extract Options */
+  /***********
+   * OPTIONS *
+   ***********/
+
   opts = opts || {};
   const entryPoint = opts.entryPoint || '/src/main.js';
   const outputPath = opts.outputPath || '/assets';
@@ -19,19 +24,44 @@ module.exports = function(opts) {
   const public = opts.public || `${host}:${port}`;
   const lookupPaths = opts.lookupPaths || [];
   const parcelifyPaths = opts.parcelifyPaths || [];
+  const gzip = opts.gzip || true;
   const index = opts.index;
 
-  /* Parcelify Loader */
+  /******************
+   * WEBPACK CONFIG *
+   ******************/
+
+  const config = {
+    mode: production ? 'production' : 'development',
+    entry: `${path}${entryPoint}`,
+    output: {
+      path: `${path}${outputPath}`,
+      publicPath: publicPath,
+      filename: 'javascripts/ui.js'
+    },
+    resolve: {
+      modules: lookupPaths.concat([
+        `${path}/src`,
+        `${path}/node_modules`
+      ])
+    }
+  };
+
+  /***********
+   * LOADERS *
+   ***********/
+
+  // Parcelify Loader
   const parcelifyLoader = {
     test: /\.js$/,
     enforce: 'pre',
     use: ['parcelify-loader'],
     include: parcelifyPaths.concat([
-      path + '/src'
+      `${path}/src`
     ])
   };
 
-  /* Babel Loader */
+  // Babel Loader
   const babelLoader = {
     test: /\.js$/,
     exclude: /node_modules/,
@@ -47,7 +77,7 @@ module.exports = function(opts) {
     }
   };
 
-  /* CSS Loader */
+  // CSS Loader
   const cssLoader = {
     test: /\.(scss|css)$/,
     use: [{
@@ -58,16 +88,16 @@ module.exports = function(opts) {
       loader: 'sass-loader',
       options: {
         includePaths: [
-          path + '/src/style-config',
-          path + '/node_modules/carbon-react/lib/style-config'
+          `${path}/src/style-config`,
+          `${path}/node_modules/carbon-react/lib/style-config`
         ]
       }
     }],
   };
 
-  /* Image Loader */
+  // Image Loader
   const imageLoader = {
-    test: /\.(png|svg|jpg|gif)$/,
+    test: new RegExp(`\.(${imageFormats})$`, 'i'),
     use: [{
       loader: 'file-loader',
       options: {
@@ -77,7 +107,7 @@ module.exports = function(opts) {
     }]
   };
 
-  /* Font Loader */
+  // Font Loader
   const fontLoader = {
     test: /\.(woff|woff2|eot|ttf|otf)$/,
     use: [{
@@ -89,37 +119,22 @@ module.exports = function(opts) {
     }]
   };
 
-  /* Webpack Config */
-  const config = {
-    entry: path + entryPoint,
-    output: {
-      path: path + outputPath,
-      publicPath: publicPath,
-      filename: 'javascripts/ui.js'
-    },
-    resolve: {
-      modules: lookupPaths.concat([
-        path + '/src',
-        path + '/node_modules'
-      ])
-    },
-    module: {
-      rules: [
-        parcelifyLoader,
-        babelLoader,
-        cssLoader,
-        imageLoader,
-        fontLoader
-      ]
-    }
+  config.module = {
+    rules: [
+      parcelifyLoader,
+      babelLoader,
+      cssLoader,
+      imageLoader,
+      fontLoader
+    ]
   };
 
-  /* Compilation Mode */
-  config.mode = production ? 'production' : 'development';
+  /**************
+   * DEV SERVER *
+   **************/
 
-  /* Dev Server Config */
   config.devServer = production ? {} : {
-    contentBase: path + serverBase,
+    contentBase: `${path}${serverBase}`,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true
@@ -136,26 +151,42 @@ module.exports = function(opts) {
     };
   }
 
+  /***********
+   * PLUGINS *
+   ***********/
+
+  // Clean Webpack Plugin
+  const clean = new CleanWebpackPlugin([`${path}${outputPath}`], {
+    root: path
+  });
+
   if (production) {
-    /* Production Plugins */
+    // Production Plugins
     config.plugins = [
-      new CleanWebpackPlugin([path + outputPath], { root: path }),
+      clean,
       new UglifyJsPlugin({
         cache: true,
         parallel: true
       }),
       new OptimizeCSSAssetsPlugin({}),
       new MiniCssExtractPlugin({
-        filename: "stylesheets/ui.css"
-      }),
-      new CompressionPlugin({
-        asset: '[path][query]'
+        filename: 'stylesheets/ui.css'
       })
     ]
+
+    if (gzip) {
+      config.plugins.push(
+        new CompressionPlugin({
+          asset: '[path][query]',
+          test: new RegExp(`^[^.]+$|\.(?!(${imageFormats})$)([^.]+$)`, 'i'),
+          minRatio: Infinity
+        })
+      );
+    }
   } else {
-    /* Development Plugins */
+    // Development Plugins
     config.plugins = [
-      new CleanWebpackPlugin([path + outputPath], { root: path }),
+      clean,
       new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin()
     ];
