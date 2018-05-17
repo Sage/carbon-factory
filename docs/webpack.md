@@ -123,8 +123,9 @@ You can remove your `package.json` and add these imports to your JavaScript file
 ```js
 import './stylesheet-one.scss';
 import './stylesheet-two.scss';
-import './my-font.woff';
 ```
+
+The font or image file will be picked up automatically by the reference to it in the CSS file.
 
 We would recommend not relying on using `package.json` files any more, as we would like to deprecate this loader entirely from the build process.
 
