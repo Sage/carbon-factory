@@ -64,6 +64,8 @@ var argv = yargs.argv;
 export default function (opts) {
   var options = opts;
 
+  gutil.log(gutil.colors.red("The BUILD task provided by Carbon Factory is deprecated and will be removed in the next version. You should update to use Webpack. Please see the following for more information: https://github.com/Sage/carbon-factory/blob/master/docs/webpack.md"));
+
   return function() {
     var opts = options || {},
         // the entrypoint for the JavaScript application
