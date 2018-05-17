@@ -14,7 +14,7 @@ Create a `webpack.config.js` in the root of your project with the following code
 module.exports = require('carbon-factory/webpack.config')();
 ```
 
-This example uses the default config supplied by Carbon Factory. Optionally you can send additional options to the function, please see the [config file](https://github.com/Sage/carbon-factory/blob/master/webpack.config.js) to learn more about what options are available.
+This example uses the default config supplied by Carbon Factory. You can send additional options to the function, please see the [config file](https://github.com/Sage/carbon-factory/blob/master/webpack.config.js) to learn more about what options are available.
 
 Alternatively, this function returns a simple JavaScript object which you can manipulate in any way you want:
 
