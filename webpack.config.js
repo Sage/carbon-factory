@@ -143,7 +143,12 @@ module.exports = function(opts) {
     hot: true,
     port: port,
     public: public,
-    publicPath: publicPath
+    publicPath: publicPath,
+    before(app) {
+      app.get(`${outputPath}/stylesheets/ui.css`, (req, res) => {
+        res.sendFile(`${path}/node_modules/carbon-factory/fake.css`);
+      });
+    }
   };
   if (!production && index) {
     config.devServer.historyApiFallback = {
