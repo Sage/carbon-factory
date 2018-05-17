@@ -146,7 +146,7 @@ module.exports = function(opts) {
     publicPath: publicPath,
     historyApiFallback: singlePageApp,
     before(app) {
-      app.get(`${outputPath}/stylesheets/ui.css`, (req, res) => {
+      app.get(/stylesheets\/ui.css/, (req, res) => {
         res.sendFile(`${path}/node_modules/carbon-factory/fake.css`);
       });
     }
