@@ -25,7 +25,7 @@ module.exports = function(opts) {
   const lookupPaths = opts.lookupPaths || [];
   const parcelifyPaths = opts.parcelifyPaths || [];
   const gzip = opts.gzip || true;
-  const index = opts.index;
+  const singlePageApp = opts.singlePageApp || false;
 
   /******************
    * WEBPACK CONFIG *
@@ -144,17 +144,13 @@ module.exports = function(opts) {
     port: port,
     public: public,
     publicPath: publicPath,
+    historyApiFallback: singlePageApp,
     before(app) {
       app.get(`${outputPath}/stylesheets/ui.css`, (req, res) => {
         res.sendFile(`${path}/node_modules/carbon-factory/fake.css`);
       });
     }
   };
-  if (!production && index) {
-    config.devServer.historyApiFallback = {
-      index: index
-    };
-  }
 
   /***********
    * PLUGINS *
