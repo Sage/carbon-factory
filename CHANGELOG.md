@@ -4,7 +4,7 @@
 
 We now provide a preconfigured setup for using Webpack to build assets.
 
-Please see the [Webpack guide](https://github.com/Sage/carbon-factory/blob/master/docs/webpack.md) for more information on setting up your project or for migrating to using Webpack.
+Please see the [Webpack guide](docs/webpack.md) for more information on setting up your project or for migrating to using Webpack.
 
 # 4.0.1
 
