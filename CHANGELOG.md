@@ -1,3 +1,11 @@
+# 4.1.0
+
+## Webpack Support
+
+We now provide a preconfigured setup for using Webpack to build assets.
+
+Please see the [Webpack guide](docs/webpack.md) for more information on setting up your project or for migrating to using Webpack.
+
 # 4.0.1
 
 Hoists `@import` CSS rules to the top of the CSS file.

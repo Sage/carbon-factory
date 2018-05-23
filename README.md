@@ -2,24 +2,9 @@
 
 Tools to help create user interfaces with [Carbon](https://github.com/sage/carbon) and [React](http://facebook.github.io/react/).
 
-Carbon Factory has two main functions:
-
-* A command line interface to more easily scaffold new projects and components - ensure you have the latest version of the CLI by installing Carbon Factory globally:
-```
-npm install carbon-factory -g
-```
-* Tasks for compiling your code and running tests in your project - to use these tasks you need to include Carbon Factory as a dev dependency in your project:
-```
-npm install carbon-factory --save-dev
-```
-
 ## Guides
 
-* [The Command Line Interface](docs/command-line-interface.md)
-* Compiling Your Code
-  * [A Standard Build](docs/standard-build.md)
-  * [A Standalone Build](docs/standalone-build.md)
-* [Migrating from Carbon Factory v1 to v2](docs/migrating/v1-v2.md)
+* [Setting Up Webpack](docs/webpack.md)
 * [Setting up JestCLI](docs/setting-up-jest-cli.md)
 * [Running Tests](docs/running-tests.md)
 * [Debugging Tests](docs/debugging-tests.md)
