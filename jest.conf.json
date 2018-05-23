@@ -2,6 +2,9 @@
   "snapshotSerializers": ["enzyme-to-json/serializer"],
   "testMatch": [ "**/__spec__.js" ],
   "moduleDirectories": [ "src", "node_modules" ],
+  "moduleNameMapper": {
+    "\\.(css|scss)$": "identity-obj-proxy"
+  },
   "collectCoverage": true,
   "coveragePathIgnorePatterns": [ "node_modules", "src\/__spec_helper__" ],
   "coverageReporters": [ "text-summary", "html" ],
