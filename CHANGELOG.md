@@ -1,3 +1,9 @@
+# 4.2.0
+
+## npm audit
+
+Updated packages to resolve issues highlighted by `npm audit`.
+
 # 4.1.0
 
 ## Webpack Support
