@@ -1,3 +1,9 @@
+# 4.1.1
+
+## Webpack Fix
+
+We no longer gzip images as part of the production build.
+
 # 4.1.0
 
 ## Webpack Support
