@@ -1,8 +1,20 @@
+# 4.2.1
+
+## Webpack Fix
+
+We no longer gzip images as part of the production build.
+
 # 4.2.0
 
 ## npm audit
 
 Updated packages to resolve issues highlighted by `npm audit`.
+
+# 4.1.1
+
+## Webpack Fix
+
+We no longer gzip images as part of the production build.
 
 # 4.1.0
 

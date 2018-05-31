@@ -179,7 +179,7 @@ module.exports = function(opts) {
       config.plugins.push(
         new CompressionPlugin({
           asset: '[path][query]',
-          test: new RegExp(`^[^.]+$|\.(?!(${imageFormats})$)([^.]+$)`, 'i'),
+          exclude: new RegExp(`\.(${imageFormats})$`, 'i'),
           minRatio: Infinity
         })
       );
