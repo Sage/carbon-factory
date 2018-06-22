@@ -2,7 +2,14 @@
 
 ## Webpack Windows Support
 
-Fixes a bug which prevented Webpack from working in a Windows environment.
+Parcelify loader does not support paths cross-platform that do not use `path.resolve`. We have fixed our config, but you may need to also fix any you have defined in your local project.
+
+For example change the following:
+
+```
+`${process.cwd()}/src`; // bad
+path.resolve(process.cwd(), 'src'); // good
+```
 
 # 4.2.1
 
