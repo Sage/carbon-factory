@@ -1,3 +1,27 @@
+# 4.2.2
+
+## Webpack Windows Support
+
+We have updated how paths are resolved to support multiple environments. For this reason you might have to update your config:
+
+1) Any absolute paths should now be relative paths:
+
+```
+entryPoint: '/src/main.js' // bad
+entryPoint: './src/main.js' // good
+```
+
+2) Parcelify loader does not support paths cross-platform that do not use `path.resolve`. We have fixed our config, but you may need to also fix any you have defined in your local project.
+
+For example change the following:
+
+```
+const path = require('path');
+
+parcelifyPaths: [`${process.cwd()}/src`] // bad
+parcelifyPaths: [path.resolve(process.cwd(), 'src')] // good
+```
+
 # 4.2.1
 
 ## Webpack Fix
