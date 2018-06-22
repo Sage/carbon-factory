@@ -5,7 +5,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const path = process.cwd();
-const _path = require('path');
+const _p = require('path');
 const production = process.env.NODE_ENV == 'production';
 
 const imageFormats = 'png|svg|jpg|gif';
@@ -16,9 +16,9 @@ module.exports = function(opts) {
    ***********/
 
   opts = opts || {};
-  const entryPoint = opts.entryPoint || '/src/main.js';
-  const outputPath = opts.outputPath || '/assets';
-  const serverBase = opts.serverBase || '/';
+  const entryPoint = opts.entryPoint || './src/main.js';
+  const outputPath = opts.outputPath || './assets';
+  const serverBase = opts.serverBase || './';
   const publicPath = opts.publicPath || '/assets/';
   const host = opts.host || '0.0.0.0';
   const port = opts.port || 8080;
@@ -34,16 +34,16 @@ module.exports = function(opts) {
 
   const config = {
     mode: production ? 'production' : 'development',
-    entry: `${path}${entryPoint}`,
+    entry: _p.resolve(path, entryPoint),
     output: {
-      path: `${path}${outputPath}`,
+      path: _p.resolve(path, outputPath),
       publicPath: publicPath,
       filename: 'javascripts/ui.js'
     },
     resolve: {
       modules: lookupPaths.concat([
-        `${path}/src`,
-        `${path}/node_modules`
+        _p.resolve(path, './src'),
+        _p.resolve(path, './node_modules')
       ])
     }
   };
@@ -58,7 +58,7 @@ module.exports = function(opts) {
     enforce: 'pre',
     use: ['parcelify-loader'],
     include: parcelifyPaths.concat([
-      _path.resolve(path, 'src')
+      _p.resolve(path, 'src')
     ])
   };
 
@@ -89,8 +89,8 @@ module.exports = function(opts) {
       loader: 'sass-loader',
       options: {
         includePaths: [
-          `${path}/src/style-config`,
-          `${path}/node_modules/carbon-react/lib/style-config`
+          _p.resolve(path, './src/style-config'),
+          _p.resolve(path, './node_modules/carbon-react/lib/style-config')
         ]
       }
     }],
@@ -135,7 +135,7 @@ module.exports = function(opts) {
    **************/
 
   config.devServer = production ? {} : {
-    contentBase: `${path}${serverBase}`,
+    contentBase: _p.resolve(path, serverBase),
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true
@@ -148,7 +148,7 @@ module.exports = function(opts) {
     historyApiFallback: singlePageApp,
     before(app) {
       app.get(/stylesheets\/ui.css/, (req, res) => {
-        res.sendFile(`${path}/node_modules/carbon-factory/fake.css`);
+        res.sendFile(_p.resolve(path, './node_modules/carbon-factory/fake.css'));
       });
     }
   };
@@ -158,8 +158,8 @@ module.exports = function(opts) {
    ***********/
 
   // Clean Webpack Plugin
-  const clean = new CleanWebpackPlugin([`${path}${outputPath}`], {
-    root: path
+  const clean = new CleanWebpackPlugin([_p.resolve(path, outputPath)], {
+    root: _p.resolve(path)
   });
 
   if (production) {
