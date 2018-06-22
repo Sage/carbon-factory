@@ -16,6 +16,8 @@ entryPoint: './src/main.js' // good
 For example change the following:
 
 ```
+const path = require('path');
+
 parcelifyPaths: [`${process.cwd()}/src`] // bad
 parcelifyPaths: [path.resolve(process.cwd(), 'src')] // good
 ```
