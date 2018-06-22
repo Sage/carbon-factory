@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
-const path = process.cwd();
+const path = require('path');
 const production = process.env.NODE_ENV == 'production';
 
 const imageFormats = 'png|svg|jpg|gif';
@@ -33,16 +33,16 @@ module.exports = function(opts) {
 
   const config = {
     mode: production ? 'production' : 'development',
-    entry: `${path}${entryPoint}`,
+    entry: path.resolve(__dirname, entryPoint),
     output: {
-      path: `${path}${outputPath}`,
+      path: path.resolve(__dirname, outputPath),
       publicPath: publicPath,
       filename: 'javascripts/ui.js'
     },
     resolve: {
       modules: lookupPaths.concat([
-        `${path}/src`,
-        `${path}/node_modules`
+        path.resolve(__dirname, 'src'),
+        path.resolve(__dirname, 'node_modules')
       ])
     }
   };
@@ -57,7 +57,7 @@ module.exports = function(opts) {
     enforce: 'pre',
     use: ['parcelify-loader'],
     include: parcelifyPaths.concat([
-      `${path}/src`
+      path.resolve(__dirname, 'src')
     ])
   };
 
@@ -88,8 +88,8 @@ module.exports = function(opts) {
       loader: 'sass-loader',
       options: {
         includePaths: [
-          `${path}/src/style-config`,
-          `${path}/node_modules/carbon-react/lib/style-config`
+          path.resolve(__dirname, 'src/style-config'),
+          path.resolve(__dirname, 'node_modules/carbon-react/lib/style-config')
         ]
       }
     }],
@@ -134,7 +134,7 @@ module.exports = function(opts) {
    **************/
 
   config.devServer = production ? {} : {
-    contentBase: `${path}${serverBase}`,
+    contentBase: path.resolve(__dirname, serverBase),
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true
@@ -147,7 +147,7 @@ module.exports = function(opts) {
     historyApiFallback: singlePageApp,
     before(app) {
       app.get(/stylesheets\/ui.css/, (req, res) => {
-        res.sendFile(`${path}/node_modules/carbon-factory/fake.css`);
+        res.sendFile(path.resolve(__dirname, 'node_modules/carbon-factory/fake.css'));
       });
     }
   };
@@ -157,8 +157,8 @@ module.exports = function(opts) {
    ***********/
 
   // Clean Webpack Plugin
-  const clean = new CleanWebpackPlugin([`${path}${outputPath}`], {
-    root: path
+  const clean = new CleanWebpackPlugin([path.resolve(__dirname, outputPath)], {
+    root: path.resolve(__dirname, '')
   });
 
   if (production) {

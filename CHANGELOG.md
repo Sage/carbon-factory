@@ -1,3 +1,9 @@
+# 4.2.2
+
+## Webpack Windows Support
+
+Fixes a bug which prevented Webpack from working in a Windows environment.
+
 # 4.2.1
 
 ## Webpack Fix
