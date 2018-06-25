@@ -1,3 +1,7 @@
+# 4.2.3
+
+Fixes config for `gzip` when it is disabled.
+
 # 4.2.2
 
 ## Webpack Windows Support
