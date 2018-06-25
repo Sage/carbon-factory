@@ -25,7 +25,7 @@ module.exports = function(opts) {
   const public = opts.public || `${host}:${port}`;
   const lookupPaths = opts.lookupPaths || [];
   const parcelifyPaths = opts.parcelifyPaths || [];
-  const gzip = opts.gzip || true;
+  const gzip = (opts.gzip === false) ? false : true;
   const singlePageApp = opts.singlePageApp || false;
 
   /******************
