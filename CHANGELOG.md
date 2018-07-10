@@ -1,3 +1,7 @@
+# 4.2.4
+
+Turns CSS processor options to safe to fix [compilation issues](https://github.com/NMFR/optimize-css-assets-webpack-plugin/pull/58).
+
 # 4.2.3
 
 Fixes config for `gzip` when it is disabled.
