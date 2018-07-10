@@ -170,7 +170,11 @@ module.exports = function(opts) {
         cache: true,
         parallel: true
       }),
-      new OptimizeCSSAssetsPlugin({}),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          safe: true
+        }
+      }),
       new MiniCssExtractPlugin({
         filename: 'stylesheets/ui.css'
       })
