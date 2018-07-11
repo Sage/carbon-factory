@@ -18,13 +18,15 @@ if (!name) {
   process.exit(1);
 }
 
-var moduleName = S(name).capitalize().camelize().s;
-var fileName = S(name).dasherize().s;
 
-// ensure this will create the module at the correct location before continuing
-var confirmMessage = 'This will create a component at \'' + process.cwd() + '/src/components/' + fileName + '/\'. Do you want to continue?';
+async function PromptCreateModule() {
+  var moduleName = S(name).capitalize().camelize().s;
+  var fileName = S(name).dasherize().s;
 
-promptly.confirm(confirmMessage, function (err, value) {
+  // ensure this will create the module at the correct location before continuing
+  var confirmMessage = 'This will create a component at \'' + process.cwd() + '/src/components/' + fileName + '/\'. Do you want to continue?';
+  var value = await promptly.confirm(confirmMessage);
+  
   if (!value) {
     process.exit(1);
   } else {
@@ -49,4 +51,7 @@ promptly.confirm(confirmMessage, function (err, value) {
     // (could use promise instead?)
     setTimeout(writeFiles, 200);
   }
-});
+}
+
+PromptCreateModule();
+

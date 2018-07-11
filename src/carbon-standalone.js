@@ -16,10 +16,13 @@ if (!name) {
   process.exit(1);
 }
 
-// ensure this will create the module at the correct location before continuing
-var confirmMessage = 'This will prepare your project at \'' + process.cwd() + '/' + name + '\'. Do you want to continue?';
 
-promptly.confirm(confirmMessage, function (err, value) {
+async function PromptCreateStandAlone(){
+  // ensure this will create the module at the correct location before continuing
+  var confirmMessage = 'This will prepare your project at \'' + process.cwd() + '/' + name + '\'. Do you want to continue?';
+
+  var value = await promptly.confirm(confirmMessage);
+
   if (!value) {
     process.exit(1);
   }
@@ -28,4 +31,6 @@ promptly.confirm(confirmMessage, function (err, value) {
     // if confirmed, build the module step by step
     CreateStandaloneStructure(name);
   }
-});
+}
+
+PromptCreateStandAlone();

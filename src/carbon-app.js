@@ -16,16 +16,27 @@ if (!name) {
   process.exit(1);
 }
 
-// ensure this will create the module at the correct location before continuing
-var confirmMessage = 'This will prepare your project at \'' + process.cwd() + '/' + name + '\'. Do you want to continue?';
+async function PromptCreateDirectory() {
+  // ensure this will create the module at the correct location before continuing
+  var confirmMessage = 'This will prepare your project at \'' + process.cwd() + '/' + name + '\'. Do you want to continue?';
 
-promptly.confirm(confirmMessage, function (err, value) {
+  var value = await promptly.confirm(confirmMessage, )
+
+  console.log('About to check value');
+
   if (!value) {
+    console.error('About to exit');
     process.exit(1);
   }
 
   if (value) {
+    console.log('CreateAppStructure');
     // if confirmed, build the module step by step
     CreateAppStructure(name);
   }
-});
+}
+
+PromptCreateDirectory();
+
+
+
