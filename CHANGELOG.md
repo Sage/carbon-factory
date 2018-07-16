@@ -32,6 +32,10 @@ You can then use the `--max-warnings` option to set a limit to your number of ex
 
 We have removed any unused dependencies. If you have builds that still require a particular dependency then you may have to install and manage it yourself.
 
+### babel preset
+
+We have upgraded to use `babel-preset-env` - this should have no effect on your application.
+
 # 4.2.4
 
 Turns CSS processor options to safe to fix [compilation issues](https://github.com/NMFR/optimize-css-assets-webpack-plugin/pull/58).
