@@ -2,6 +2,8 @@
 
 Tools to help create user interfaces with [Carbon](https://github.com/sage/carbon) and [React](http://facebook.github.io/react/).
 
+To easily get started, please see [create-carbon-app](https://github.com/Sage/create-carbon-app).
+
 ## Guides
 
 * [Setting Up Webpack](docs/webpack.md)
