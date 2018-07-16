@@ -22,6 +22,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "compression-webpack-plugin": "1.1.11",
     "css-loader": "0.28.11",
+    "enzyme-to-json": "3.3.4",
     "eslint": "4.19.0",
     "eslint-config-airbnb": "16.1.0",
     "eslint-plugin-import": "2.9.0",
