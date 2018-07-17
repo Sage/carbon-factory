@@ -47,6 +47,8 @@
         'object': false
       }
     }],
+    // disabling this as sometimes it is useful to have a single line:
+    "react/jsx-one-expression-per-line": 0,
     // disabling this one as it is not always necessary:
     "react/destructuring-assignment": 0,
     // disabling this one as it appears inconsistent/buggy:
