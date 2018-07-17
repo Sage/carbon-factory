@@ -1,3 +1,41 @@
+# 5.0.0
+
+## Updated Jest Test Matcher
+
+Jest will now automatically pick up test files either called `__spec__.js` or `*.spec.js`.
+
+## Removed gulp Support
+
+We have now officially dropped support for gulp. This includes removing all gulp tasks supplied by carbon-factory as well as any dependencies related to gulp.
+
+For notes on upgrading please see the guide for [setting up Webpack](https://github.com/Sage/carbon-factory/blob/master/docs/webpack.md).
+
+Alternatively take a look at the [create-carbon-app](https://github.com/Sage/create-carbon-app) project to generate a scaffold.
+
+### Linting
+
+We are aware that we have some projects that are not fully compliant with our lint rules, and therefore require support to not fail a build for a error threshold.
+
+To accommodate this we recommend you create an `.eslintrc` file that changes any rules you have outstanding into warnings, for example:
+
+```
+{
+  "rules": {
+    "react/prefer-stateless-function": 1
+  }
+}
+```
+
+You can then use the `--max-warnings` option to set a limit to your number of expected warnings. Over time you can work on reducing this number and returning the warnings back to errors.
+
+## Reduced Dependencies
+
+We have removed any unused dependencies. If you have builds that still require a particular dependency then you may have to install and manage it yourself.
+
+### babel preset
+
+We have upgraded to use `babel-preset-env` - this should have no effect on your application.
+
 # 4.2.4
 
 Turns CSS processor options to safe to fix [compilation issues](https://github.com/NMFR/optimize-css-assets-webpack-plugin/pull/58).

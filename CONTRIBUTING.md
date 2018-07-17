@@ -22,7 +22,6 @@ To be merged, we prefer the pull request to be reviewed by at least two people w
 
 * Bump the version in `package.json`.
 * Ensure the `CHANGELOG.md` is up to date.
-* Run `npm run-script release` to update `/lib`.
 * If releasing a minor version, create a branch from `master`.
 * If releasing a patch version, create a branch from `release`.
 * Commit and push changes.
