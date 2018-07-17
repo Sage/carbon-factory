@@ -32,9 +32,17 @@ You can then use the `--max-warnings` option to set a limit to your number of ex
 
 We have removed any unused dependencies. If you have builds that still require a particular dependency then you may have to install and manage it yourself.
 
+## Updated Dependencies
+
+We have updated various dependencies including babel, Jest, ESLint and Webpack.
+
+### ESLint Upgrade
+
+With the ESLint upgrade it has introduced some new rules. Most should be able to be auto-fixed, others may need some manual intervention.
+
 ### babel preset
 
-We have upgraded to use `babel-preset-env` - this should have no effect on your application.
+We have upgraded to use `babel-preset-env` - this should have no effect on your application other than remove a deprecation notice.
 
 # 4.2.4
 

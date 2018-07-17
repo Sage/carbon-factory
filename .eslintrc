@@ -47,6 +47,12 @@
         'object': false
       }
     }],
+    // disabling this as sometimes it is useful to have a single line:
+    "react/jsx-one-expression-per-line": 0,
+    // disabling this one as it is not always necessary:
+    "react/destructuring-assignment": 0,
+    // disabling this one as it appears inconsistent/buggy:
+    "react/no-this-in-sfc": 0,
     'react/jsx-curly-spacing': ['error', 'always'],
     'react/jsx-filename-extension': 'off',
     // Limit maximum of props on a single line in JSX
