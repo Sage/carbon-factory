@@ -25,6 +25,7 @@
     "enzyme-to-json": "3.3.4",
     "eslint": "5.1.0",
     "eslint-config-airbnb": "17.0.0",
+    "eslint-plugin-compat": "2.5.0",
     "eslint-plugin-import": "2.13.0",
     "eslint-plugin-jsx-a11y": "6.1.1",
     "eslint-plugin-react": "7.10.0",
