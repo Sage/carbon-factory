@@ -47,6 +47,10 @@ npm run build
 
 This will precompile assets for production.
 
+#### Webpack Stats
+
+The Webpack tasks can also be ran with `--stats` to show analytics on the bundled code.
+
 ### Enabled Hot Reloading
 
 Hot reloading enables faster development, without losing any state in the application. To enable it in your app you need to add the following code, preferably in the entrypoint of your app:
