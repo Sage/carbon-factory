@@ -1,6 +1,6 @@
 {
   "name": "carbon-factory",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Tools to help create user interfaces with Carbon and React.",
   "scripts": {},
   "author": "The Sage Group plc",
@@ -40,6 +40,7 @@
     "style-loader": "0.21.0",
     "uglifyjs-webpack-plugin": "1.2.7",
     "webpack": "4.16.1",
+    "webpack-bundle-analyzer": "2.13.1",
     "webpack-cli": "3.0.8",
     "webpack-dev-server": "3.1.4"
   }

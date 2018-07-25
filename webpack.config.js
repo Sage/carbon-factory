@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = process.cwd();
 const _p = require('path');
 const production = process.env.NODE_ENV == 'production';
@@ -27,6 +28,8 @@ module.exports = function(opts) {
   const parcelifyPaths = opts.parcelifyPaths || [];
   const gzip = (opts.gzip === false) ? false : true;
   const singlePageApp = opts.singlePageApp || false;
+  const showStats = process.argv.includes('--stats');
+  const statsOptions = opts.statsOptions;
 
   /******************
    * WEBPACK CONFIG *
@@ -197,6 +200,9 @@ module.exports = function(opts) {
       new webpack.HotModuleReplacementPlugin()
     ];
   }
+
+  // Bundle stats
+  if (showStats) config.plugins.push(new BundleAnalyzerPlugin(statsOptions));
 
   return config;
 };

@@ -1,3 +1,9 @@
+# 5.1.0
+
+## Bundle Stats
+
+We have added support for analysing your Webpack bundle using the BundleAnalyzerPlugin. To use it pass `--stats` when running Webpack.
+
 # 5.0.0
 
 ## Updated Jest Test Matcher
