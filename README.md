@@ -8,8 +8,6 @@ To easily get started, please see [create-carbon-app](https://github.com/Sage/cr
 
 * [Setting Up Webpack](docs/webpack.md)
 * [Setting up JestCLI](docs/setting-up-jest-cli.md)
-* [Running Tests](docs/running-tests.md)
-* [Debugging Tests](docs/debugging-tests.md)
 * [Help with Jest](docs/help-with-jest.md)
 
 ## Licence
