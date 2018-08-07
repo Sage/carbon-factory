@@ -1,3 +1,9 @@
+# 5.1.1
+
+## Remove obsolete documentation
+
+Remove the obsolete docs on `Running Tests` and `Debugging Tests`.
+
 # 5.1.0
 
 ## Bundle Stats
