@@ -1,3 +1,9 @@
+# 5.2.0
+
+## Add Sourcemaps in Development Mode
+
+We now generate sourcemaps when running in development mode.
+
 # 5.1.0
 
 ## Bundle Stats
