@@ -51,6 +51,11 @@ module.exports = function(opts) {
     }
   };
 
+  // Enable sourcemaps as long as we're not in production mode
+  if (!production) {
+    config.devtool = 'eval-source-maps';
+  }
+
   /***********
    * LOADERS *
    ***********/
