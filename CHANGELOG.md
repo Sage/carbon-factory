@@ -1,3 +1,9 @@
+# 5.2.1
+
+## Bug Fixes
+
+Bump the version number in `package-lock.json`.
+
 # 5.2.0
 
 ## Add Sourcemaps in Development Mode
