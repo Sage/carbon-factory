@@ -1,3 +1,9 @@
+# 5.3.0
+
+## webpack
+
+Remove the `uglify-webpack-plugin` that we used in production builds. webpack uses this by default for production builds, and with the same options we used, so we don't need to include it here.
+
 # 5.2.1
 
 ## Bug Fixes
