@@ -1,5 +1,4 @@
 const CompressionPlugin = require("compression-webpack-plugin")
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -174,10 +173,6 @@ module.exports = function(opts) {
     // Production Plugins
     config.plugins = [
       clean,
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true
-      }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
           safe: true
