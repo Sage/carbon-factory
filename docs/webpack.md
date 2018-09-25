@@ -103,12 +103,9 @@ We no longer use the gulp build task, you can safely remove this from the your `
 
 ### Additional Assets
 
-We still support loading assets through `package.json` files using [Parcelify Loader](https://www.npmjs.com/package/parcelify-loader). However this is not quite as full featured as we had previously, we no longer support:
+We no longer support loading assets through `package.json` files using [Parcelify Loader](https://www.npmjs.com/package/parcelify-loader).
 
-* Loading multiple assets using an array.
-* Loading assets other than css/scss files.
-
-To resolve these issues we recommend using Webpack's import ability of importing these assets in the JavaScript file itself.
+Instead use Webpack to import these assets in the JavaScript file itself.
 
 For example, given the following `package.json`:
 
@@ -155,30 +152,3 @@ to:
 @import 'colors.scss';
 ```
 
-### accessSyncError
-
-Are you getting the following error:
-
-```
-console.log("Cannot find " + styleFile + ": " + accessSyncError)
-                                                ^
-ReferenceError: accessSyncError is not defined
-```
-
-This is due to one of your `package.json` files referencing a file that does not exist, however there is a bug in the Parcelify Loader that does not render the error message properly.
-
-To fix this, first patch the Parcelify Loader by editing `node_modules/parcelify-loader/index.js` and line 61. Change the following:
-
-```js
-console.log("Cannot find " + styleFile + ": " + accessSyncError)
-```
-
-to:
-
-```js
-console.log("Cannot find " + styleFile)
-```
-
-And then rerun `npm start`.
-
-This should now give you a better error message about what is missing, you can search your repo to find which `package.json` is referencing this file.
