@@ -24,7 +24,6 @@ module.exports = function(opts) {
   const port = opts.port || 8080;
   const public = opts.public || `${host}:${port}`;
   const lookupPaths = opts.lookupPaths || [];
-  const parcelifyPaths = opts.parcelifyPaths || [];
   const gzip = (opts.gzip === false) ? false : true;
   const singlePageApp = opts.singlePageApp || false;
   const showStats = process.argv.includes('--stats');
@@ -58,16 +57,6 @@ module.exports = function(opts) {
   /***********
    * LOADERS *
    ***********/
-
-  // Parcelify Loader
-  const parcelifyLoader = {
-    test: /\.js$/,
-    enforce: 'pre',
-    use: ['parcelify-loader'],
-    include: parcelifyPaths.concat([
-      _p.resolve(path, 'src')
-    ])
-  };
 
   // Babel Loader
   const babelLoader = {
@@ -129,7 +118,6 @@ module.exports = function(opts) {
 
   config.module = {
     rules: [
-      parcelifyLoader,
       babelLoader,
       cssLoader,
       imageLoader,
