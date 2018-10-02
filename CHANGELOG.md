@@ -4,6 +4,8 @@
 
 We no longer use Parcelify Loader in our webpack config. You should now import any static assets such as stylesheets, fonts, or icons, directly in the JavaScript files that need them.
 
+If you wish to continue using Parcelify Loader please see their README for details on [how to configure it with webpack](https://github.com/g-aigner/parcelify-loader#parcelify-loader-1).
+
 # 5.3.0
 
 ## webpack
