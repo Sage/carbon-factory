@@ -130,8 +130,6 @@ The font or image file will be picked up automatically by the reference to it in
 
 We would recommend not relying on using `package.json` files any more, as we would like to deprecate this loader entirely from the build process.
 
-If you wish to continue using Parcelify Loader please see their README for details on [how to configure it with webpack](https://github.com/g-aigner/parcelify-loader#parcelify-loader-1). 
-
 ### CSS Error
 
 Are you getting an error like this:
