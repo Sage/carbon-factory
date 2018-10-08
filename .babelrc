@@ -1,6 +1,11 @@
 {
   "presets": [
-    "env",
+    ["env", {
+      "useBuiltIns": "usage",
+      "targets": {
+        "browsers": "IE 11"
+      }
+    }],
     "react"
   ],
   "plugins": [
