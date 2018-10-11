@@ -1,6 +1,6 @@
 # 6.1.0
 
-`.babelrc` has been updated to include babel-preset-env support for at least IE11. If you want to use this, import `babel-polyfill` into the root of you project.
+`.babelrc` has been updated to include babel-preset-env support for at least IE11. If you want to use this, import `babel-polyfill` into the root of your project.
 
 # 6.0.0
 
