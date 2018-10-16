@@ -60,7 +60,7 @@ module.exports = function(opts) {
 
   // Babel Loader
   const babelLoader = {
-    test: /\.js$/,
+    test: /\.(js|jsx)$/,
     exclude: /node_modules/,
     use: {
       loader: 'babel-loader',

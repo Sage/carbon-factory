@@ -1,3 +1,7 @@
+# 6.1.1
+
+`webpack.config.js` has been fixed to support either `.js` files or `.jsx` files.
+
 # 6.1.0
 
 `.babelrc` has been updated to include babel-preset-env support for at least IE11. If you want to use this, import `babel-polyfill` into the root of your project.
