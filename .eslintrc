@@ -96,9 +96,11 @@
   'extends': [
     'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:class-extends/recommended',
     'airbnb'
   ],
   'plugins': [
+    'class-extends',
     'react'
   ]
 }
