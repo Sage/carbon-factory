@@ -1,3 +1,7 @@
+# 6.2.0
+
+`eslint-plugin-jest` is now used to enforce consistency in Jest tests.
+
 # 6.1.1
 
 `webpack.config.js` has been fixed to support either `.js` files or `.jsx` files.
