@@ -54,9 +54,33 @@ module.exports = function(opts) {
     config.devtool = 'eval-source-maps';
   }
 
+
   /***********
    * LOADERS *
    ***********/
+
+  // Awesome Typescript Loader
+  const awesomeTypescriptLoader = {
+    test: /\.(t|j)sx?$/,
+    use: {
+      loader: 'awesome-typescript-loader'
+    },
+    options: {
+      presets: ['env'],
+      plugins: [
+        'transform-class-properties',
+        'transform-object-rest-spread'
+      ]
+    }
+  }
+
+  //SourceMapLoader
+  const sourceMapLoader = {
+    enforce: "pre",
+    test: /\.js$/,
+    loader: "source-map-loader"
+  }
+
 
   // Babel Loader
   const babelLoader = {
@@ -119,6 +143,8 @@ module.exports = function(opts) {
   config.module = {
     rules: [
       babelLoader,
+      awesomeTypescriptLoader,
+      sourceMapLoader,
       cssLoader,
       imageLoader,
       fontLoader
