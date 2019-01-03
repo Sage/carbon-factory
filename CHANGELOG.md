@@ -1,3 +1,7 @@
+# 6.2.0
+
+Added support to the webpack config to enable code splitting. See the [React docs](https://reactjs.org/docs/code-splitting.html) for more information.
+
 # 6.1.1
 
 `webpack.config.js` has been fixed to support either `.js` files or `.jsx` files.
