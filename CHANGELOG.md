@@ -1,3 +1,7 @@
+# 6.2.0
+
+Enabled source maps for production, these will get generated as an external file with the extension `.js.map`.
+
 # 6.1.1
 
 `webpack.config.js` has been fixed to support either `.js` files or `.jsx` files.
