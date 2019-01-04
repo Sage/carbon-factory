@@ -11,7 +11,7 @@
   "plugins": [
     "transform-object-rest-spread",
     "transform-class-properties",
-    "lodash"
+    "lodash",
     "syntax-dynamic-import"
   ]
 }
