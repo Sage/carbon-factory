@@ -39,7 +39,8 @@ module.exports = function(opts) {
     output: {
       path: _p.resolve(path, outputPath),
       publicPath: publicPath,
-      filename: 'javascripts/ui.js'
+      filename: 'javascripts/ui.js',
+      chunkFilename: 'javascripts/[name].bundle.js'
     },
     resolve: {
       modules: lookupPaths.concat([
