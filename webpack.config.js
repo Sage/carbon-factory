@@ -2,6 +2,7 @@ const CompressionPlugin = require("compression-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = process.cwd();
@@ -65,7 +66,7 @@ module.exports = function(opts) {
     use: {
       loader: 'babel-loader',
       options: {
-        presets: ['env'],
+        presets: [['env', { modules: false }]],
         plugins: [
           'transform-class-properties',
           'transform-object-rest-spread'
@@ -168,7 +169,8 @@ module.exports = function(opts) {
       }),
       new MiniCssExtractPlugin({
         filename: 'stylesheets/ui.css'
-      })
+      }),
+      new LodashModuleReplacementPlugin
     ]
 
     if (gzip) {
