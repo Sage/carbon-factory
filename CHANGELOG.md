@@ -1,6 +1,7 @@
 # 6.2.0
 
-Added support to the webpack config to enable code splitting. See the [React docs](https://reactjs.org/docs/code-splitting.html) for more information.
+* Added support to the webpack config to enable code splitting. See the [React docs](https://reactjs.org/docs/code-splitting.html) for more information.
+* Enabled source maps for production, these will get generated as an external file with the extension `.js.map`.
 
 # 6.1.1
 
