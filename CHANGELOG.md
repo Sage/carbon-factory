@@ -2,7 +2,7 @@
 
 * Added support to the webpack config to enable code splitting. See the [React docs](https://reactjs.org/docs/code-splitting.html) for more information.
 * Enabled source maps for production, these will get generated as an external file with the extension `.js.map`.
-* Enabled tree-shaking, see webpack docs [https://webpack.js.org/guides/tree-shaking/].
+* Enabled tree-shaking, see [webpack docs](https://webpack.js.org/guides/tree-shaking/).
 * Added plugins to apply tree-shaking to lodash.
 
 # 6.1.1
