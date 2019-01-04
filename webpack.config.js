@@ -40,7 +40,8 @@ module.exports = function(opts) {
     output: {
       path: _p.resolve(path, outputPath),
       publicPath: publicPath,
-      filename: 'javascripts/ui.js'
+      filename: 'javascripts/ui.js',
+      chunkFilename: 'javascripts/[name].bundle.js'
     },
     resolve: {
       modules: lookupPaths.concat([
@@ -50,10 +51,8 @@ module.exports = function(opts) {
     }
   };
 
-  // Enable sourcemaps as long as we're not in production mode
-  if (!production) {
-    config.devtool = 'eval-source-maps';
-  }
+  // Enable sourcemaps, different kinds depending on environment
+  config.devtool = production ? 'source-map' : 'eval-source-maps';
 
   /***********
    * LOADERS *
