@@ -28,6 +28,7 @@ module.exports = function(opts) {
   const singlePageApp = opts.singlePageApp || false;
   const showStats = process.argv.includes('--stats');
   const statsOptions = opts.statsOptions;
+  const productionSourcemaps = opts.productionSourcemaps || false;
 
   /******************
    * WEBPACK CONFIG *
@@ -51,7 +52,8 @@ module.exports = function(opts) {
   };
 
   // Enable sourcemaps, different kinds depending on environment
-  config.devtool = production ? 'source-map' : 'eval-source-maps';
+  if (production && productionSourcemaps) config.devtool = 'source-map'
+  if (!production) config.devtool = 'eval-source-maps';
 
   /***********
    * LOADERS *
