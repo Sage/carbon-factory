@@ -66,10 +66,22 @@ module.exports = function(opts) {
     use: {
       loader: 'babel-loader',
       options: {
-        presets: ['env'],
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              useBuiltIns: 'usage',
+              targets: {
+                browsers: 'IE 11'
+              }
+            }
+          ],
+          "@babel/preset-react"
+        ],
         plugins: [
-          'transform-class-properties',
-          'transform-object-rest-spread'
+          '@babel/plugin-proposal-class-properties',
+          '@babel/plugin-proposal-object-rest-spread',
+          '@babel/plugin-syntax-dynamic-import'
         ]
       }
     }

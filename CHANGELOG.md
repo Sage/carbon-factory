@@ -1,4 +1,10 @@
-# 6.2.0
+# 7.0.0
+
+## Breaking Changes:
+
+* babel has been upgraded to version 7. As part of this change we have updated the `.babelrc` file supplied by carbon-factory to a `babel.config.js`. We recommend you transform your `.babelrc` to reflect this change. The babel modules have changed in name format as well, this will effect your application if you directly reference any of these. For example you might be importing babel's polyfills with `import 'babel-polyfill';`, this should be changed to `import '@babel/polyfill';`. For more information on the babel upgrade please see the official documentation: https://babeljs.io/docs/en/v7-migration
+
+## Other Updates:
 
 * Added support to the webpack config to enable code splitting. See the [React docs](https://reactjs.org/docs/code-splitting.html) for more information.
 * Enabled source maps for production, these will get generated as an external file with the extension `.js.map`. To enable these turn them on with `productionSourcemaps: true` in the webpack config. Please note that you should only enable these if you can ensure they're not publicly accessible.
