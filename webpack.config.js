@@ -28,6 +28,7 @@ module.exports = function(opts) {
   const singlePageApp = opts.singlePageApp || false;
   const showStats = process.argv.includes('--stats');
   const statsOptions = opts.statsOptions;
+  const productionSourcemaps = opts.productionSourcemaps || false;
 
   /******************
    * WEBPACK CONFIG *
@@ -39,7 +40,8 @@ module.exports = function(opts) {
     output: {
       path: _p.resolve(path, outputPath),
       publicPath: publicPath,
-      filename: 'javascripts/ui.js'
+      filename: 'javascripts/ui.js',
+      chunkFilename: 'javascripts/[name].bundle.js'
     },
     resolve: {
       modules: lookupPaths.concat([
@@ -49,10 +51,9 @@ module.exports = function(opts) {
     }
   };
 
-  // Enable sourcemaps as long as we're not in production mode
-  if (!production) {
-    config.devtool = 'eval-source-maps';
-  }
+  // Enable sourcemaps, different kinds depending on environment
+  if (production && productionSourcemaps) config.devtool = 'source-map'
+  if (!production) config.devtool = 'eval-source-maps';
 
 
   /***********
@@ -89,10 +90,22 @@ module.exports = function(opts) {
     use: {
       loader: 'babel-loader',
       options: {
-        presets: ['env'],
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              useBuiltIns: 'usage',
+              targets: {
+                browsers: 'IE 11'
+              }
+            }
+          ],
+          "@babel/preset-react"
+        ],
         plugins: [
-          'transform-class-properties',
-          'transform-object-rest-spread'
+          '@babel/plugin-proposal-class-properties',
+          '@babel/plugin-proposal-object-rest-spread',
+          '@babel/plugin-syntax-dynamic-import'
         ]
       }
     }
