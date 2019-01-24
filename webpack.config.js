@@ -134,8 +134,6 @@ module.exports = function(opts) {
   config.module = {
     rules: [
       babelLoader,
-      awesomeTypescriptLoader,
-      sourceMapLoader,
       cssLoader,
       imageLoader,
       fontLoader
