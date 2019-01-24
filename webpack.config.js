@@ -85,7 +85,7 @@ module.exports = function(opts) {
 
   // Babel Loader
   const babelLoader = {
-    test: /\.(js|jsx)$/,
+    test: /\.(ts|js|tsx|jsx)$/,
     exclude: /node_modules/,
     use: {
       loader: 'babel-loader',
@@ -100,7 +100,8 @@ module.exports = function(opts) {
               }
             }
           ],
-          "@babel/preset-react"
+          "@babel/preset-react",
+          "@babel/preset-typescript"
         ],
         plugins: [
           '@babel/plugin-proposal-class-properties',
