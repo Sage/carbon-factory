@@ -18,6 +18,7 @@
     "@babel/polyfill": "7.2.5",
     "@babel/preset-env": "7.2.3",
     "@babel/preset-react": "7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "23.6.0",
@@ -34,7 +35,7 @@
     "file-loader": "1.1.11",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.4.1",
-    "jest-cli": "23.4.1",
+    "jest-cli": "^23.6.0",
     "mini-css-extract-plugin": "0.4.1",
     "node-sass": "4.9.2",
     "optimize-css-assets-webpack-plugin": "4.0.3",
@@ -43,6 +44,6 @@
     "webpack": "4.16.1",
     "webpack-bundle-analyzer": "2.13.1",
     "webpack-cli": "3.0.8",
-    "webpack-dev-server": "3.1.4"
+    "webpack-dev-server": "3.1.14"
   }
 }

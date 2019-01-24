@@ -60,32 +60,9 @@ module.exports = function(opts) {
    * LOADERS *
    ***********/
 
-  // Awesome Typescript Loader
-  const awesomeTypescriptLoader = {
-    test: /\.(t|j)sx?$/,
-    use: {
-      loader: 'awesome-typescript-loader'
-    },
-    options: {
-      presets: ['env'],
-      plugins: [
-        'transform-class-properties',
-        'transform-object-rest-spread'
-      ]
-    }
-  }
-
-  //SourceMapLoader
-  const sourceMapLoader = {
-    enforce: "pre",
-    test: /\.js$/,
-    loader: "source-map-loader"
-  }
-
-
   // Babel Loader
   const babelLoader = {
-    test: /\.(js|jsx)$/,
+    test: /\.(ts|js|tsx|jsx)$/,
     exclude: /node_modules/,
     use: {
       loader: 'babel-loader',
@@ -100,7 +77,8 @@ module.exports = function(opts) {
               }
             }
           ],
-          "@babel/preset-react"
+          "@babel/preset-react",
+          "@babel/preset-typescript"
         ],
         plugins: [
           '@babel/plugin-proposal-class-properties',
