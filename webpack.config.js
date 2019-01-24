@@ -47,7 +47,8 @@ module.exports = function(opts) {
       modules: lookupPaths.concat([
         _p.resolve(path, './src'),
         _p.resolve(path, './node_modules')
-      ])
+      ]),
+      extensions: ['.wasm', '.mjs', '.js', '.json', '.ts', '.tsx']
     }
   };
 
