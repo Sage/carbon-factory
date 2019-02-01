@@ -1,8 +1,8 @@
 {
   "snapshotSerializers": ["enzyme-to-json/serializer"],
   "testMatch": [
-    "**/__spec__.(js)",
-    "**/*.spec.(js)"
+    "**/__spec__.js",
+    "**/*.spec.js"
   ],
   "moduleDirectories": [ "src", "node_modules" ],
   "moduleNameMapper": {
