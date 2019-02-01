@@ -16,34 +16,5 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true
-  },
-  "rules": {
-    "object-literal-sort-keys": false,
-    "no-duplicate-variable": true,
-    "max-line-length": {
-        "options": [120]
-    },
-    "ordered-imports": false,
-    "new-parens": true,
-    "no-arg": true,
-    "no-bitwise": true,
-    "no-conditional-assignment": true,
-    "no-consecutive-blank-lines": false,
-    "no-console": {
-        "options": [
-            "debug",
-            "info",
-            "log",
-            "time",
-            "timeEnd",
-            "trace"
-        ]
-    }
-  },
-  "jsRules": {
-    "max-line-length": {
-        "options": [120]
-    },
-    "object-literal-sort-keys": false,
   }
 }

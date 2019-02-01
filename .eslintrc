@@ -1,5 +1,8 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "rules": {
     "strict": 0,
     "array-bracket-spacing": ["error", "never"],
@@ -79,7 +82,18 @@
     }],
     "semi": ["error", "always"], 
     "semi-spacing": ["error", {"before": false, "after": true}], 
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "@typescript-eslint/interface-name" : [true, "never-prefix"],
+    "@typescript-eslint/member-access": [true, "no-public"],
+    "@typescript-eslint/ordered-imports": [false],
+    "@typescript-eslint/object-literal-sort-keys": [false],
+    "@typescript-eslint/class-name": false,
+    "@typescript-eslint/max-line-length": {
+      "options": [120]
+    },
+    "@typescript-eslint/new-parens": true,
+    "@typescript-eslint/no-duplicate-variable": true,
+    "@typescript-eslint/no-consecutive-blank-lines": true
   },
   "env": {
     "es6": true,
@@ -89,9 +103,12 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "airbnb"
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/tslint-react"
   ],
   "plugins": [
-    "react"
+    "react",
+    "@typescript-eslint"
   ]
 }
