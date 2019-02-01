@@ -4,7 +4,6 @@
     "module": "esnext",
     "target": "es5",
     "lib": ["es6", "dom"],
-    "outDir": "lib/components",
     "sourceMap": true,
     "emitDeclarationOnly": true,
     "jsx": "react",
@@ -18,9 +17,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true
   },
-  "include": [
-    "src"
-  ],
   "rules": {
     "object-literal-sort-keys": false,
     "no-duplicate-variable": true,
