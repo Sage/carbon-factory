@@ -1,8 +1,5 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
+  "parser": "babel-eslint",
   "rules": {
     "strict": 0,
     "array-bracket-spacing": ["error", "never"],
@@ -82,13 +79,7 @@
     }],
     "semi": ["error", "always"], 
     "semi-spacing": ["error", {"before": false, "after": true}], 
-    "space-before-function-paren": "off",
-    "@typescript-eslint/interface-name-prefix" : 0,
-    "@typescript-eslint/explicit-member-accessibility": 2,
-    "@typescript-eslint/class-name-casing": 0,
-    "@typescript-eslint/no-use-before-define": 0,
-    "@typescript-eslint/indent": 0,
-    "@typescript-eslint/camelcase": 0
+    "space-before-function-paren": "off"
   },
   "env": {
     "es6": true,
@@ -98,11 +89,9 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "airbnb",
-    "plugin:@typescript-eslint/recommended"
+    "airbnb"
   ],
   "plugins": [
-    "react",
-    "@typescript-eslint"
+    "react"
   ]
 }
