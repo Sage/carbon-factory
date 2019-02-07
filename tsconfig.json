@@ -6,7 +6,7 @@
     "lib": ["es6", "dom"],
     "outDir": "lib/components",
     "sourceMap": true,
-    "emitDeclarationOnly": true,
+    "noEmit": true,
     "jsx": "react",
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
