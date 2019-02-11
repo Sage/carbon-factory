@@ -47,7 +47,8 @@ module.exports = function(opts) {
       modules: lookupPaths.concat([
         _p.resolve(path, './src'),
         _p.resolve(path, './node_modules')
-      ])
+      ]),
+      extensions: ['.wasm', '.mjs', '.js', '.json', '.ts', '.tsx']
     }
   };
 
@@ -55,13 +56,14 @@ module.exports = function(opts) {
   if (production && productionSourcemaps) config.devtool = 'source-map'
   if (!production) config.devtool = 'eval-source-maps';
 
+
   /***********
    * LOADERS *
    ***********/
 
   // Babel Loader
   const babelLoader = {
-    test: /\.(js|jsx)$/,
+    test: /\.(ts|js|tsx|jsx)$/,
     exclude: /node_modules/,
     use: {
       loader: 'babel-loader',
@@ -76,7 +78,8 @@ module.exports = function(opts) {
               }
             }
           ],
-          "@babel/preset-react"
+          "@babel/preset-react",
+          "@babel/preset-typescript"
         ],
         plugins: [
           '@babel/plugin-proposal-class-properties',

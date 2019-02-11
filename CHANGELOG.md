@@ -1,3 +1,25 @@
+# 7.1.0
+
+## Webpack
+
+`webpack-dev-server` version has been bumped to latest.
+
+`webpack.config.js` is now configured to handle `.ts` and `.tsx` file extensions, this includes updating `babel-loader` to handle these new extensions.
+
+## Typescript
+
+Range of dependencies added to allow support for components to be built using `.ts` and `.tsx` extensions.
+
+`tsconfig.json` defines the rules for how `.ts` and `.tsx` files should be compiled. For more information about comilier options see https://www.typescriptlang.org/docs/handbook/compiler-options.html
+
+## Jest 
+
+Updates have been made to `jest.conf.json` to allow it to handle the transformation of `.tsx` syntax.
+
+## Linting
+
+`tslint.json` is added to apply linting to files with Typescript file extensions, whilst `.eslintrc` continues to handle JavaScript files.
+
 # 7.0.0
 
 ## Breaking Changes:

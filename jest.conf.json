@@ -19,5 +19,14 @@
       "lines": 100,
       "statements": 100
     }
+  },
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js", 
+    "jsx"
+  ],
+  "transform": {
+    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
   }
 }
