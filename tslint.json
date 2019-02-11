@@ -9,11 +9,17 @@
     ]
   },
   "rules": {
+    "max-line-length": {
+      "options": [120]
+    },
     "interface-name" : [true, "never-prefix"],
     "member-access": [true, "no-public"],
     "ordered-imports": [false],
     "object-literal-sort-keys": [false],
     "class-name": false,
-    "quotemark": [true, "single", "avoid-escape"]
+    "quotemark": {
+      "severity": "warning",
+      "options": ["single", "avoid-escape"]
+    }
   }
 }
