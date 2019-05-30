@@ -1,3 +1,9 @@
+# 7.2.0
+
+## Webpack
+
+`webpack-dev-server`, `babel`, `eslint` and `node-sass` versions have been bumped to latest to fix vulnerabilities .
+
 # 7.1.0
 
 ## Webpack
