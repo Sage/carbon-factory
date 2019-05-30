@@ -1,6 +1,6 @@
 {
   "name": "carbon-factory",
-  "version": "7.1.0",
+  "version": "7.2.0",
   "description": "Tools to help create user interfaces with Carbon and React.",
   "scripts": {},
   "author": "The Sage Group plc",
@@ -10,13 +10,13 @@
     "url": "https://github.com/Sage/carbon-factory"
   },
   "dependencies": {
-    "@babel/cli": "7.2.3",
-    "@babel/core": "7.2.2",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "7.2.3",
     "@babel/plugin-proposal-object-rest-spread": "7.2.0",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/polyfill": "7.2.5",
-    "@babel/preset-env": "7.2.3",
+    "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.1.0",
     "babel-core": "7.0.0-bridge.0",
@@ -27,7 +27,7 @@
     "compression-webpack-plugin": "1.1.11",
     "css-loader": "1.0.0",
     "enzyme-to-json": "3.3.4",
-    "eslint": "5.1.0",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "17.0.0",
     "eslint-plugin-import": "2.13.0",
     "eslint-plugin-jsx-a11y": "6.1.1",
@@ -37,7 +37,7 @@
     "jest": "23.4.1",
     "jest-cli": "23.4.1",
     "mini-css-extract-plugin": "0.4.1",
-    "node-sass": "4.9.2",
+    "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "4.0.3",
     "sass-loader": "7.0.3",
     "style-loader": "0.21.0",
@@ -47,6 +47,6 @@
     "webpack": "4.16.1",
     "webpack-bundle-analyzer": "2.13.1",
     "webpack-cli": "3.0.8",
-    "webpack-dev-server": "3.1.14"
+    "webpack-dev-server": "^3.4.1"
   }
 }
