@@ -1,8 +1,14 @@
+# 7.3.0
+
+## Webpack Bundle Analyzer
+
+`webpack-bundle-analyzer` version has been bumped to latest to fix vulnerabilities.
+
 # 7.2.0
 
-## Webpack
+## Dependency Updates
 
-`webpack-dev-server`, `babel`, `eslint` and `node-sass` versions have been bumped to latest to fix vulnerabilities .
+`webpack-dev-server`, `babel`, `eslint` and `node-sass` versions have been bumped to latest to fix vulnerabilities.
 
 # 7.1.0
 
