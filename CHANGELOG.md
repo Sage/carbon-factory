@@ -1,3 +1,9 @@
+# 7.4.0
+
+## Dependency Updates
+
+`optimize-css-assets-webpack-plugin`, `jest`, `jest-cli`, `babel-jest` and `tslint` versions have been bumped to latest to fix vulnerabilities.
+
 # 7.3.0
 
 ## Webpack Bundle Analyzer
