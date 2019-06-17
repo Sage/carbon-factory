@@ -3,7 +3,6 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        useBuiltIns: 'usage',
         targets: {
           browsers: 'IE 11'
         },
