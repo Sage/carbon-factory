@@ -1,3 +1,9 @@
+# 7.4.1
+
+## Dependency Updates
+
+`-webpack-dev-server` has been dropped back to `3.2.1` as the demo site will not launch locally when set to latest version.
+
 # 7.4.0
 
 ## Dependency Updates
