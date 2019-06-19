@@ -46,9 +46,5 @@
     "webpack-bundle-analyzer": "3.3.2",
     "webpack-cli": "3.0.8",
     "webpack-dev-server": "^3.4.1"
-  },
-  "devDependencies": {
-    "@babel/code-frame": "^7.0.0",
-    "@babel/plugin-transform-regenerator": "^7.4.5"
   }
 }
