@@ -1,6 +1,6 @@
 {
   "name": "carbon-factory",
-  "version": "7.4.0",
+  "version": "7.4.1",
   "description": "Tools to help create user interfaces with Carbon and React.",
   "scripts": {},
   "author": "The Sage Group plc",
@@ -45,6 +45,6 @@
     "webpack": "4.16.1",
     "webpack-bundle-analyzer": "3.3.2",
     "webpack-cli": "3.0.8",
-    "webpack-dev-server": "^3.4.1"
+    "webpack-dev-server": "3.2.1"
   }
 }
