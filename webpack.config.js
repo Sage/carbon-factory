@@ -75,7 +75,8 @@ module.exports = function(opts) {
               useBuiltIns: 'usage',
               targets: {
                 browsers: 'IE 11'
-              }
+              },
+              corejs: 3
             }
           ],
           "@babel/preset-react",
