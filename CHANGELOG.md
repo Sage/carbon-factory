@@ -1,3 +1,14 @@
+# 8.0.0
+
+## Webpack
+
+Update to `webpack.config.js` to support corejs v3
+
+## Babel
+
+Update to `babel.config.js` to support corejs v3
+Removed `@babel/polyfill` and `babel-core` from `package.json`
+
 # 7.4.1
 
 ## Dependency Updates
