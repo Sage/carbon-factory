@@ -1,3 +1,7 @@
+# 8.0.1
+
+The `package-lock.json` was updated to bump the version of `mixin-deep` used by `webpack-dev-server`
+
 # 8.0.0
 
 ## Webpack
