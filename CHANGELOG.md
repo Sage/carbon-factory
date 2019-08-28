@@ -1,3 +1,7 @@
+# 8.0.2
+
+The `package-lock.json` was updated to bump the version of `eslint-utils` to fix critical security warning
+
 # 8.0.1
 
 The `package-lock.json` was updated to bump the version of `mixin-deep` used by `webpack-dev-server`
