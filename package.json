@@ -1,6 +1,6 @@
 {
   "name": "carbon-factory",
-  "version": "8.0.2",
+  "version": "8.1.0",
   "description": "Tools to help create user interfaces with Carbon and React.",
   "scripts": {},
   "author": "The Sage Group plc",
