@@ -1,3 +1,7 @@
+# 8.2.0
+
+The `package-lock.json` was updated to fix vulnerability in `handlebars`
+
 # 8.1.0
 
 The `package-lock.json` was updated to bump the version of `jest` to `24.9.0` to fix 2 high security warnings
