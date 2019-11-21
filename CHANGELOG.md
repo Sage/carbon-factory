@@ -1,3 +1,7 @@
+# 9.0.0
+
+Change relative path to absolute path in `webpack.config.js` to fix build issue on demo site
+
 # 8.2.0
 
 The `package-lock.json` was updated to fix vulnerability in `handlebars`
