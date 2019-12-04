@@ -1,3 +1,7 @@
+# 9.0.1
+
+The `package-lock.json` was updated to upgrade `handlebars` a dependency of `jest` and `jest-cli` to fix high security vulnerabilities
+
 # 9.0.0
 
 Change relative path to absolute path in `webpack.config.js` to fix build issue on demo site
