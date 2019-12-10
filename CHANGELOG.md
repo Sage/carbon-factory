@@ -1,3 +1,7 @@
+# 10.0.0
+
+`eslint-plugin-react-hooks` `v2.3.0` dependency added and `eslintrc` updated to support linting react hooks.
+
 # 9.1.0
 
 `plugin-proposal-function-bind` `v7.7.4` dependency added and babel config updated to include this plugin to replace "stage 0", other babel dependencies also bumped to latest.
