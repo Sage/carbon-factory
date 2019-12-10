@@ -1,6 +1,6 @@
 # 9.1.0
 
-`plugin-proposal-function-bind` `v7.74` dependency added and babel config updated to inclued this plugin to replace "stage 0", other babel dependecies also bumped to latest.
+`plugin-proposal-function-bind` `v7.7.4` dependency added and babel config updated to include this plugin to replace "stage 0", other babel dependencies also bumped to latest.
 
 # 9.0.1
 
