@@ -1,3 +1,7 @@
+# 9.1.0
+
+`plugin-proposal-function-bind` `v7.7.4` dependency added and babel config updated to include this plugin to replace "stage 0", other babel dependencies also bumped to latest.
+
 # 9.0.1
 
 The `package-lock.json` was updated to upgrade `handlebars` a dependency of `jest` and `jest-cli` to fix high security vulnerabilities
