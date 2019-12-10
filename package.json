@@ -1,6 +1,6 @@
 {
   "name": "carbon-factory",
-  "version": "9.1.0",
+  "version": "10.0.0",
   "description": "Tools to help create user interfaces with Carbon and React.",
   "scripts": {},
   "author": "The Sage Group plc",
@@ -31,6 +31,7 @@
     "eslint-plugin-import": "2.13.0",
     "eslint-plugin-jsx-a11y": "6.1.1",
     "eslint-plugin-react": "7.10.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
     "file-loader": "1.1.11",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",

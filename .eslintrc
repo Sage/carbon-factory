@@ -23,7 +23,7 @@
     "jsx-a11y/no-noninteractive-element-interactions": "warn",
     "jsx-a11y/no-static-element-interactions": "warn",
     "jsx-quotes": ["error", "prefer-single"],
-    "linebreak-style": ["error", "unix"], 
+    "linebreak-style": ["error", "unix"],
     "max-len": ["error", 120],
     "max-params": ["error", 5],
     "multiline-ternary": ["error", "never"],
@@ -77,9 +77,11 @@
         "render"
       ]
     }],
-    "semi": ["error", "always"], 
-    "semi-spacing": ["error", {"before": false, "after": true}], 
-    "space-before-function-paren": "off"
+    "semi": ["error", "always"],
+    "semi-spacing": ["error", {"before": false, "after": true}],
+    "space-before-function-paren": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "env": {
     "es6": true,
@@ -92,6 +94,7 @@
     "airbnb"
   ],
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ]
 }
