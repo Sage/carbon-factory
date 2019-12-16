@@ -1,6 +1,6 @@
 {
   "name": "carbon-factory",
-  "version": "10.0.0",
+  "version": "11.0.0",
   "description": "Tools to help create user interfaces with Carbon and React.",
   "scripts": {},
   "author": "The Sage Group plc",
@@ -23,7 +23,7 @@
     "babel-jest": "24.9.0",
     "babel-loader": "8.0.5",
     "clean-webpack-plugin": "0.1.19",
-    "compression-webpack-plugin": "1.1.11",
+    "compression-webpack-plugin": "^3.0.1",
     "css-loader": "1.0.0",
     "enzyme-to-json": "3.3.4",
     "eslint": "^5.16.0",
@@ -44,7 +44,7 @@
     "tslint": "5.17.0",
     "tslint-react": "3.6.0",
     "typescript": "3.2.4",
-    "webpack": "4.16.1",
+    "webpack": "^4.41.2",
     "webpack-bundle-analyzer": "3.3.2",
     "webpack-cli": "3.0.8",
     "webpack-dev-server": "3.2.1"
