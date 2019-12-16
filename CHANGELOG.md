@@ -1,3 +1,7 @@
+# 11.0.0
+
+`compression-webpack-plugin` (`v3.0.1`) and `webpack` (`4.41.2`) upgraded to fix vulnerability in `serialize-javascript`.
+
 # 10.0.0
 
 `eslint-plugin-react-hooks` `v2.3.0` dependency added and `eslintrc` updated to support linting react hooks.
