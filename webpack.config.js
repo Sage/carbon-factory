@@ -91,6 +91,12 @@ module.exports = function(opts) {
     }
   };
 
+  // SVG Loader
+  const svgLoader = {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  };
+
   // CSS Loader
   const cssLoader = {
     test: /\.(scss|css)$/,
@@ -136,6 +142,7 @@ module.exports = function(opts) {
   config.module = {
     rules: [
       babelLoader,
+      svgLoader,
       cssLoader,
       imageLoader,
       fontLoader

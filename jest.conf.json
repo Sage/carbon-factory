@@ -24,9 +24,10 @@
     "ts",
     "tsx",
     "js", 
-    "jsx"
+    "jsx",
+    "svg"
   ],
   "transform": {
-    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    "^.+\\.(js|jsx|ts|tsx|svg)$": "babel-jest"
   }
 }
