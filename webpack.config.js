@@ -191,7 +191,7 @@ module.exports = function(opts) {
     if (gzip) {
       config.plugins.push(
         new CompressionPlugin({
-          asset: '[path][query]',
+          filename: '[path][query]',
           exclude: new RegExp(`\.(${imageFormats})$`, 'i'),
           minRatio: Infinity
         })
