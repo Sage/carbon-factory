@@ -1,3 +1,9 @@
+# 11.0.1
+
+## Webpack
+
+Update to `webpack.config.js` to replace `asset` option with `filename` option.
+
 # 11.0.0
 
 `compression-webpack-plugin` (`v3.0.1`) and `webpack` (`4.41.2`) upgraded to fix vulnerability in `serialize-javascript`.
