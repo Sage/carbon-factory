@@ -1,3 +1,7 @@
+# 11.0.2
+
+The `package-lock.json` was updated to bump the version of `babel/preset-env` to `7.8.4` to fix Browserslist-caniuse out of date console warnings
+
 # 11.0.1
 
 ## Webpack
@@ -89,7 +93,7 @@ Range of dependencies added to allow support for components to be built using `.
 
 `tsconfig.json` defines the rules for how `.ts` and `.tsx` files should be compiled. For more information about comilier options see https://www.typescriptlang.org/docs/handbook/compiler-options.html
 
-## Jest 
+## Jest
 
 Updates have been made to `jest.conf.json` to allow it to handle the transformation of `.tsx` syntax.
 
