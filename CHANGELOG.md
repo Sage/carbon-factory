@@ -1,4 +1,4 @@
-# 11.0.2
+# 11.1.0
 
 The `package-lock.json` was updated to bump the version of `babel/preset-env` to `7.8.4` to fix Browserslist-caniuse out of date console warnings
 
